@@ -42,4 +42,9 @@ public class Enemy : MonoBehaviour
     {
         mySprite.flipX = target.position.x < myRigid.position.x;
     }
+
+    private void OnEnable()
+    {
+        target = GameManager.instance.player.GetComponent<Rigidbody2D>();
+    }
 }
