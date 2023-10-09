@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 7883078777615378745}
   - component: {fileID: 7883078777615378743}
   - component: {fileID: 7883078777615378742}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -5503839413985515682, guid: f4aa743ef7bd7314ca0f5c01c1d08a01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -96,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 7883078777615378749}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: aaf9e83ad797ecb41b30555748fa26d3, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -117,6 +117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e20d5be88b34bb6429463c1ff53d3b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
+  health: 0
+  maxHealth: 0
+  animController:
+  - {fileID: 22100000, guid: 9434899ae26536f4ab2a0cc4df44dab1, type: 2}
+  - {fileID: 22100000, guid: 9d459a536f412d44584bdcdf46f444d8, type: 2}
   target: {fileID: 0}
 --- !u!70 &7883078777615378743
 CapsuleCollider2D:

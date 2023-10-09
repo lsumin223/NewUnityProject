@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     public Vector2 inputVec;
+    public Scaner scan;
 
     private float speed = 3.0f;
     private bool isDead = false;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
         myRigid = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
         mySprite = GetComponent<SpriteRenderer>();
+        scan = GetComponent<Scaner>();
     }
 
     // Update is called once per frame

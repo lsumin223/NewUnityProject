@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{9F478B2A-144D-827E-BDBC-CD6D9B431814}</ProjectGuid>
+    <ProjectGuid>{DBF3B2E1-0D90-2909-F21E-611088EAA85D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -57,10 +57,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Asset\Script\PlayerController.cs" />
-    <Compile Include="Assets\Asset\Script\Enemy.cs" />
-    <Compile Include="Assets\Asset\Script\GameManager.cs" />
-    <Compile Include="Assets\Asset\Script\PoolManager.cs" />
     <Compile Include="Assets\Asset\Script\Spawner.cs" />
+    <Compile Include="Assets\Asset\Script\Enemy.cs" />
+    <Compile Include="Assets\Asset\Script\PoolManager.cs" />
+    <Compile Include="Assets\Asset\Script\GameManager.cs" />
+    <Compile Include="Assets\Asset\Script\SpawnData.cs" />
+    <Compile Include="Assets\Asset\Script\Scaner.cs" />
+    <Compile Include="Assets\Asset\Script\Attack.cs" />
+    <Compile Include="Assets\Asset\Script\Weapon.cs" />
+    <Compile Include="Assets\Asset\Script\CameraManager.cs" />
+    <Compile Include="Assets\Asset\Script\DontDestroyObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

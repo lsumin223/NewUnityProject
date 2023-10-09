@@ -5,11 +5,15 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    private float speed = 2.5f;
+    public float speed;
+    public float health;
+    public float maxHealth;
+    public RuntimeAnimatorController[] animController;
     public Rigidbody2D target;
 
     private Rigidbody2D myRigid;
     private SpriteRenderer mySprite;
+    private Animator myAnim;
     private bool isDead;
 
     // Start is called before the first frame update
@@ -17,12 +21,13 @@ public class Enemy : MonoBehaviour
     {
         myRigid = GetComponent<Rigidbody2D>();
         mySprite = GetComponent<SpriteRenderer>();
+        myAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -35,7 +40,7 @@ public class Enemy : MonoBehaviour
 
         myRigid.MovePosition(myRigid.position + nextVec);
         myRigid.velocity = Vector2.zero;
-     
+
     }
 
     private void LateUpdate()
@@ -46,5 +51,40 @@ public class Enemy : MonoBehaviour
     private void OnEnable()
     {
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
+        isDead = false;
+        health = maxHealth;
+
     }
+    public void Init(SpawnData data)
+    {
+        myAnim.runtimeAnimatorController = animController[data.spriteType];
+        speed = data.speed;
+        maxHealth = data.health;
+        health = data.health;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Attack"))
+            return;
+
+        health -= collision.GetComponent<Attack>().damage;
+
+        if(health > 0)
+        {
+
+        }
+        else
+        {
+            Dead();
+        }
+
+    }
+
+    void Dead()
+    {
+        gameObject.SetActive(false);
+    }
+
 }
+

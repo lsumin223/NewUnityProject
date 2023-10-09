@@ -14,7 +14,7 @@ public class PoolManager : MonoBehaviour
     {
         pools = new List<GameObject>[prefabs.Length];
 
-        for (int index = 0; index < pools.Length ; index++)
+        for (int index = 0; index < pools.Length; index++)
         {
             pools[index] = new List<GameObject>();
         }
@@ -34,7 +34,7 @@ public class PoolManager : MonoBehaviour
             }
         }
 
-        if(!select)
+        if (!select)
         {
             select = Instantiate(prefabs[index], transform);
             pools[index].Add(select);
