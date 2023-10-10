@@ -110,10 +110,10 @@ public class Weapon : MonoBehaviour
 
                 Vector3 rotVec = Vector3.forward * 360 * index / count;
                 attack.Rotate(rotVec);
-                attack.Translate(attack.up * 1.5f, Space.World);
-                attack.GetComponent<Attack>().Init(damage, -1, Vector3.zero);
+                attack.Translate(attack.up * 2.5f, Space.World);
+                attack.GetComponent<Attack>().Init(damage, -100, Vector3.zero);
 
-            }
+        }
         }
 
     private void Fire()

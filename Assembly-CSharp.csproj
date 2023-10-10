@@ -63,11 +63,15 @@
     <Compile Include="Assets\Asset\Script\Scaner.cs" />
     <Compile Include="Assets\Asset\Script\Enemy.cs" />
     <Compile Include="Assets\Asset\Script\PoolManager.cs" />
+    <Compile Include="Assets\Asset\Script\Item.cs" />
     <Compile Include="Assets\Asset\Script\CameraManager.cs" />
+    <Compile Include="Assets\Asset\Script\UI\LevelUp.cs" />
     <Compile Include="Assets\Asset\Script\Attack.cs" />
     <Compile Include="Assets\Asset\Script\GameManager.cs" />
     <Compile Include="Assets\Asset\Script\SpawnData.cs" />
     <Compile Include="Assets\Asset\Script\Weapon.cs" />
+    <Compile Include="Assets\Asset\Script\ItemData.cs" />
+    <Compile Include="Assets\Asset\Script\UI\Follow.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

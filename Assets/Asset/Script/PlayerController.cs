@@ -14,14 +14,14 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer mySprite;
     private Animator myAnim;
 
-    
+
     void Awake()
     {
         myRigid = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
         mySprite = GetComponent<SpriteRenderer>();
         scan = GetComponent<Scaner>();
-        
+
     }
 
     // Update is called once per frame
@@ -62,15 +62,15 @@ public class PlayerController : MonoBehaviour
 
             if (GameManager.instance.playerHelath < 0)
             {
-                for (int index = 2; index < transform.childCount; index++)
+                for (int index = 0; index < transform.childCount; index++)
                 {
-                     transform.GetChild(index).gameObject.SetActive(false);
+                    transform.GetChild(index).gameObject.SetActive(false);
                 }
 
                 myAnim.SetTrigger("Dead");
             }
 
-           
+
         }
     }
 }

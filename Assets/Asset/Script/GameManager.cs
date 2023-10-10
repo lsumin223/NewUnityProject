@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         uiLevelUp.Select(1);
+        playerHelath = maxHelath;
     }
     void Awake()
     {

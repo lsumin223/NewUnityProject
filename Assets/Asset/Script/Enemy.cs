@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!isDead)
+        if (!isDead)
         {
             Vector2 dirVec = target.position - myRigid.position;
             Vector2 nextVec = dirVec.normalized * Time.fixedDeltaTime * speed;
@@ -56,11 +56,11 @@ public class Enemy : MonoBehaviour
     {
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
         isDead = false;
-        health = maxHealth;
         myCollider.enabled = true;
         myRigid.simulated = true;
         mySprite.sortingOrder = 2;
         myAnim.SetBool("Dead", isDead);
+        health = maxHealth;
     }
     public void Init(SpawnData data)
     {
@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
 
         health -= collision.GetComponent<Attack>().damage;
 
-        StartCoroutine(KnockBack());
+        //StartCoroutine(KnockBack());
 
         if (health > 0)
         {
@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour
             Dead();
             GameManager.instance.kill++;
             GameManager.instance.GetExp();
-            
+
         }
 
     }
