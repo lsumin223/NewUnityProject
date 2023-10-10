@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 inputVec;
     public Scaner scan;
 
-    private float speed = 3.0f;
+    private float speed = 6.0f;
 
     private Rigidbody2D myRigid;
     private SpriteRenderer mySprite;
