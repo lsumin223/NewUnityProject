@@ -25,13 +25,14 @@ public class Spawner : MonoBehaviour
         if(timer > (level == 0? 0.5f : 0.2f))
         {
             timer = 0;
-            Spawn();
+            Spawn(level);
         }
     }
 
-    void Spawn()
+    void Spawn(int level)
     {
-        GameObject enemy = GameManager.instance.pool.Get(0);
+        this.level = level;
+        GameObject enemy = GameManager.instance.pool.Get(Random.Range(0, level+1));
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
         enemy.GetComponent<Enemy>().Init(spawnData[level]);
     }

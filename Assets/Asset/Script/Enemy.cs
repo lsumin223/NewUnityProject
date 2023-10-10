@@ -12,9 +12,12 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D target;
 
     private Rigidbody2D myRigid;
+    private Collider2D myCollider;
     private SpriteRenderer mySprite;
     private Animator myAnim;
     private bool isDead;
+
+    WaitForFixedUpdate wait;
 
     // Start is called before the first frame update
     void Awake()
@@ -22,6 +25,7 @@ public class Enemy : MonoBehaviour
         myRigid = GetComponent<Rigidbody2D>();
         mySprite = GetComponent<SpriteRenderer>();
         myAnim = GetComponent<Animator>();
+        myCollider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -53,6 +57,9 @@ public class Enemy : MonoBehaviour
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
         isDead = false;
         health = maxHealth;
+        myRigid.simulated = true;
+        myAnim.SetBool("Dead", isDead);
+        mySprite.sortingOrder = 2;
 
     }
     public void Init(SpawnData data)
@@ -69,6 +76,8 @@ public class Enemy : MonoBehaviour
             return;
 
         health -= collision.GetComponent<Attack>().damage;
+        KnockBack();
+
 
         if(health > 0)
         {
@@ -76,14 +85,32 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Dead();
+            isDead = true;
+            myAnim.SetBool("Dead", isDead);
+            gameObject.SetActive(false);
+            myRigid.simulated = false;
+            mySprite.sortingOrder = 1;
         }
 
     }
 
+    IEnumerator KnockBack()
+    {
+        yield return wait;
+        Vector3 playerPos = GameManager.instance.player.transform.position;
+        Vector3 dirVec = transform.position - playerPos;
+        myRigid.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
+    }
+
     void Dead()
     {
+        /*isDead = true;
+        myAnim.SetBool("Dead", isDead);
         gameObject.SetActive(false);
+        myRigid.simulated = false;
+        mySprite.sortingOrder = 1;
+        */
+
     }
 
 }

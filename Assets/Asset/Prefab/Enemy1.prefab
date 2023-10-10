@@ -122,7 +122,6 @@ MonoBehaviour:
   maxHealth: 0
   animController:
   - {fileID: 22100000, guid: 9434899ae26536f4ab2a0cc4df44dab1, type: 2}
-  - {fileID: 22100000, guid: 9d459a536f412d44584bdcdf46f444d8, type: 2}
   target: {fileID: 0}
 --- !u!70 &7883078777615378743
 CapsuleCollider2D:
