@@ -16,12 +16,8 @@ public class Weapon : MonoBehaviour
 
     void Awake()
     {
-        player = GetComponentInParent<PlayerController>();
-    }
+        player = GameManager.instance.player;
 
-    void Start()
-    {
-        Init();
     }
     // Update is called once per frame
     void Update()
@@ -52,16 +48,33 @@ public class Weapon : MonoBehaviour
         this.damage = damage;
         this.count += count;
 
-        if(id ==0)
+        if(id == 2)
         {
             Batch();
         }
     }
 
 
-    public void Init()
+    public void Init(ItemData data)
     {
-        switch(id)
+
+        name = "Weapon" + data.Id;
+        transform.parent = player.transform;
+        transform.localPosition = Vector3.zero;
+
+        id = data.Id;
+        damage = data.baseDamage;
+        count = data.baseCount;
+
+        for(int index = 0; index < GameManager.instance.pool.prefabs.Length; index++)
+        {
+            if(data.projectile == GameManager.instance.pool.prefabs[index])
+            {
+                prefabId = index;
+                break;
+            }
+        }
+        switch (id)
         {
             case 2:
                 speed = 150;
@@ -76,32 +89,32 @@ public class Weapon : MonoBehaviour
     }
 
     private void Batch()
-    {
-        for (int index = 0; index < count; index++)
         {
-            Transform attack;
-
-            if (index < transform.childCount)
+            for (int index = 0; index < count; index++)
             {
-                attack = transform.GetChild(index);
+                Transform attack;
+
+                if (index < transform.childCount)
+                {
+                    attack = transform.GetChild(index);
+                }
+                else
+                {
+                    attack = GameManager.instance.pool.Get(prefabId).transform;
+                }
+
+                attack.parent = transform;
+
+                attack.localPosition = Vector3.zero;
+                attack.localRotation = Quaternion.identity;
+
+                Vector3 rotVec = Vector3.forward * 360 * index / count;
+                attack.Rotate(rotVec);
+                attack.Translate(attack.up * 1.5f, Space.World);
+                attack.GetComponent<Attack>().Init(damage, -1, Vector3.zero);
+
             }
-            else
-            {
-                attack = GameManager.instance.pool.Get(prefabId).transform;
-            }
-
-            attack.parent = transform;
-
-            attack.localPosition = Vector3.zero;
-            attack.localRotation = Quaternion.identity;
-
-            Vector3 rotVec = Vector3.forward * 360 * index / count;
-            attack.Rotate(rotVec);
-            attack.Translate(attack.up * 1.5f, Space.World);
-            attack.GetComponent<Attack>().Init(damage, -1, Vector3.zero);
-
         }
-    }
 
     private void Fire()
     {
