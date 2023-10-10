@@ -28,10 +28,10 @@ public class Weapon : MonoBehaviour
     {
         switch (id)
         {
-            case 1:
+            case 2:
                 transform.Rotate(Vector3.back * speed * Time.deltaTime);
                 break;
-            case 2:
+            case 3:
                 timer += Time.deltaTime;
 
                 if (timer > speed)
@@ -63,11 +63,11 @@ public class Weapon : MonoBehaviour
     {
         switch(id)
         {
-            case 1:
+            case 2:
                 speed = 150;
                 Batch();
                 break;
-            case 2:
+            case 3:
                 speed = 0.3f;
                 break;
             default:

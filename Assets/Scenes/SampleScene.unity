@@ -166,10 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c6dd37f0e7ae6489b66448471fc835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
-  prefabId: 2
+  id: 2
+  prefabId: 3
   damage: 10
-  count: 2
+  count: 1
   speed: 0
 --- !u!1 &541150403
 GameObject:
@@ -610,7 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68987d0afa8a3b948acebb9de28d64de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanRange: 8
+  scanRange: 10
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -667,12 +667,16 @@ MonoBehaviour:
   spawnPoint: []
   spawnData:
   - spriteType: 0
-    spawnTime: 5
+    spawnTime: 10
     health: 10
+    speed: 1
+  - spriteType: 0
+    spawnTime: 6
+    health: 15
     speed: 1.5
   - spriteType: 0
     spawnTime: 4
-    health: 15
+    health: 20
     speed: 2
 --- !u!1 &1473604346
 GameObject:
@@ -796,6 +800,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 7883078777615378749, guid: b17473f2a0e352f45afd61c5b1b049a2, type: 3}
   - {fileID: 1703125315278952798, guid: 385f02980554c5a46b817b19dd3ce985, type: 3}
+  - {fileID: 1392366196057226037, guid: ba1ed957b75cde949b7e35a6b398f853, type: 3}
   - {fileID: 2549010598510723792, guid: 9d17202510e36bd4a8d039a84581c98f, type: 3}
   - {fileID: 6418826081642713751, guid: a91a410aad55c074f96a1b6bd9fa7384, type: 3}
 --- !u!4 &1807947594
@@ -855,8 +860,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c6dd37f0e7ae6489b66448471fc835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 2
-  prefabId: 3
+  id: 3
+  prefabId: 4
   damage: 5
   count: 0
   speed: 0
