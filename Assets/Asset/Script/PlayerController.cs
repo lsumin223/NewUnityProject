@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
         myAnim = GetComponent<Animator>();
         mySprite = GetComponent<SpriteRenderer>();
         scan = GetComponent<Scaner>();
+        
     }
 
     // Update is called once per frame
@@ -56,6 +57,8 @@ public class PlayerController : MonoBehaviour
         {
 
             GameManager.instance.playerHelath -= Time.deltaTime * 10;
+            Debug.Log(GameManager.instance.playerHelath);
+
 
             if (GameManager.instance.playerHelath < 0)
             {
@@ -70,5 +73,4 @@ public class PlayerController : MonoBehaviour
            
         }
     }
-
 }

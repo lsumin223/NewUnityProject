@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer mySprite;
     private Animator myAnim;
     private bool isDead;
+    private bool isHit;
 
     WaitForFixedUpdate wait;
 
