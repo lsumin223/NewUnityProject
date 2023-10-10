@@ -77,16 +77,19 @@ public class Enemy : MonoBehaviour
 
         health -= collision.GetComponent<Attack>().damage;
 
-        if(health > 0)
+        if (health > 0)
         {
 
         }
         else
         {
             Dead();
+            GameManager.instance.kill++;
+            GameManager.instance.GetExp();
         }
 
     }
+
 
     void Dead()
     {

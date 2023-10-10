@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public float maxGameTime = 2 * 10.0f;
 
     public bool isDead;
+    public bool isLive;
 
     public static GameManager instance;
     public PlayerController player;
@@ -39,5 +40,15 @@ public class GameManager : MonoBehaviour
         }
     }
     // Start is called before the first frame update
+    public void GetExp()
+    {
+        exp++;
+        if (exp == nextExp[level])
+        {
+            level++;
+            exp = 0;
+        }
 
+    }
+  
 }

@@ -245,7 +245,7 @@ MonoBehaviour:
   id: 2
   prefabId: 3
   damage: 10
-  count: 1
+  count: 0
   speed: 0
 --- !u!1 &385376280
 GameObject:
@@ -690,6 +690,7 @@ MonoBehaviour:
   gameTime: 0
   maxGameTime: 20
   isDead: 0
+  isLive: 0
   player: {fileID: 1383929316}
   pool: {fileID: 1807947593}
   spawner: {fileID: 0}
