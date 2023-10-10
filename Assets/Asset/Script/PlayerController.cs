@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D myRigid;
     private SpriteRenderer mySprite;
     private Animator myAnim;
+
     
     void Awake()
     {
@@ -26,10 +27,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.playerHelath < 0)
+            isDead = true;
+
         if (isDead)
-        {
-            return;
-        }
+            Die();
+
         inputVec.x = Input.GetAxisRaw("Horizontal");
         inputVec.y = Input.GetAxisRaw("Vertical");
     }
@@ -54,7 +57,24 @@ public class PlayerController : MonoBehaviour
     {
         myAnim.SetTrigger("Dead");
         myRigid.velocity = Vector2.zero;
-        isDead = true;
+        myRigid.constraints = RigidbodyConstraints2D.FreezeAll;
+        mySprite.flipX = false;
+
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (GameManager.instance.isDead)
+            return;
+        GameManager.instance.playerHelath -= Time.deltaTime * 10;
+
+        if(GameManager.instance.playerHelath < 0)
+        {
+            for (int index = 2; index < transform.childCount; index++)
+                transform.GetChild(index).gameObject.SetActive(false);
+        }
+
+        myAnim.SetTrigger("Dead");
     }
 
 }

@@ -76,8 +76,6 @@ public class Enemy : MonoBehaviour
             return;
 
         health -= collision.GetComponent<Attack>().damage;
-        KnockBack();
-
 
         if(health > 0)
         {
@@ -85,31 +83,19 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            isDead = true;
-            myAnim.SetBool("Dead", isDead);
-            gameObject.SetActive(false);
-            myRigid.simulated = false;
-            mySprite.sortingOrder = 1;
+            Dead();
         }
 
     }
 
-    IEnumerator KnockBack()
-    {
-        yield return wait;
-        Vector3 playerPos = GameManager.instance.player.transform.position;
-        Vector3 dirVec = transform.position - playerPos;
-        myRigid.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
-    }
-
     void Dead()
     {
-        /*isDead = true;
-        myAnim.SetBool("Dead", isDead);
+        isDead = true;
         gameObject.SetActive(false);
-        myRigid.simulated = false;
-        mySprite.sortingOrder = 1;
-        */
+    }
+
+    public void GetDamage(int damage)
+    {
 
     }
 
