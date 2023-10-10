@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     public Scaner scan;
 
     private float speed = 3.0f;
-    private bool isDead = false;
 
     private Rigidbody2D myRigid;
     private SpriteRenderer mySprite;
@@ -28,10 +27,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (GameManager.instance.playerHelath < 0)
-            isDead = true;
-
-        if (isDead)
-            Die();
+            GameManager.instance.isDead = true;
 
         inputVec.x = Input.GetAxisRaw("Horizontal");
         inputVec.y = Input.GetAxisRaw("Vertical");
@@ -53,28 +49,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Die()
-    {
-        myAnim.SetTrigger("Dead");
-        myRigid.velocity = Vector2.zero;
-        myRigid.constraints = RigidbodyConstraints2D.FreezeAll;
-        mySprite.flipX = false;
-
-    }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (GameManager.instance.isDead)
-            return;
-        GameManager.instance.playerHelath -= Time.deltaTime * 10;
-
-        if(GameManager.instance.playerHelath < 0)
+        if (!GameManager.instance.isDead)
         {
-            for (int index = 2; index < transform.childCount; index++)
-                transform.GetChild(index).gameObject.SetActive(false);
-        }
 
-        myAnim.SetTrigger("Dead");
+            GameManager.instance.playerHelath -= Time.deltaTime * 10;
+
+            if (GameManager.instance.playerHelath < 0)
+            {
+                for (int index = 2; index < transform.childCount; index++)
+                {
+                     transform.GetChild(index).gameObject.SetActive(false);
+                }
+
+                myAnim.SetTrigger("Dead");
+            }
+
+           
+        }
     }
 
 }

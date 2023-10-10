@@ -36,15 +36,14 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isDead)
-            return;
+        if(!isDead)
+        {
+            Vector2 dirVec = target.position - myRigid.position;
+            Vector2 nextVec = dirVec.normalized * Time.fixedDeltaTime * speed;
 
-        Vector2 dirVec = target.position - myRigid.position;
-        Vector2 nextVec = dirVec.normalized * Time.fixedDeltaTime * speed;
-
-        myRigid.MovePosition(myRigid.position + nextVec);
-        myRigid.velocity = Vector2.zero;
-
+            myRigid.MovePosition(myRigid.position + nextVec);
+            myRigid.velocity = Vector2.zero;
+        }
     }
 
     private void LateUpdate()
@@ -57,10 +56,10 @@ public class Enemy : MonoBehaviour
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
         isDead = false;
         health = maxHealth;
+        myCollider.enabled = true;
         myRigid.simulated = true;
-        myAnim.SetBool("Dead", isDead);
         mySprite.sortingOrder = 2;
-
+        myAnim.SetBool("Dead", isDead);
     }
     public void Init(SpawnData data)
     {
@@ -77,30 +76,39 @@ public class Enemy : MonoBehaviour
 
         health -= collision.GetComponent<Attack>().damage;
 
+        StartCoroutine(KnockBack());
+
         if (health > 0)
         {
-
+            myAnim.SetTrigger("Hit");
         }
         else
         {
+            isDead = true;
+            myCollider.enabled = false;
+            myRigid.simulated = false;
+            mySprite.sortingOrder = 1;
+            myAnim.SetBool("Dead", true);
             Dead();
             GameManager.instance.kill++;
             GameManager.instance.GetExp();
+            
         }
 
+    }
+
+    IEnumerator KnockBack()
+    {
+        yield return wait;
+        Vector3 playerPos = GameManager.instance.player.transform.position;
+        Vector3 dirVec = transform.position - playerPos;
+        myRigid.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
     }
 
 
     void Dead()
     {
-        isDead = true;
         gameObject.SetActive(false);
     }
 
-    public void GetDamage(int damage)
-    {
-
-    }
-
 }
-

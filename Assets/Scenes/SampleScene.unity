@@ -1304,7 +1304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68987d0afa8a3b948acebb9de28d64de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanRange: 10
+  scanRange: 13
   targetLayer:
     serializedVersion: 2
     m_Bits: 64

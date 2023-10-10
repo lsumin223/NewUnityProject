@@ -8,6 +8,9 @@ TextureImporter:
   - first:
       213: 161180756555119081
     second: enemy3_walk_1
+  - first:
+      213: -1447660731164674875
+    second: enemy3_walk_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -105,7 +108,7 @@ TextureImporter:
         width: 65
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,12 +124,12 @@ TextureImporter:
       name: enemy3_walk_1
       rect:
         serializedVersion: 2
-        x: 92
+        x: 90
         y: 10
         width: 65
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,6 +137,27 @@ TextureImporter:
       bones: []
       spriteID: 9e9b81b4b01ac3200800000000000000
       internalID: 161180756555119081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy3_walk_2
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 10
+        width: 65
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c4b5ab2c30e8ebe0800000000000000
+      internalID: -1447660731164674875
       vertices: []
       indices: 
       edges: []
