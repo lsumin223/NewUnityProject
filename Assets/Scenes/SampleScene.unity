@@ -660,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c83150e9a81de4db6d2fa7e648f9c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expItem: {fileID: 1195920415767123111, guid: 8c05eecf12061ae4d8480afbc530460a, type: 3}
+  expItem: {fileID: 4187950710433076088, guid: bbe77b78d54002848bf4811ca728882e, type: 3}
 --- !u!61 &339165317
 BoxCollider2D:
   m_ObjectHideFlags: 0
