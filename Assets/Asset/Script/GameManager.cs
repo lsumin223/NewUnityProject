@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public float gameTime;
     public float maxGameTime = 2 * 10.0f;
 
-    public bool isDead;
     public bool isLive;
 
     public static GameManager instance;
@@ -25,16 +25,51 @@ public class GameManager : MonoBehaviour
     public float playerHelath;
     public float maxHelath = 100;
 
+    public GameObject gameOverUI;
+
     void Start()
     {
-        uiLevelUp.Select(1); 
+        uiLevelUp.Select(1);
         playerHelath = maxHelath;
     }
     void Awake()
     {
         instance = this;
         playerHelath = maxHelath;
-        isDead = false;
+        isLive = true;
+    }
+
+    IEnumerator GameOverRoutine()
+    {
+        isLive = false;
+
+        yield return new WaitForSeconds(1.0f);
+        gameOverUI.SetActive(true);
+
+        Stop();
+    }
+    IEnumerator GameClearRoutine()
+    {
+        isLive = false;
+
+        yield return new WaitForSeconds(1.0f);
+    }
+
+    public void GameRetry()
+    {
+        SceneManager.LoadScene(1);
+        gameObject.GetComponent<DontDestroyObject>().enabled = false;
+    }
+
+    public void GameOver()
+    {
+        StartCoroutine(GameOverRoutine());
+    }
+
+    public void GameClear()
+    {
+        StartCoroutine(GameClearRoutine());
+        SceneManager.LoadScene(7);
     }
 
     private void Update()
@@ -47,23 +82,27 @@ public class GameManager : MonoBehaviour
         if (gameTime > maxGameTime)
         {
             gameTime = maxGameTime;
+            GameClear();
         }
     }
     // Start is called before the first frame update
     public void GetExp(int newExp)
     {
-        exp += newExp;
-        if (exp == nextExp[level])
+        if (isLive)
         {
-            level++;
-            exp = 0;
-            uiLevelUp.Show();
-        }
-        else if (exp > nextExp[level])
-        {
-            level++;
-            exp -= nextExp[level];
-            uiLevelUp.Show();
+            exp += newExp;
+            if (exp == nextExp[level])
+            {
+                level++;
+                exp = 0;
+                uiLevelUp.Show();
+            }
+            else if (exp > nextExp[level])
+            {
+                level++;
+                exp -= nextExp[level];
+                uiLevelUp.Show();
+            }
         }
 
     }

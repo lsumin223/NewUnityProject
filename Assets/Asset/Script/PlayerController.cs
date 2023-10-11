@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.instance.playerHelath < 0)
         {
-            GameManager.instance.isDead = true;
+            GameManager.instance.isLive = false;
             inputVec = Vector2.zero;
             return;
         }
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (!GameManager.instance.isDead)
+        if (GameManager.instance.isLive)
         {
 
             GameManager.instance.playerHelath -= Time.deltaTime * 10;
@@ -73,9 +73,11 @@ public class PlayerController : MonoBehaviour
                 }
 
                 myAnim.SetTrigger("Dead");
+                GameManager.instance.GameOver();
             }
 
 
         }
     }
+
 }

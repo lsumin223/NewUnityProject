@@ -45,6 +45,7 @@ public class Enemy : MonoBehaviour
     {
         if (!GameManager.instance.isLive)
             return;
+
         if (!isDead)
         {
             Vector2 dirVec = target.position - myRigid.position;
