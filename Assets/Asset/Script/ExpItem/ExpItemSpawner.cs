@@ -37,6 +37,9 @@ public class ExpItemSpawner : MonoBehaviour
             GameObject clone = Instantiate(expItem, spawnPos, Quaternion.identity);
             spawnList.Add(clone);
 
+            Debug.Log(spawnList);
+
+
         }
         
     }
@@ -46,7 +49,9 @@ public class ExpItemSpawner : MonoBehaviour
         Vector2 size = area.size;
 
         float PosX = transform.position.x + Random.Range(-size.x /2f, size.x/2f);
+        Debug.Log("PosX"+ PosX);
         float PosY = transform.position.y + Random.Range(-size.y / 2f, size.y / 2f);
+        Debug.Log("PosY" + PosY);
 
         Vector2 spawnPos = new Vector2(PosX, PosY);
 
@@ -57,8 +62,8 @@ public class ExpItemSpawner : MonoBehaviour
     {
         foreach (GameObject spawn in spawnList)
         {
-            if (spawn != null && Vector2.Distance(spawn.transform.position, position) > 70.0f 
-                && Vector2.Distance(GameManager.instance.player.transform.position, position) > 50.0f)
+            if (spawn != null && Vector2.Distance(spawn.transform.position, position) < 70.0f 
+                && Vector2.Distance(GameManager.instance.player.transform.position, position) < 50.0f)
             {
                 // The new position is too close to an existing item
                 return true;
