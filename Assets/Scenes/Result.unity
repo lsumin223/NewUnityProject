@@ -330,7 +330,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 334052ae63e40d64f8e4b5a111712111, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
@@ -361,6 +361,22 @@ PrefabInstance:
     - target: {fileID: 3432643151372194052, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
       propertyPath: m_Text
       value: "\uD0C0\uC774\uD2C0\uB85C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432643151372194052, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
+      propertyPath: m_Color.b
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432643151372194052, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
+      propertyPath: m_Color.g
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432643151372194052, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
+      propertyPath: m_Color.r
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432643151372194052, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3432643151417746436, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
       propertyPath: m_Name
@@ -478,7 +494,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3432643151372194053, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
 --- !u!1 &1622473932
 GameObject:
@@ -641,7 +658,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 334052ae63e40d64f8e4b5a111712111, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
@@ -720,7 +737,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 334052ae63e40d64f8e4b5a111712111, type: 3}
     m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 0
