@@ -68,10 +68,8 @@ public class PlayerController : MonoBehaviour
             {
                 for (int index = 0; index < transform.childCount; index++)
                 {
-                    if (transform.GetChild(index).gameObject.CompareTag("Area"))
-                       ;
-                    else
-                        transform.GetChild(index).gameObject.SetActive(false);
+                    if (!transform.GetChild(index).gameObject.CompareTag("Area"))
+                       transform.GetChild(index).gameObject.SetActive(false);
                 }
 
                 myAnim.SetTrigger("Dead");

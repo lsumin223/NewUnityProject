@@ -9,6 +9,7 @@ TagManager:
   - Area
   - Ground
   - ExpItem
+  - Limit
   layers:
   - Default
   - TransparentFX

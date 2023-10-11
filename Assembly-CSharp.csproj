@@ -74,13 +74,15 @@
     <Compile Include="Assets\Asset\Script\CameraManager.cs" />
     <Compile Include="Assets\Asset\Script\Main UI\ProductSelectUIScript.cs" />
     <Compile Include="Assets\Asset\Script\UI\LevelUp.cs" />
+    <Compile Include="Assets\Asset\Script\ExpItem\ExpItemGet.cs" />
     <Compile Include="Assets\Asset\Script\Attack.cs" />
     <Compile Include="Assets\Asset\Script\GameManager.cs" />
     <Compile Include="Assets\Asset\Script\SpawnData.cs" />
     <Compile Include="Assets\Asset\Script\Main UI\MainMenuScript.cs" />
     <Compile Include="Assets\Asset\Script\Weapon.cs" />
     <Compile Include="Assets\Asset\Script\ItemData.cs" />
-    <Compile Include="Assets\Asset\Script\ExpItemGet.cs" />
+    <Compile Include="Assets\Asset\Script\ExpItem\Magnet.cs" />
+    <Compile Include="Assets\Asset\Script\ExpItem\ExpItemSpawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

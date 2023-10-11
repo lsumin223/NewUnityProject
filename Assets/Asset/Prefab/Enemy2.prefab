@@ -141,6 +141,7 @@ MonoBehaviour:
   animController:
   - {fileID: 22100000, guid: 9d459a536f412d44584bdcdf46f444d8, type: 2}
   target: {fileID: 0}
+  dropItem: {fileID: 1195920415767123111, guid: 8c05eecf12061ae4d8480afbc530460a, type: 3}
 --- !u!95 &-6407759242688961125
 Animator:
   serializedVersion: 3

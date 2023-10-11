@@ -123,6 +123,7 @@ MonoBehaviour:
   animController:
   - {fileID: 22100000, guid: 9434899ae26536f4ab2a0cc4df44dab1, type: 2}
   target: {fileID: 0}
+  dropItem: {fileID: 1195920415767123111, guid: 8c05eecf12061ae4d8480afbc530460a, type: 3}
 --- !u!70 &7883078777615378743
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

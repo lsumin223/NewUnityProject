@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float maxHealth;
     public RuntimeAnimatorController[] animController;
     public Rigidbody2D target;
+    public GameObject dropItem;
 
     private Rigidbody2D myRigid;
     private Collider2D myCollider;
@@ -17,6 +18,7 @@ public class Enemy : MonoBehaviour
     private Animator myAnim;
     private bool isDead;
     private bool isHit;
+    private int randValue;
 
     private int enemyExp;
 
@@ -97,6 +99,7 @@ public class Enemy : MonoBehaviour
             mySprite.sortingOrder = 1;
             myAnim.SetBool("Dead", true);
             Dead();
+            DropItem();
             GameManager.instance.kill++;
             GameManager.instance.GetExp(enemyExp);
 
@@ -116,6 +119,20 @@ public class Enemy : MonoBehaviour
     void Dead()
     {
         gameObject.SetActive(false);
+    }
+
+    private void DropItem()
+    {
+        Vector2 deadPos = transform.position;
+        
+
+        randValue = Random.Range(0, 10);
+
+        if(randValue >= 4)
+        {
+            GameObject clone = Instantiate(dropItem, deadPos, Quaternion.identity);
+        }
+
     }
 
 }
