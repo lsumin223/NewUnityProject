@@ -9,12 +9,10 @@ public class HealthHUD : MonoBehaviour
     Image thisImg;
     public Sprite changeImg;
 
-    private GameObject healthBar;
 
     private void Awake()
     {
         thisImg = GetComponent<Image>();
-        healthBar = GetComponent<GameObject>();
     }
 
     void LateUpdate()
@@ -23,12 +21,6 @@ public class HealthHUD : MonoBehaviour
         {
             ChangeImage();
         }
-
-        if(curHealth.value <= 0)
-        {
-            healthBar.SetActive(false);
-        }
-
     }
 
     private void ChangeImage()
