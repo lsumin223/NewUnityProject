@@ -50,13 +50,19 @@ public class GameManager : MonoBehaviour
         }
     }
     // Start is called before the first frame update
-    public void GetExp()
+    public void GetExp(int newExp)
     {
-        exp++;
+        exp += newExp;
         if (exp == nextExp[level])
         {
             level++;
             exp = 0;
+            uiLevelUp.Show();
+        }
+        else if (exp > nextExp[level])
+        {
+            level++;
+            exp -= nextExp[level];
             uiLevelUp.Show();
         }
 

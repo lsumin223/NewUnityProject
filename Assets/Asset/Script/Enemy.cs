@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
     private bool isDead;
     private bool isHit;
 
+    private int enemyExp;
+
     WaitForFixedUpdate wait;
 
     // Start is called before the first frame update
@@ -27,6 +29,8 @@ public class Enemy : MonoBehaviour
         mySprite = GetComponent<SpriteRenderer>();
         myAnim = GetComponent<Animator>();
         myCollider = GetComponent<Collider2D>();
+
+        enemyExp = 1;
     }
 
     // Update is called once per frame
@@ -94,7 +98,7 @@ public class Enemy : MonoBehaviour
             myAnim.SetBool("Dead", true);
             Dead();
             GameManager.instance.kill++;
-            GameManager.instance.GetExp();
+            GameManager.instance.GetExp(enemyExp);
 
         }
 
