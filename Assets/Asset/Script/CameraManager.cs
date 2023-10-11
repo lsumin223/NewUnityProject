@@ -27,7 +27,9 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.gameObject != null)
+        if (!GameManager.instance.isLive)
+            return;
+        if (player.gameObject != null)
         {
             targetPosition.Set(player.transform.position.x, player.transform.position.y, transform.position.z);
             transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);

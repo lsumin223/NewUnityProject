@@ -24,10 +24,10 @@ public class Weapon : MonoBehaviour
     {
         switch (id)
         {
-            case 2:
+            case 0:
                 transform.Rotate(Vector3.back * speed * Time.deltaTime);
                 break;
-            case 3:
+            case 1:
                 timer += Time.deltaTime;
 
                 if (timer > speed)
@@ -48,7 +48,7 @@ public class Weapon : MonoBehaviour
         this.damage = damage;
         this.count += count;
 
-        if(id == 2)
+        if(id == 0)
         {
             Batch();
         }
@@ -58,11 +58,11 @@ public class Weapon : MonoBehaviour
     public void Init(ItemData data)
     {
 
-        name = "Weapon" + data.Id;
+        name = "Weapon" + data.id;
         transform.parent = player.transform;
         transform.localPosition = Vector3.zero;
 
-        id = data.Id;
+        id = data.id;
         damage = data.baseDamage;
         count = data.baseCount;
 
@@ -76,15 +76,14 @@ public class Weapon : MonoBehaviour
         }
         switch (id)
         {
-            case 2:
+            case 0:
                 speed = 150;
                 Batch();
                 break;
-            case 3:
+            case 1:
                 speed = 0.3f;
                 break;
-            default:
-                break;
+            
         }
     }
 

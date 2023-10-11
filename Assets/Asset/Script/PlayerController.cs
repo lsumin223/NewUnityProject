@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.instance.isLive)
+            return;
         if (GameManager.instance.playerHelath < 0)
             GameManager.instance.isDead = true;
 
@@ -36,12 +38,16 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!GameManager.instance.isLive)
+            return;
         Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
         myRigid.MovePosition(myRigid.position + nextVec);
     }
 
     void LateUpdate()
     {
+        if (!GameManager.instance.isLive)
+            return;
         myAnim.SetFloat("Speed", inputVec.magnitude);
 
         if (inputVec.x != 0)

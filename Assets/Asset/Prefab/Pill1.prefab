@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 623219586737535958}
   - component: {fileID: -4691129551919096819}
   m_Layer: 0
-  m_Name: Pill
+  m_Name: Pill1
   m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

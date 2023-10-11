@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        uiLevelUp.Select(1);
+        uiLevelUp.Select(1); 
         playerHelath = maxHelath;
     }
     void Awake()
@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (!isLive)
+            return;
+        
         gameTime += Time.deltaTime;
 
         if (gameTime > maxGameTime)
@@ -58,5 +61,14 @@ public class GameManager : MonoBehaviour
         }
 
     }
-  
+    public void Stop()
+    {
+        isLive = false;
+        Time.timeScale = 0;
+    }
+    public void Resume()
+    {
+        isLive = true;
+        Time.timeScale = 1;
+    }
 }

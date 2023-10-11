@@ -25,9 +25,11 @@ public class Item : MonoBehaviour
         textName.text = data.itemName;
 
     }
-    void OnEnable()
+    public void LateUpdate()
     {
-        textLevel.text = "Lv." + (level+1);
+        if (!GameManager.instance.isLive)
+            return;
+        textLevel.text = "Lv." + (level);
         switch (data.itemType)
         {
             case ItemData.ItemType.Melee:
@@ -59,12 +61,10 @@ public class Item : MonoBehaviour
 
                     weapon.LevelUp(nextDamage, nextCount);
                 }
-
-
                 break;
         }
-        level++;
-
+                level++;
+        
         if(level == data.damages.Length)
         {
             GetComponent<Button>().interactable = false;

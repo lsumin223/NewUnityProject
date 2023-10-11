@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class ItemData : ScriptableObject
 {
-    public enum ItemType { Melee,Range }
+    public enum ItemType { Melee, Range }
 
     public ItemType itemType;
-    public int Id;
+    public int id;
     public string itemName;
     [TextArea]
     public string itemDesc;

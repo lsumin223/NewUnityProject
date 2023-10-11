@@ -37,6 +37,8 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!GameManager.instance.isLive)
+            return;
         if (!isDead)
         {
             Vector2 dirVec = target.position - myRigid.position;
