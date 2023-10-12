@@ -5,7 +5,11 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
+<<<<<<< HEAD
       ticks: 638326729163926312
+=======
+      ticks: 638326708069516118
+>>>>>>> backup
     m_Hash: 3491163914
   m_LockFileStatus:
     m_FilePath: C:/test/NewUnityProject/Packages/packages-lock.json
@@ -13,7 +17,11 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
+<<<<<<< HEAD
       ticks: 638326729163926312
+=======
+      ticks: 638326708069516118
+>>>>>>> backup
     m_Hash: 3512694268
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

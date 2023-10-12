@@ -27,12 +27,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.playerHelath < 0)
+        if (GameManager.instance.playerHelath < 0 || GameManager.instance.isCheck)
         {
             GameManager.instance.isLive = false;
             inputVec = Vector2.zero;
             return;
         }
+
 
         inputVec.x = Input.GetAxisRaw("Horizontal");
         inputVec.y = Input.GetAxisRaw("Vertical");
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
                        transform.GetChild(index).gameObject.SetActive(false);
                 }
 
-                myAnim.SetTrigger("Dead");
+                myAnim.SetBool("Dead", true);
                 GameManager.instance.GameOver();
             }
 
