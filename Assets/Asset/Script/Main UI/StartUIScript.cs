@@ -78,6 +78,11 @@ public class StartUIScript : MonoBehaviour
         Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("SampleScene");
 
+        if(Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+
 
     }
 

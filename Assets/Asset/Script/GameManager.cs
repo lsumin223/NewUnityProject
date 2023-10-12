@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public float gameTime;
     public float maxGameTime = 2 * 10.0f;
 
+
+    public bool isCheck;
     public bool isLive;
 
     public static GameManager instance;
@@ -26,17 +28,24 @@ public class GameManager : MonoBehaviour
     public float maxHelath = 100;
 
     public GameObject gameOverUI;
+    public GameObject resultUI;
+    public GameObject cleaner;
+
+    public GameObject HUD;
+
 
     void Start()
     {
         uiLevelUp.Select(1);
         playerHelath = maxHelath;
+        Resume();
     }
     void Awake()
     {
         instance = this;
         playerHelath = maxHelath;
         isLive = true;
+        isCheck = false;
     }
 
     IEnumerator GameOverRoutine()
@@ -45,20 +54,29 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
         gameOverUI.SetActive(true);
+        HUD.SetActive(false);
 
         Stop();
     }
     IEnumerator GameClearRoutine()
     {
         isLive = false;
+        isCheck = true;
+        cleaner.SetActive(true);
 
         yield return new WaitForSeconds(1.0f);
+
+        resultUI.SetActive(true);
+        HUD.SetActive(false);
+
+        Stop();
+
+
     }
 
     public void GameRetry()
     {
         SceneManager.LoadScene(1);
-        gameObject.GetComponent<DontDestroyObject>().enabled = false;
     }
 
     public void GameOver()
@@ -69,7 +87,6 @@ public class GameManager : MonoBehaviour
     public void GameClear()
     {
         StartCoroutine(GameClearRoutine());
-        SceneManager.LoadScene(7);
     }
 
     private void Update()
@@ -116,4 +133,6 @@ public class GameManager : MonoBehaviour
         isLive = true;
         Time.timeScale = 1;
     }
+
+   
 }
