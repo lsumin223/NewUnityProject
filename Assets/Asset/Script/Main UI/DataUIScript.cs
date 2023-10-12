@@ -71,6 +71,7 @@ public class DataUIScript : MonoBehaviour
 
     private void OnClickDataButton(int buttonIndex)
     {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
 
         RectTransform buttonRectTransform = dataButtons[buttonIndex].GetComponent<RectTransform>();
         RectTransform imageRectTransform = dataImage.GetComponent<RectTransform>();
@@ -88,12 +89,14 @@ public class DataUIScript : MonoBehaviour
 
     public void OnClickBack()
     {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("Main Scene");
     }
 
     public void OnClickJournal()
     {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         scrollView.content.gameObject.SetActive(false);
 
         scrollView.content = contents[0].GetComponent<RectTransform>();
@@ -107,6 +110,7 @@ public class DataUIScript : MonoBehaviour
 
     public void OnClickParts()
     {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         scrollView.content.gameObject.SetActive(false);
 
         scrollView.content = contents[1].GetComponent<RectTransform>();
@@ -120,6 +124,7 @@ public class DataUIScript : MonoBehaviour
 
     public void OnClickVirus()
     {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         scrollView.content.gameObject.SetActive(false);
 
         scrollView.content = contents[2].GetComponent<RectTransform>();
@@ -133,6 +138,7 @@ public class DataUIScript : MonoBehaviour
 
     public void OnClickBB()
     {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         scrollView.content.gameObject.SetActive(false);
 
         scrollView.content = contents[3].GetComponent<RectTransform>();
@@ -146,7 +152,7 @@ public class DataUIScript : MonoBehaviour
 
     public void OnClickDataExit()
     {
-
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         dataInfoPanel.SetActive(false);
 
     }

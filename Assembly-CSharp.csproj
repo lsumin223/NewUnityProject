@@ -87,6 +87,10 @@
     <Compile Include="Assets\Asset\Script\Weapon.cs" />
     <Compile Include="Assets\Asset\Script\ItemData.cs" />
     <Compile Include="Assets\Asset\Script\ExpItem\ExpItemSpawner.cs" />
+    <Compile Include="Assets\Asset\Script\Main UI\AudioSliderControl.cs" />
+    <Compile Include="Assets\Asset\Script\UI\DmgTxtControl.cs" />
+    <Compile Include="Assets\Asset\Script\UI\DamageText.cs" />
+    <Compile Include="Assets\Asset\Script\UI\TextCleaner.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

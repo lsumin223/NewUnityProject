@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public bool isCheck;
     public bool isLive;
+    public bool isLevelUp;
 
     public static GameManager instance;
     public PlayerController player;
@@ -44,10 +45,14 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+
         playerHelath = maxHelath;
+
         isLive = true;
         isCheck = false;
+        isLevelUp = false;
     }
+
 
     IEnumerator GameOverRoutine()
     {
@@ -119,22 +124,22 @@ public class GameManager : MonoBehaviour
                 level++;
                 exp = 0;
                 uiLevelUp.Show();
+                isLevelUp = true;
             }
-
-
         }
 
     }
     public void Stop()
     { 
-    isLive = false;
+        isLive = false;
         Time.timeScale = 0;
-    }
-    public void Resume()
-    {
-        isLive = true;
-        Time.timeScale = 1;
+        
     }
 
-   
+    public void Resume()
+    {
+         isLive = true;
+         Time.timeScale = 1;
+    }
+
 }

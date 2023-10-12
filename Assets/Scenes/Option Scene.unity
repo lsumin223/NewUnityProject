@@ -248,7 +248,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 251718029}
+        m_TargetAssemblyTypeName: AudioSliderControl, Assembly-CSharp
+        m_MethodName: SFXVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &251718023
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +274,7 @@ GameObject:
   - component: {fileID: 251718025}
   - component: {fileID: 251718024}
   - component: {fileID: 251718028}
+  - component: {fileID: 251718029}
   m_Layer: 5
   m_Name: Option Canvas
   m_TagString: Untagged
@@ -373,6 +386,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba5f9f849a7a374fbab589236a1ee45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &251718029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251718023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5e3da4f6e7015429f22c3e16bd25f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeBGM: {fileID: 1623919810}
+  volumeSFX: {fileID: 231583623}
+  dmgToggle: {fileID: 980936961}
 --- !u!1 &352061421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,7 +1263,7 @@ GameObject:
   - component: {fileID: 980936960}
   - component: {fileID: 980936961}
   m_Layer: 5
-  m_Name: Damage View Toggle
+  m_Name: DamageViewToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1307,7 +1335,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 251718029}
+        m_TargetAssemblyTypeName: AudioSliderControl, Assembly-CSharp
+        m_MethodName: ToggleDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &1113767516
 GameObject:
@@ -1446,8 +1486,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3033706092299432751, guid: 0094da014ce354c4fb9a6061a629245a, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 649223268058989734, guid: fdebf0e082824744f88bb18517e15b1a, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1732,7 +1772,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 40, y: -40}
-  m_SizeDelta: {x: 80, y: 90}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1594110677
 MonoBehaviour:
@@ -1754,7 +1794,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3033706092299432751, guid: 0094da014ce354c4fb9a6061a629245a, type: 3}
+  m_Sprite: {fileID: 649223268058989734, guid: fdebf0e082824744f88bb18517e15b1a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1861,7 +1901,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 251718029}
+        m_TargetAssemblyTypeName: AudioSliderControl, Assembly-CSharp
+        m_MethodName: BGMVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1650376591
 GameObject:
   m_ObjectHideFlags: 0

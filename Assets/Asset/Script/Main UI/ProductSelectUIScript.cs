@@ -50,31 +50,35 @@ public class ProductSelectUIScript : MonoBehaviour
 
     public void onClickBasicCharacter()
     {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
         beforeNumber = number;
         number = 0;
     }
 
     public void onClickPowerCharacter()
     {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
         beforeNumber = number;
         number = 1;
     }
 
     public void onClickSpeedCharacter()
     {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
         beforeNumber = number;
         number = 2;
     }
 
     public void onClickCoolDownCharacter()
     {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
         beforeNumber = number;
         number = 3;
     }
 
     public void onClickBack()
     {
-
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("Main Scene");
 

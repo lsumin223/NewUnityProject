@@ -22,6 +22,9 @@ public class AudioManager : MonoBehaviour
     AudioSource[] sfxPlayers;
     int channelIndex; // channel index
 
+    public bool isDamText;
+    public bool isEffOn;
+
     public enum Sfx
     {
         levelUp, dead, select1, select2, bullet, hit, kill, playerHit
@@ -29,6 +32,9 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
+        isDamText = true;
+        isEffOn = true;
+
         if (instance == null)
         {
             instance = this;
@@ -43,6 +49,13 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         PlayBgm(true, 1);  // Start에서 호출하도록 변경
+
+        bgmPlayer.volume = bgmVolume;
+
+        for (int index = 0; index < sfxPlayers.Length; index++)
+        {
+            sfxPlayers[index].volume = sfxVolume;
+        }
     }
 
     void Init()
@@ -53,7 +66,6 @@ public class AudioManager : MonoBehaviour
         bgmPlayer = bgmObject.AddComponent<AudioSource>();
         bgmPlayer.playOnAwake = false;
         bgmPlayer.loop = true;
-        bgmPlayer.volume = bgmVolume;
 
         // 초기 클립 설정
         if (bgmClip1 != null)
@@ -73,7 +85,6 @@ public class AudioManager : MonoBehaviour
             sfxPlayers[index] = sfxObject.AddComponent<AudioSource>();
             sfxPlayers[index].playOnAwake = false;
             sfxPlayers[index].bypassListenerEffects = true;
-            sfxPlayers[index].volume = sfxVolume;
         }
 
 
@@ -81,6 +92,8 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBgm(bool isPlay, int bgmIndex = 1)
     {
+        bgmPlayer.volume = bgmVolume;
+
         if (isPlay)
         {
             if (bgmPlayer != null)  // null 체크 추가
@@ -153,5 +166,16 @@ public class AudioManager : MonoBehaviour
 
         sfxPlayers[0].clip = sfxClip[(int)sfx];
         sfxPlayers[0].Play();
+    }
+
+    public void SFXVolume(float volume)
+    {
+        sfxVolume = volume;
+    }
+
+    public void BGMVolume(float volume)
+    {
+        bgmVolume = volume;
+        bgmPlayer.volume = bgmVolume;
     }
 }

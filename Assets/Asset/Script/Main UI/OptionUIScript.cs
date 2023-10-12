@@ -19,8 +19,13 @@ public class OptionUIScript : MonoBehaviour
 
     public void onClickBack()
     {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("Main Scene");
-        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
+    }
+
+    public void onClickDamageText()
+    {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
     }
 }

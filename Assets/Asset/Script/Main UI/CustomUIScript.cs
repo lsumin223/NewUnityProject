@@ -37,12 +37,14 @@ public class CustomUIScript : MonoBehaviour
 
     public void OnClickBack()
     {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("Main Scene");
     }
 
     public void OnClickToggle()
     {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
         UpdateSelectedToggle();
         if(selectedToggleIndex == -1)
         {

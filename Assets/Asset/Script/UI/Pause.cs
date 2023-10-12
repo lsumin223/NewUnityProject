@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour
     private bool isPaused = false; // 초기값을 true로 설정
     public GameObject pauseMenu;
     public GameObject hp;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) // "Escape" 키로 수정
@@ -28,9 +29,12 @@ public class Pause : MonoBehaviour
 
     public void ResumeGame()
     {
-        Time.timeScale = 1;
         pauseMenu.SetActive(false);
         isPaused = false;
-        hp.SetActive(true);
+        if (!GameManager.instance.isLevelUp)
+        {
+            Time.timeScale = 1;
+            hp.SetActive(true);
+        }
     }
 }

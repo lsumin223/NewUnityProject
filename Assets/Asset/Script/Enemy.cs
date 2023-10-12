@@ -84,10 +84,17 @@ public class Enemy : MonoBehaviour
         if (!collision.CompareTag("Attack"))
             return;
 
+        Debug.Log(collision.GetComponent<Attack>().damage);
+        int damage = Mathf.FloorToInt(collision.GetComponent<Attack>().damage);
+
+
         health -= collision.GetComponent<Attack>().damage;
         AudioManager.instance.Playsfx(AudioManager.Sfx.hit);
 
-        //StartCoroutine(KnockBack());
+        Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
+        DmgTxtControl.instance.CreatDamageTxt(pos, damage);
+
+        StartCoroutine(KnockBack());
 
         if (health > 0)
         {
@@ -118,7 +125,7 @@ public class Enemy : MonoBehaviour
         yield return wait;
         Vector3 playerPos = GameManager.instance.player.transform.position;
         Vector3 dirVec = transform.position - playerPos;
-        myRigid.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
+        myRigid.AddForce(dirVec.normalized * 30, ForceMode2D.Impulse);
     }
 
 

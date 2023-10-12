@@ -46,6 +46,8 @@ public class Item : MonoBehaviour
 
     public void Onclick()
     {
+        GameManager.instance.isLevelUp = false;
+
         switch (data.itemType)
         {
             case ItemData.ItemType.Melee:

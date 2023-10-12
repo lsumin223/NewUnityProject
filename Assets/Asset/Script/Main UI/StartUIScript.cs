@@ -45,18 +45,19 @@ public class StartUIScript : MonoBehaviour
 
     public void onClickBack()
     {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("Main Scene");
-        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
     }
 
     public void onClickNextStage()
     {
+
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         index++;
         if (index >= stageSprites.Length)
         {
             index = 0;
-            AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
 
         }
 
@@ -66,11 +67,11 @@ public class StartUIScript : MonoBehaviour
 
     public void onClickBackStage()
     {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         index--;
         if (index < 0)
         {
             index = stageSprites.Length - 1;
-            AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
 
         }
 
@@ -79,19 +80,26 @@ public class StartUIScript : MonoBehaviour
 
     public void onClickStartButton()
     {
-
-        Resources.UnloadUnusedAssets();
-        SceneManager.LoadScene("SampleScene");
+        
         AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
-
 
         if (Time.timeScale == 0)
         {
             Time.timeScale = 1;
         }
 
+        switch (index)
+        {
+            case 0:
+                Resources.UnloadUnusedAssets();
+                SceneManager.LoadScene("SampleScene");
+                break;
+            case 1:
+            case 2:
+
+                break;
+
+        }
 
     }
-
-
 }

@@ -31,6 +31,9 @@ public class RePosition : MonoBehaviour
                     transform.Translate(Vector3.up * dirY * 68);
                 }
                 break;
+            case "Enemy":
+                
+                break;
         }
     }
 }
