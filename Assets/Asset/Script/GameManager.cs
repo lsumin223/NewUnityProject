@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
     {
         if (!isLive)
             return;
-        
+
         gameTime += Time.deltaTime;
 
         if (gameTime > maxGameTime)
@@ -107,24 +107,20 @@ public class GameManager : MonoBehaviour
         if (isLive)
         {
             exp += newExp;
-            if (exp == nextExp[level])
+            if (exp >= nextExp[Mathf.Min(level, nextExp.Length - 1)])
             {
                 level++;
                 exp = 0;
                 uiLevelUp.Show();
             }
-            else if (exp > nextExp[level])
-            {
-                level++;
-                exp -= nextExp[level];
-                uiLevelUp.Show();
-            }
+
+
         }
 
     }
     public void Stop()
-    {
-        isLive = false;
+    { 
+    isLive = false;
         Time.timeScale = 0;
     }
     public void Resume()

@@ -34,10 +34,15 @@ public class Item : MonoBehaviour
         {
             case ItemData.ItemType.Melee:
             case ItemData.ItemType.Range:
-                textDesc.text = string.Format(data.itemDesc, data.damages[level]*100, data.counts[level]);
+                if (level >= 0 && level < data.damages.Length - 1)
+                {
+                    textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100, data.counts[level]);
+                }
                 break;
-        }
+        } 
+
     }
+
 
     public void Onclick()
     {
