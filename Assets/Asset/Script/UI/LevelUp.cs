@@ -19,12 +19,14 @@ public class LevelUp : MonoBehaviour
         healthbar.SetActive(false);
         rect.localScale = new Vector3(4, 4, 4);
         GameManager.instance.Stop();
+        AudioManager.instance.Playsfx(AudioManager.Sfx.levelUp);
     }
     public void Hide()
     {
         healthbar.SetActive(true);
         rect.localScale = Vector3.zero;
         GameManager.instance.Resume();
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
     }
 
     public void Select(int index)

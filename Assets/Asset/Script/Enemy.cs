@@ -85,6 +85,7 @@ public class Enemy : MonoBehaviour
             return;
 
         health -= collision.GetComponent<Attack>().damage;
+        AudioManager.instance.Playsfx(AudioManager.Sfx.hit);
 
         //StartCoroutine(KnockBack());
 
@@ -103,6 +104,10 @@ public class Enemy : MonoBehaviour
             DropItem();
             GameManager.instance.kill++;
             GameManager.instance.GetExp(enemyExp);
+
+            // 모두 죽는 처리 할 때 추가할것
+            // if (GameManager.instance.isLive)
+            AudioManager.instance.Playsfx(AudioManager.Sfx.kill);
 
         }
 

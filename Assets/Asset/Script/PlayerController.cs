@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
             GameManager.instance.playerHelath -= Time.deltaTime * 10;
             Debug.Log(GameManager.instance.playerHelath);
+            AudioManager.instance.Playsfx(AudioManager.Sfx.playerHit);
 
 
             if (GameManager.instance.playerHelath < 0)
@@ -75,6 +76,7 @@ public class PlayerController : MonoBehaviour
 
                 myAnim.SetBool("Dead", true);
                 GameManager.instance.GameOver();
+                AudioManager.instance.Playsfx(AudioManager.Sfx.dead);
             }
 
 
