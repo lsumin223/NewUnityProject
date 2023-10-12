@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject HUD;
 
-
     void Start()
     {
         uiLevelUp.Select(1);
