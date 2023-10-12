@@ -21,5 +21,6 @@ public class OptionUIScript : MonoBehaviour
     {
         Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("Main Scene");
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
     }
 }

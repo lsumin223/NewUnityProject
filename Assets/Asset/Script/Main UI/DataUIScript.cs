@@ -21,5 +21,6 @@ public class DataUIScript : MonoBehaviour
     {
         Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("Main Scene");
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
     }
 }

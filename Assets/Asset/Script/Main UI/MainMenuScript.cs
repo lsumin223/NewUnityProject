@@ -18,22 +18,27 @@ public class MainMenuScript : MonoBehaviour
     }
 
     public void onClickStart(){
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         SceneManager.LoadScene("Start Scene");
     }
 
     public void onClickCustom(){
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         SceneManager.LoadScene("Custom Scene");
     }
 
     public void onClickProductSelect(){
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         SceneManager.LoadScene("ProductSelect Scene");
     }
 
     public void onClickData(){
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         SceneManager.LoadScene("Data Scene");
     }
 
     public void onClickOption(){
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         SceneManager.LoadScene("Option Scene");
     }
 }

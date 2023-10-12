@@ -47,6 +47,7 @@ public class StartUIScript : MonoBehaviour
     {
         Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("Main Scene");
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
     }
 
     public void onClickNextStage()
@@ -55,6 +56,8 @@ public class StartUIScript : MonoBehaviour
         if (index >= stageSprites.Length)
         {
             index = 0;
+            AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
+
         }
 
 
@@ -67,6 +70,8 @@ public class StartUIScript : MonoBehaviour
         if (index < 0)
         {
             index = stageSprites.Length - 1;
+            AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
+
         }
 
 
@@ -77,8 +82,10 @@ public class StartUIScript : MonoBehaviour
 
         Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("SampleScene");
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
 
-        if(Time.timeScale == 0)
+
+        if (Time.timeScale == 0)
         {
             Time.timeScale = 1;
         }

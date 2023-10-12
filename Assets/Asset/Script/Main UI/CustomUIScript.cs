@@ -39,6 +39,7 @@ public class CustomUIScript : MonoBehaviour
     {
         Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("Main Scene");
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
     }
 
     public void OnClickToggle()
@@ -49,6 +50,7 @@ public class CustomUIScript : MonoBehaviour
             customInfoText.text = "";
         }
         else customInfoText.text = info[selectedToggleIndex];
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
 
     }
 

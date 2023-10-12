@@ -21,5 +21,7 @@ public class ReturnStartScene : MonoBehaviour
     public void ReturnToMain()
     {
         SceneManager.LoadScene(0);
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
+        AudioManager.instance.PlayBgm(true, 1);
     }
 }

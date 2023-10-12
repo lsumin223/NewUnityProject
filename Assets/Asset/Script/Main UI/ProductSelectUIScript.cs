@@ -49,24 +49,28 @@ public class ProductSelectUIScript : MonoBehaviour
     {
         beforeNumber = number;
         number = 0;
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
     }
 
     public void onClickPowerCharacter()
     {
         beforeNumber = number;
         number = 1;
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
     }
 
     public void onClickSpeedCharacter()
     {
         beforeNumber = number;
         number = 2;
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
     }
 
     public void onClickCoolDownCharacter()
     {
         beforeNumber = number;
         number = 3;
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
     }
 
     public void onClickBack()
@@ -74,6 +78,7 @@ public class ProductSelectUIScript : MonoBehaviour
 
         Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("Main Scene");
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
 
     }
 

@@ -9,9 +9,11 @@ public class AudioManager : MonoBehaviour
     public float defaultCooldown = 0.5f; // 기본 간격
 
     [Header("#BGM")]
-    public AudioClip bgmClip;
+    public AudioClip bgmClip1;
+    public AudioClip bgmClip2;
     public float bgmVolume;
     AudioSource bgmPlayer;
+    AudioHighPassFilter bgmEffect;
 
     [Header("#SFX")]
     public AudioClip[] sfxClip;
@@ -27,8 +29,20 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
-        Init();
+        if (instance == null)
+        {
+            instance = this;
+            Init();
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    void Start()
+    {
+        PlayBgm(true, 1);  // Start에서 호출하도록 변경
     }
 
     void Init()
@@ -40,7 +54,14 @@ public class AudioManager : MonoBehaviour
         bgmPlayer.playOnAwake = false;
         bgmPlayer.loop = true;
         bgmPlayer.volume = bgmVolume;
-        bgmPlayer.clip = bgmClip;
+
+        // 초기 클립 설정
+        if (bgmClip1 != null)
+            bgmPlayer.clip = bgmClip1;
+        else
+            Debug.LogError("BgmClip1이 초기화되지 않았습니다.");
+
+        bgmEffect = Camera.main.GetComponent<AudioHighPassFilter>();
 
         // 효과음 플레이어 초기화
         GameObject sfxObject = new GameObject("sfxPlayer");
@@ -51,10 +72,47 @@ public class AudioManager : MonoBehaviour
         {
             sfxPlayers[index] = sfxObject.AddComponent<AudioSource>();
             sfxPlayers[index].playOnAwake = false;
+            sfxPlayers[index].bypassListenerEffects = true;
             sfxPlayers[index].volume = sfxVolume;
         }
 
 
+    }
+
+    public void PlayBgm(bool isPlay, int bgmIndex = 1)
+    {
+        if (isPlay)
+        {
+            if (bgmPlayer != null)  // null 체크 추가
+            {
+                if (bgmIndex == 1)
+                    bgmPlayer.clip = bgmClip1;
+                else if (bgmIndex == 2)
+                    bgmPlayer.clip = bgmClip2;
+
+                bgmPlayer.Play();
+            }
+            else
+            {
+                Debug.LogError("BgmPlayer가 초기화되지 않았습니다.");
+            }
+        }
+        else
+        {
+            if (bgmPlayer != null)  // null 체크 추가
+            {
+                bgmPlayer.Stop();
+            }
+            else
+            {
+                Debug.LogError("BgmPlayer가 초기화되지 않았습니다.");
+            }
+        }
+    }
+
+    public void EffectBgm(bool isPlay)
+    {
+        bgmEffect.enabled = isPlay;
     }
 
     public void Playsfx(Sfx sfx)
@@ -77,6 +135,16 @@ public class AudioManager : MonoBehaviour
                 continue;
 
             channelIndex = loopIndex;
+
+            if (sfx == Sfx.bullet)
+            {
+                sfxPlayers[loopIndex].volume = sfxVolume * 0.1f; // 예시로 볼륨을 절반으로 설정
+            }
+            else
+            {
+                sfxPlayers[loopIndex].volume = sfxVolume; // 다른 사운드는 기본 볼륨으로 설정
+            }
+
             sfxPlayers[loopIndex].clip = sfxClip[(int)sfx];
             sfxPlayers[loopIndex].Play();
             lastPlayTimeDictionary[sfx] = currentTime; // 재생한 시간을 기록

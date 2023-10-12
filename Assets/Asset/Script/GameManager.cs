@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
         uiLevelUp.Select(1);
         playerHelath = maxHelath;
         Resume();
+
+        AudioManager.instance.PlayBgm(true, 2);
     }
     void Awake()
     {
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         gameOverUI.SetActive(true);
         HUD.SetActive(false);
+        AudioManager.instance.PlayBgm(false);
 
         Stop();
     }
@@ -67,6 +70,7 @@ public class GameManager : MonoBehaviour
 
         resultUI.SetActive(true);
         HUD.SetActive(false);
+        AudioManager.instance.PlayBgm(false);
 
         Stop();
 
@@ -76,16 +80,19 @@ public class GameManager : MonoBehaviour
     public void GameRetry()
     {
         SceneManager.LoadScene(1);
+        AudioManager.instance.PlayBgm(true, 1);
     }
 
     public void GameOver()
     {
         StartCoroutine(GameOverRoutine());
+        AudioManager.instance.PlayBgm(true, 1);
     }
 
     public void GameClear()
     {
         StartCoroutine(GameClearRoutine());
+        AudioManager.instance.PlayBgm(true, 1);
     }
 
     private void Update()
