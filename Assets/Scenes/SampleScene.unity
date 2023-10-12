@@ -940,6 +940,7 @@ Transform:
   - {fileID: 749915958}
   - {fileID: 2077128984}
   - {fileID: 1945853365}
+  - {fileID: 864761874}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21657,7 +21658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTime: 0
-  maxGameTime: 3
+  maxGameTime: 100
   isCheck: 0
   isLive: 1
   player: {fileID: 1383929316}
@@ -21666,7 +21667,7 @@ MonoBehaviour:
   level: 0
   kill: 0
   exp: 0
-  nextExp: 030000000500000007000000090000000d000000100000001400000068010000c201000058020000
+  nextExp: 0a0000001e00000032000000460000006400000096000000c800000068010000c201000058020000
   uiLevelUp: {fileID: 16299534}
   playerHelath: 0
   maxHelath: 10
@@ -21688,9 +21689,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
---- !u!114 &818810966
-=======
 --- !u!1 &864761873
 GameObject:
   m_ObjectHideFlags: 0
@@ -21705,7 +21703,6 @@ GameObject:
   - component: {fileID: 864761877}
   - component: {fileID: 864761876}
   - component: {fileID: 864761875}
-  - component: {fileID: 864761880}
   m_Layer: 0
   m_Name: Tilemap (2)
   m_TagString: Ground
@@ -21725,7 +21722,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 383571013}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!66 &864761875
 CompositeCollider2D:
@@ -22082,26 +22079,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &864761880
->>>>>>> backup
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 818810963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08ba6ace730d1174b92d621b970cb550, type: 3}
-=======
-  m_GameObject: {fileID: 864761873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74977799012bdc842a98256131a929c7, type: 3}
->>>>>>> backup
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &943670555
 GameObject:
   m_ObjectHideFlags: 0
@@ -42976,7 +42953,7 @@ MonoBehaviour:
   spawnData:
   - spriteType: 0
     spawnTime: 0.5
-    health: 1000
+    health: 15
     speed: 2
   - spriteType: 0
     spawnTime: 0.9
