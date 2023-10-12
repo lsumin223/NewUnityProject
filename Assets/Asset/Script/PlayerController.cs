@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D myRigid;
     private SpriteRenderer mySprite;
     private Animator myAnim;
+
+    public Image damageScreen;
+    public GameObject damageObject;
 
 
     void Awake()
@@ -54,8 +58,15 @@ public class PlayerController : MonoBehaviour
             mySprite.flipX = inputVec.x < 0;
         }
     }
-
-
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            StartCoroutine(DamageEffect());
+        }
+    }
+    
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (GameManager.instance.isLive)
@@ -81,6 +92,14 @@ public class PlayerController : MonoBehaviour
 
 
         }
+    }
+    IEnumerator DamageEffect()
+    {
+        damageObject.SetActive(true);
+        damageScreen.color = new Color(1, 0, 0, UnityEngine.Random.Range(0.2f, 0.3f));
+        yield return new WaitForSeconds(0.1f);
+        damageScreen.color = Color.clear;
+        damageObject.SetActive(false);
     }
 
 }
