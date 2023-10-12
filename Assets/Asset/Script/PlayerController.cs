@@ -73,9 +73,12 @@ public class PlayerController : MonoBehaviour
         {
 
             GameManager.instance.playerHelath -= Time.deltaTime * 10;
-            Debug.Log(GameManager.instance.playerHelath);
             AudioManager.instance.Playsfx(AudioManager.Sfx.playerHit);
 
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                StartCoroutine(DamageEffect());
+            }
 
             if (GameManager.instance.playerHelath < 0)
             {

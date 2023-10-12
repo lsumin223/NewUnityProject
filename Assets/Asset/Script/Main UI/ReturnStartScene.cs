@@ -20,8 +20,17 @@ public class ReturnStartScene : MonoBehaviour
 
     public void ReturnToMain()
     {
-        SceneManager.LoadScene(0);
-        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
-        AudioManager.instance.PlayBgm(true, 1);
+        if (GameManager.instance.isCheck)
+        {
+            SceneManager.LoadScene(0);
+            AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
+            AudioManager.instance.PlayBgm(true, 1);
+        }
+            
+        else if (!GameManager.instance.isCheck)
+        {
+            SceneManager.LoadScene(2);
+        }
+        
     }
 }

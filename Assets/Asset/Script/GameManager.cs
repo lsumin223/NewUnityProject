@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         isLive = false;
 
         yield return new WaitForSeconds(1.0f);
-        gameOverUI.SetActive(true);
+        resultUI.SetActive(true);
         HUD.SetActive(false);
         AudioManager.instance.PlayBgm(false);
 
