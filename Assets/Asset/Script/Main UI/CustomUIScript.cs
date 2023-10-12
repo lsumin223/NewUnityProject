@@ -12,11 +12,11 @@ public class CustomUIScript : MonoBehaviour
 
     private int selectedToggleIndex = -1;
 
-    private string[] info = {" 데미지가 10% 상승합니다.",
-        " 속도가 5% 상승합니다.",
-    " 쿨타임이 2.5% 감소합니다.",
-    " 최대체력이 20 상승합니다.",
-    " 경험치 획득률이 10% 상승합니다."};
+    private string[] info = {" 데미지가 10% 상승합니다. (구현 예정)",
+        " 속도가 5% 상승합니다.(구현 예정)",
+    " 쿨타임이 2.5% 감소합니다.(구현 예정)",
+    " 최대체력이 20 상승합니다.(구현 예정)",
+    " 경험치 획득률이 10% 상승합니다.(구현 예정)"};
 
 
     // Start is called before the first frame update
@@ -39,7 +39,6 @@ public class CustomUIScript : MonoBehaviour
     {
         Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("Main Scene");
-        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
     }
 
     public void OnClickToggle()
@@ -50,7 +49,6 @@ public class CustomUIScript : MonoBehaviour
             customInfoText.text = "";
         }
         else customInfoText.text = info[selectedToggleIndex];
-        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
 
     }
 

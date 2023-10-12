@@ -11,7 +11,10 @@ public class ProductSelectUIScript : MonoBehaviour
     private int number = 0;
     private int beforeNumber = 0;
 
-    private string[] characterInfos = { " 기본 제품 입니다.", " 파워형 제품 입니다.", " 스피드형 제품 입니다.", " 쿨감형 제품 입니다." };
+    private string[] characterInfos = { " 기본 제품 입니다.",
+        " 파워형 제품 입니다. (구현 예정)",
+        " 스피드형 제품 입니다. (구현 예정)",
+        " 쿨감형 제품 입니다. (구현 예정)" };
 
     [SerializeField]
     private Button[] buttons;
@@ -49,28 +52,24 @@ public class ProductSelectUIScript : MonoBehaviour
     {
         beforeNumber = number;
         number = 0;
-        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
     }
 
     public void onClickPowerCharacter()
     {
         beforeNumber = number;
         number = 1;
-        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
     }
 
     public void onClickSpeedCharacter()
     {
         beforeNumber = number;
         number = 2;
-        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
     }
 
     public void onClickCoolDownCharacter()
     {
         beforeNumber = number;
         number = 3;
-        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
     }
 
     public void onClickBack()
@@ -78,7 +77,6 @@ public class ProductSelectUIScript : MonoBehaviour
 
         Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("Main Scene");
-        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
 
     }
 
