@@ -6,10 +6,24 @@ public class ExpItemGet : MonoBehaviour
 {
 
     private int itemExp;
+    private float timer;
+    private float hello;
 
     private void Awake()
     {
         itemExp = 3;
+        timer = 0;
+    }
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        hello = Random.Range(10, 20);
+
+        if(timer >= hello)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     // Start is called before the first frame update
