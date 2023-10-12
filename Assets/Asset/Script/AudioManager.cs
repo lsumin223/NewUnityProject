@@ -171,6 +171,10 @@ public class AudioManager : MonoBehaviour
     public void SFXVolume(float volume)
     {
         sfxVolume = volume;
+        for (int index = 0; index < sfxPlayers.Length; index++)
+        {
+            sfxPlayers[index].volume = sfxVolume;
+        }
     }
 
     public void BGMVolume(float volume)

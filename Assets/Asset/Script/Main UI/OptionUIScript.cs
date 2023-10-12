@@ -24,8 +24,4 @@ public class OptionUIScript : MonoBehaviour
         SceneManager.LoadScene("Main Scene");
     }
 
-    public void onClickDamageText()
-    {
-        AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
-    }
 }

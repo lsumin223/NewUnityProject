@@ -33,10 +33,8 @@ public class AudioSliderControl : MonoBehaviour
 
     public void ToggleDamage(bool value)
     {
-        if(value)
-            AudioManager.instance.isDamText = value;
-        else
-            AudioManager.instance.isDamText = value;
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
+        AudioManager.instance.isDamText = value;
 
         Debug.Log(AudioManager.instance.isDamText);
     }
