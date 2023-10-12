@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RePosition : MonoBehaviour
 {
+    Collider2D coll;
     // Start is called before the first frame update
     void OnTriggerExit2D(Collider2D collision)
     {
@@ -31,6 +32,15 @@ public class RePosition : MonoBehaviour
                     transform.Translate(Vector3.up * dirY * 68);
                 }
                 break;
+
+            case "Enemy":
+                if (coll.enabled) 
+                {
+                    Vector3 dist = playerPos - myPos;
+                    Vector3 ran = new Vector3(Random.Range(-3, 3), Random.Range(-3, 3), 0);
+                    transform.Translate(ran + dist * 2);
+                }
+                break;
         }
     }
-}
+    }

@@ -91,18 +91,14 @@ public class GameManager : MonoBehaviour
         if (isLive)
         {
             exp += newExp;
-            if (exp == nextExp[level])
+            if (exp >= nextExp[Mathf.Min(level, nextExp.Length - 1)])
+
             {
                 level++;
                 exp = 0;
                 uiLevelUp.Show();
             }
-            else if (exp > nextExp[level])
-            {
-                level++;
-                exp -= nextExp[level];
-                uiLevelUp.Show();
-            }
+           
         }
 
     }
