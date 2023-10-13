@@ -9,14 +9,17 @@ public class StartUIScript : MonoBehaviour
     public Image stageImage;
     public Text stageNameText;
     public Text stageStoryText;
+    public Button startButton;
 
     [SerializeField]
     private Sprite[] stageSprites;
 
 
-    private string[] stageName = { "1 스테이지", "2 스테이지" ,"3 스테이지"};
+    private string[] stageName = { "연구소", "병원" ,"의료기기 학회"};
 
-    private string[] stageStory = { " 1 스테이지 입니다.", " 2 스테이지 입니다.", " 3 스테이지 입니다."};
+    private string[] stageStory = { "임상시험 시작! 내 로봇은 꼭 세상을 구할 수 있을 것이다.",
+        " 소문을 듣고 아는 친구의 아는 동생의 아는 형님의 아는 시한부에게 치료 요청이 왔다.",
+        " 시한부를 치료했다는 기사를 통해 학회에서 직접 보고싶다고 초청을 보냈다." };
 
 
 
@@ -28,7 +31,7 @@ public class StartUIScript : MonoBehaviour
         stageImage = transform.Find("Stage Image").GetComponent<Image>();
         stageNameText = transform.Find("Stage Name Text").GetComponent<Text>();
         stageStoryText = transform.Find("Stage Story Text").GetComponent<Text>();
-
+        startButton = transform.Find("Start Button").GetComponent<Button>();
     }
 
     // Update is called once per frame
@@ -41,24 +44,28 @@ public class StartUIScript : MonoBehaviour
             stageStoryText.text = stageStory[index];
         }
 
+        if(index > 0)
+        {
+            startButton.interactable = false;
+        }
+        else if(index == 0)
+        {
+            startButton.interactable = true;
+        }
     }
 
     public void onClickBack()
     {
-        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         Resources.UnloadUnusedAssets();
         SceneManager.LoadScene("Main Scene");
     }
 
     public void onClickNextStage()
     {
-
-        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         index++;
         if (index >= stageSprites.Length)
         {
             index = 0;
-
         }
 
 
@@ -67,12 +74,10 @@ public class StartUIScript : MonoBehaviour
 
     public void onClickBackStage()
     {
-        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         index--;
         if (index < 0)
         {
             index = stageSprites.Length - 1;
-
         }
 
 
@@ -80,26 +85,17 @@ public class StartUIScript : MonoBehaviour
 
     public void onClickStartButton()
     {
-        
-        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
 
-        if (Time.timeScale == 0)
+        Resources.UnloadUnusedAssets();
+        SceneManager.LoadScene("SampleScene");
+
+        if(Time.timeScale == 0)
         {
             Time.timeScale = 1;
         }
 
-        switch (index)
-        {
-            case 0:
-                Resources.UnloadUnusedAssets();
-                SceneManager.LoadScene("SampleScene");
-                break;
-            case 1:
-            case 2:
-
-                break;
-
-        }
 
     }
+
+
 }

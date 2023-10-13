@@ -12,7 +12,7 @@ public class AudioSliderControl : MonoBehaviour
 
     private void Awake()
     {
-        dmgToggle.isOn = AudioManager.instance.isDamText;
+        dmgToggle.isOn = !AudioManager.instance.isDamText;
     }
     private void Start()
     {
@@ -34,7 +34,7 @@ public class AudioSliderControl : MonoBehaviour
     public void ToggleDamage(bool value)
     {
         AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
-        AudioManager.instance.isDamText = value;
+        AudioManager.instance.isDamText = !value;
 
         Debug.Log(AudioManager.instance.isDamText);
     }
