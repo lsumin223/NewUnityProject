@@ -43447,17 +43447,17 @@ MonoBehaviour:
   spawnPoint: []
   spawnData:
   - spriteType: 0
-    spawnTime: 0.7
+    spawnTime: 0.2
     health: 15
-    speed: 2
+    speed: 1.5
   - spriteType: 0
-    spawnTime: 1
+    spawnTime: 0.25
     health: 25
-    speed: 3.5
+    speed: 3
   - spriteType: 0
-    spawnTime: 1.3
+    spawnTime: 0.3
     health: 35
-    speed: 5
+    speed: 4
 --- !u!1 &1400626029
 GameObject:
   m_ObjectHideFlags: 0

@@ -140,33 +140,37 @@ public class AudioManager : MonoBehaviour
         }
 
 
+        int availableChannelIndex = -1;
+
         for (int index = 0; index < sfxPlayers.Length; index++)
         {
             int loopIndex = (index + channelIndex) % sfxPlayers.Length;
 
-            if (sfxPlayers[loopIndex].isPlaying)
-                continue;
-
-            channelIndex = loopIndex;
-
-            if (sfx == Sfx.bullet)
+            if (!sfxPlayers[loopIndex].isPlaying)
             {
-                sfxPlayers[loopIndex].volume = sfxVolume * 0.1f; // 예시로 볼륨을 절반으로 설정
+                availableChannelIndex = loopIndex;
+                break;
             }
-            else
-            {
-                sfxPlayers[loopIndex].volume = sfxVolume; // 다른 사운드는 기본 볼륨으로 설정
-            }
-
-            sfxPlayers[loopIndex].clip = sfxClip[(int)sfx];
-            sfxPlayers[loopIndex].Play();
-            lastPlayTimeDictionary[sfx] = currentTime; // 재생한 시간을 기록
-            break;
         }
 
-        sfxPlayers[0].clip = sfxClip[(int)sfx];
-        sfxPlayers[0].Play();
+        if (availableChannelIndex != -1)
+        {
+            channelIndex = availableChannelIndex;
+
+            // 볼륨 조절
+            float adjustedVolume = (sfx == Sfx.bullet) ? sfxVolume * 0.25f : sfxVolume;
+            sfxPlayers[channelIndex].volume = adjustedVolume;
+
+            sfxPlayers[channelIndex].clip = sfxClip[(int)sfx];
+            sfxPlayers[channelIndex].Play();
+            lastPlayTimeDictionary[sfx] = currentTime; // 재생한 시간을 기록
+        }
     }
+
+
+
+
+
 
     public void SFXVolume(float volume)
     {
