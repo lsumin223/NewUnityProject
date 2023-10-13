@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour
             return;
 
         Debug.Log(collision.GetComponent<Attack>().damage);
-        int damage = Mathf.FloorToInt(collision.GetComponent<Attack>().damage);
+        int damage = Mathf.RoundToInt(collision.GetComponent<Attack>().damage);
 
 
         health -= collision.GetComponent<Attack>().damage;
@@ -94,11 +94,11 @@ public class Enemy : MonoBehaviour
         Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
         DmgTxtControl.instance.CreatDamageTxt(pos, damage);
 
-        StartCoroutine(KnockBack());
 
         if (health > 0)
         {
             myAnim.SetTrigger("Hit");
+            StartCoroutine(KnockBack());
         }
         else
         {
@@ -125,7 +125,7 @@ public class Enemy : MonoBehaviour
         yield return wait;
         Vector3 playerPos = GameManager.instance.player.transform.position;
         Vector3 dirVec = transform.position - playerPos;
-        myRigid.AddForce(dirVec.normalized * 30, ForceMode2D.Impulse);
+        myRigid.AddForce(dirVec.normalized * 10000000, ForceMode2D.Impulse);
     }
 
 

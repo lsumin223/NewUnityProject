@@ -24,12 +24,13 @@ public class ReturnStartScene : MonoBehaviour
         {
             AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
             AudioManager.instance.PlayBgm(true, 1);
+            Time.timeScale = 1;
             SceneManager.LoadScene(0);
         }
             
         else if (!GameManager.instance.isCheck)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
         
     }
