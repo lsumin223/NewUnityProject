@@ -46,9 +46,6 @@ public class DataUIScript : MonoBehaviour
     void Start()
     {
 
-        selectedButtonIndex = 0;
-        MakeButtonArray();
-
     }
 
     // Update is called once per frame
