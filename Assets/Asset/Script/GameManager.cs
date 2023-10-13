@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+ 
     public float gameTime;
     public float maxGameTime = 2 * 10.0f;
-
 
     public bool isCheck;
     public bool isLive;
@@ -22,8 +22,9 @@ public class GameManager : MonoBehaviour
     public int kill;
     public int exp;
     public int[] nextExp = { 10, 30, 60, 100, 150, 210, 280, 360, 450, 600 }; //
-
+    public int gold;
     public LevelUp uiLevelUp;
+    public int totalGold;
 
     public float playerHelath;
     public float maxHelath = 100;
@@ -128,6 +129,13 @@ public class GameManager : MonoBehaviour
             }
         }
 
+    }
+    public void GetGold(int totalGold)
+    {
+        if (isLive)
+        {
+            gold += totalGold;
+        }
     }
     public void Stop()
     { 

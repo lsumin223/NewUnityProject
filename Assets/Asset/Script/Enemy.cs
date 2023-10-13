@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public RuntimeAnimatorController[] animController;
     public Rigidbody2D target;
     public GameObject dropItem;
+    public GameObject dropGold;
 
     private Rigidbody2D myRigid;
     private Collider2D myCollider;
@@ -141,9 +142,16 @@ public class Enemy : MonoBehaviour
 
         randValue = Random.Range(0, 10);
 
-        if(randValue >= 4)
+        if (randValue >= 4)
         {
             GameObject clone = Instantiate(dropItem, deadPos, Quaternion.identity);
+        }
+        else
+        {
+            if(randValue <= 1)
+            {
+                GameObject clone = Instantiate(dropGold, deadPos, Quaternion.identity);
+            }
         }
 
     }
