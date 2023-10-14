@@ -71,6 +71,7 @@
     <Compile Include="Assets\Asset\Script\Spawner.cs" />
     <Compile Include="Assets\Asset\Script\Main UI\ReturnStartScene.cs" />
     <Compile Include="Assets\Asset\Script\UI\HUD.cs" />
+    <Compile Include="Assets\Asset\Script\Cleaner.cs" />
     <Compile Include="Assets\Asset\Script\Scaner.cs" />
     <Compile Include="Assets\Asset\Script\Enemy.cs" />
     <Compile Include="Assets\Asset\Script\User Data\DataManager.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Assets\Asset\Script\Main UI\StartUIScript.cs" />
     <Compile Include="Assets\Asset\Script\UI\Follow.cs" />
     <Compile Include="Assets\Asset\Script\Item.cs" />
+    <Compile Include="Assets\Asset\Script\SecondScript\ObjHealth.cs" />
     <Compile Include="Assets\Asset\Script\CameraManager.cs" />
     <Compile Include="Assets\Asset\Script\UI\TextCleaner.cs" />
     <Compile Include="Assets\Asset\Script\Main UI\ProductSelectUIScript.cs" />
@@ -100,8 +102,7 @@
     <Compile Include="Assets\Asset\Script\Weapon.cs" />
     <Compile Include="Assets\Asset\Script\ItemData.cs" />
     <Compile Include="Assets\Asset\Script\ExpItem\ExpItemSpawner.cs" />
-    <Compile Include="Assets\Asset\Script\SecondScript\ObjHealth.cs" />
-    <Compile Include="Assets\Asset\Script\Cleaner.cs" />
+    <Compile Include="Assets\Asset\Script\SecondScript\SecondSpawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

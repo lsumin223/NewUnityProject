@@ -40108,26 +40108,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 409714645}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841e1e8622c22df439323975004f2b90, type: 3}
+  m_Script: {fileID: 11500000, guid: 3bec9c11626227543a81518b25dc4b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: []
   spawnData:
   - spriteType: 0
-    spawnTime: 1
+    spawnTime: 0.8
     health: 15
     speed: 1.5
   - spriteType: 0
-    spawnTime: 0.25
+    spawnTime: 1
     health: 25
     speed: 3
   - spriteType: 0
-    spawnTime: 0.3
+    spawnTime: 1.3
     health: 35
     speed: 4
   prefabs:
-  - {fileID: 7883078777615378749, guid: b17473f2a0e352f45afd61c5b1b049a2, type: 3}
   - {fileID: 4182508697524757, guid: 05c01f79a0c124c418add90abdb85ad8, type: 3}
+  - {fileID: 7883078777615378749, guid: b17473f2a0e352f45afd61c5b1b049a2, type: 3}
   - {fileID: 1703125315278952798, guid: 385f02980554c5a46b817b19dd3ce985, type: 3}
 --- !u!1 &455845701
 GameObject:

@@ -38,7 +38,6 @@ public class Spawner : MonoBehaviour
         this.level = level;
 
         int randomMonsterIndex = Random.Range(0, level + 1);
-        GameObject enemyPrefab = prefabs[randomMonsterIndex];
 
         SpawnData monsterData = spawnData[randomMonsterIndex];
 
