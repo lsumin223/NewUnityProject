@@ -48,7 +48,7 @@ public class Weapon : MonoBehaviour
         this.damage = damage;
         this.count += count;
 
-        if(id == 0)
+        if (id == 0)
         {
             Batch();
         }

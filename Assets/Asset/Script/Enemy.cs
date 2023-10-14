@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
         myCollider = GetComponent<Collider2D>();
 
         enemyExp = 1;
+        isHit = false;
     }
 
     // Update is called once per frame
@@ -44,7 +45,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!GameManager.instance.isLive)
+        if (!GameManager.instance.isLive || myAnim.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
             return;
 
         if (!isDead)
@@ -53,7 +54,10 @@ public class Enemy : MonoBehaviour
             Vector2 nextVec = dirVec.normalized * Time.fixedDeltaTime * speed;
 
             myRigid.MovePosition(myRigid.position + nextVec);
-            myRigid.velocity = Vector2.zero;
+            if (!isHit)
+            {
+                myRigid.velocity = Vector2.zero;
+            }
         }
     }
 
@@ -82,13 +86,12 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (!collision.CompareTag("Attack"))
             return;
 
-        Debug.Log(collision.GetComponent<Attack>().damage);
         int damage = Mathf.RoundToInt(collision.GetComponent<Attack>().damage);
-
-
+        
         health -= collision.GetComponent<Attack>().damage;
         AudioManager.instance.Playsfx(AudioManager.Sfx.hit);
 
@@ -108,7 +111,6 @@ public class Enemy : MonoBehaviour
             myRigid.simulated = false;
             mySprite.sortingOrder = 1;
             myAnim.SetBool("Dead", true);
-            Dead();
             DropItem();
             GameManager.instance.kill++;
             GameManager.instance.GetExp(enemyExp);
@@ -121,12 +123,35 @@ public class Enemy : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        isHit = true;
+        if (collision.gameObject.CompareTag("Player"))
+            StartCoroutine(KnockBack());
+
+        else if (collision.gameObject.CompareTag("Protect"))
+            StartCoroutine(ObjKnockBack());
+       
+
+    }
+
     IEnumerator KnockBack()
     {
         yield return wait;
         Vector3 playerPos = GameManager.instance.player.transform.position;
         Vector3 dirVec = transform.position - playerPos;
-        myRigid.AddForce(dirVec.normalized * 10000000, ForceMode2D.Impulse);
+        myRigid.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);
+        isHit = false;
+    }
+
+    IEnumerator ObjKnockBack()
+    {
+        yield return wait;
+        Debug.Log("µÇ³ª?");
+        Vector3 playerPos = TowerManager.instance.tower.transform.position;
+        Vector3 dirVec = transform.position - playerPos;
+        myRigid.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);
+        isHit = false;
     }
 
 

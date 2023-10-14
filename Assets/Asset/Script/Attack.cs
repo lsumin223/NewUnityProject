@@ -28,16 +28,20 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Enemy") || per == -100)
-            return;
-
-        per--;
-
-        if (per < 0)
+        if (collision.CompareTag("ObgEnemy") || collision.CompareTag("Enemy"))
         {
-            myRigid.velocity = Vector2.zero;
-            gameObject.SetActive(false);
+            if (per == -100)
+                return;
+
+            per--;
+
+            if (per < 0)
+            {
+                myRigid.velocity = Vector2.zero;
+                gameObject.SetActive(false);
+            }
         }
+     
     }
 
     private void OnTriggerExit2D(Collider2D collision)

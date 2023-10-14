@@ -33,12 +33,10 @@ public class DmgTxtControl : MonoBehaviour
     public void CreatDamageTxt(Vector3 hitPos, int hitDamage)
     {
         bool value = AudioManager.instance.isDamText;
-        Debug.Log(value);
         if(value)
         {
             GameObject dmg = Instantiate(dmgTxt, hitPos, Quaternion.identity, canvas.transform);
             dmg.GetComponent<Text>().text = hitDamage.ToString();
-            Debug.Log("Ãâ·Â");
         }
         
     }

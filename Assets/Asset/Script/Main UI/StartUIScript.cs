@@ -28,6 +28,11 @@ public class StartUIScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(GameManager.instance.stage != 0)
+        {
+            index = GameManager.instance.stage;
+        }
+        Debug.Log(GameManager.instance.stage);
         stageImage = transform.Find("Stage Image").GetComponent<Image>();
         stageNameText = transform.Find("Stage Name Text").GetComponent<Text>();
         stageStoryText = transform.Find("Stage Story Text").GetComponent<Text>();
@@ -44,11 +49,11 @@ public class StartUIScript : MonoBehaviour
             stageStoryText.text = stageStory[index];
         }
 
-        if(index > 0)
+        if(index == 2)
         {
             startButton.interactable = false;
         }
-        else if(index == 0)
+        else
         {
             startButton.interactable = true;
         }
@@ -85,14 +90,23 @@ public class StartUIScript : MonoBehaviour
 
     public void onClickStartButton()
     {
-
-        Resources.UnloadUnusedAssets();
-        SceneManager.LoadScene("SampleScene");
-
-        if(Time.timeScale == 0)
+        if (Time.timeScale == 0)
         {
             Time.timeScale = 1;
         }
+        Resources.UnloadUnusedAssets();
+        switch (index)
+        {
+            case 0:
+                SceneManager.LoadScene("SampleScene");
+                break;
+            case 1:
+                SceneManager.LoadScene(8);
+                break;
+            case 2:
+                break;
+        }
+        
 
 
     }

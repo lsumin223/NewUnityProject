@@ -63,7 +63,7 @@ public class Item : MonoBehaviour
                     float nextDamage = data.baseDamage;
                     int nextCount = 0;
 
-                    nextDamage += data.baseDamage * data.damages[level];
+                    nextDamage += Mathf.RoundToInt(data.baseDamage * data.damages[level]);
                     nextCount += data.counts[level];
 
                     weapon.LevelUp(nextDamage, nextCount);

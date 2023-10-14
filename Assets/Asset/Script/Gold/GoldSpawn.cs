@@ -47,9 +47,7 @@ public class GoldSpawn : MonoBehaviour
         Vector2 size = area.size;
 
         float PosX = transform.position.x + Random.Range(-size.x / 2f, size.x / 2f);
-        Debug.Log("PosX" + PosX);
         float PosY = transform.position.y + Random.Range(-size.y / 2f, size.y / 2f);
-        Debug.Log("PosY" + PosY);
 
         Vector2 spawnPos = new Vector2(PosX, PosY);
 

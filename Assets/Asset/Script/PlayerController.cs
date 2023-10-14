@@ -71,14 +71,12 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.instance.isLive)
         {
-
-            GameManager.instance.playerHelath -= Time.deltaTime * 10;
-            AudioManager.instance.Playsfx(AudioManager.Sfx.playerHit);
-
-            if (collision.gameObject.CompareTag("Enemy"))
+            if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("ObgEnemy"))
             {
-                StartCoroutine(DamageEffect());
+                GameManager.instance.playerHelath -= Time.deltaTime * 10;
+                AudioManager.instance.Playsfx(AudioManager.Sfx.playerHit);
             }
+            
 
             if (GameManager.instance.playerHelath < 0)
             {

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public enum InfoType { Exp, Level, Kill, Time, Health, Gold, Totalgold }
+    public enum InfoType { Exp, Level, Kill, Time, Health, Gold, Totalgold, ObjHealth}
     public InfoType type;
     Text myText;
     Slider mySlider;
@@ -47,6 +47,7 @@ public class HUD : MonoBehaviour
                 float maxHealth = GameManager.instance.maxHelath;
                 mySlider.value = curHealth / maxHealth;
                 break;
+
             case InfoType.Gold:
                 int gold = GameManager.instance.gold;
                 myText.text = string.Format("{0:F0}G", gold);
@@ -55,6 +56,13 @@ public class HUD : MonoBehaviour
             case InfoType.Totalgold:
                 int Tgold = PlayerPrefs.GetInt("PlayerGold") + GameManager.instance.gold;
                 myText.text = string.Format("{0:F0}G", Tgold);
+                break;
+
+
+            case InfoType.ObjHealth:
+                float curObjHealth = TowerManager.instance.playerHelath;
+                float maxObjHealth = TowerManager.instance.maxHelath;
+                mySlider.value = curObjHealth / maxObjHealth;
                 break;
         }
     }

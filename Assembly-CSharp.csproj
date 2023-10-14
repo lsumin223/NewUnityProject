@@ -57,10 +57,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Asset\Script\ExpItem\Magnet.cs" />
+    <Compile Include="Assets\Asset\Script\SecondScript\TowerManager.cs" />
     <Compile Include="Assets\Asset\Script\AudioManager.cs" />
+    <Compile Include="Assets\Asset\Script\SecondScript\ProtectControl.cs" />
+    <Compile Include="Assets\Asset\Script\Gold\GoldGet.cs" />
     <Compile Include="Assets\Asset\Script\Main UI\DataUIScript.cs" />
     <Compile Include="Assets\Asset\Script\UI\HealthHUD.cs" />
     <Compile Include="Assets\Asset\Script\UI\ResultPrint.cs" />
+    <Compile Include="Assets\Asset\Script\Gold\GoldSpawn.cs" />
+    <Compile Include="Assets\Asset\Script\User Data\GoldData.cs" />
     <Compile Include="Assets\Asset\Script\PlayerController.cs" />
     <Compile Include="Assets\Asset\Script\Main UI\AudioSliderControl.cs" />
     <Compile Include="Assets\Asset\Script\Spawner.cs" />
@@ -68,6 +73,7 @@
     <Compile Include="Assets\Asset\Script\UI\HUD.cs" />
     <Compile Include="Assets\Asset\Script\Scaner.cs" />
     <Compile Include="Assets\Asset\Script\Enemy.cs" />
+    <Compile Include="Assets\Asset\Script\User Data\DataManager.cs" />
     <Compile Include="Assets\Asset\Script\RePosition.cs" />
     <Compile Include="Assets\Asset\Script\Main UI\OptionUIScript.cs" />
     <Compile Include="Assets\Asset\Script\Main UI\CustomUIScript.cs" />
@@ -81,8 +87,11 @@
     <Compile Include="Assets\Asset\Script\CameraManager.cs" />
     <Compile Include="Assets\Asset\Script\UI\TextCleaner.cs" />
     <Compile Include="Assets\Asset\Script\Main UI\ProductSelectUIScript.cs" />
+    <Compile Include="Assets\Asset\Script\User Data\PlayerGold.cs" />
+    <Compile Include="Assets\Asset\Script\User Data\PlayerData.cs" />
     <Compile Include="Assets\Asset\Script\UI\LevelUp.cs" />
     <Compile Include="Assets\Asset\Script\ExpItem\ExpItemGet.cs" />
+    <Compile Include="Assets\Asset\Script\SecondScript\ObjAttackEnemy.cs" />
     <Compile Include="Assets\Asset\Script\UI\DmgTxtControl.cs" />
     <Compile Include="Assets\Asset\Script\Attack.cs" />
     <Compile Include="Assets\Asset\Script\GameManager.cs" />
@@ -91,6 +100,8 @@
     <Compile Include="Assets\Asset\Script\Weapon.cs" />
     <Compile Include="Assets\Asset\Script\ItemData.cs" />
     <Compile Include="Assets\Asset\Script\ExpItem\ExpItemSpawner.cs" />
+    <Compile Include="Assets\Asset\Script\SecondScript\ObjHealth.cs" />
+    <Compile Include="Assets\Asset\Script\Cleaner.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

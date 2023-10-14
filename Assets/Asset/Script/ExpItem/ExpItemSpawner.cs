@@ -37,9 +37,6 @@ public class ExpItemSpawner : MonoBehaviour
             GameObject clone = Instantiate(expItem, spawnPos, Quaternion.identity);
             spawnList.Add(clone);
 
-            Debug.Log(spawnList);
-
-
         }
         
     }
