@@ -45,8 +45,11 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!GameManager.instance.isLive || myAnim.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+        if (!GameManager.instance.isLive || myAnim.GetBool("Hit"))
+        {
             return;
+        }
+           
 
         if (!isDead)
         {
@@ -112,17 +115,19 @@ public class Enemy : MonoBehaviour
             mySprite.sortingOrder = 1;
             myAnim.SetBool("Dead", true);
             DropItem();
-            GameManager.instance.kill++;
-            GameManager.instance.GetExp(enemyExp);
 
-            // 모두 죽는 처리 할 때 추가할것
-            // if (GameManager.instance.isLive)
+            if (GameManager.instance.isLive)
+            {
+                GameManager.instance.kill++;
+                GameManager.instance.GetExp(enemyExp);
+            }
+                
             AudioManager.instance.Playsfx(AudioManager.Sfx.kill);
 
         }
 
     }
-
+    /*
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isHit = true;
@@ -133,14 +138,14 @@ public class Enemy : MonoBehaviour
             StartCoroutine(ObjKnockBack());
        
 
-    }
+    }*/
 
     IEnumerator KnockBack()
     {
         yield return wait;
         Vector3 playerPos = GameManager.instance.player.transform.position;
         Vector3 dirVec = transform.position - playerPos;
-        myRigid.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);
+        myRigid.AddForce(dirVec.normalized * 1, ForceMode2D.Impulse);
         isHit = false;
     }
 
@@ -150,7 +155,7 @@ public class Enemy : MonoBehaviour
         Debug.Log("되나?");
         Vector3 playerPos = TowerManager.instance.tower.transform.position;
         Vector3 dirVec = transform.position - playerPos;
-        myRigid.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);
+        myRigid.AddForce(dirVec.normalized * 1, ForceMode2D.Impulse);
         isHit = false;
     }
 

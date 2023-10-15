@@ -7,58 +7,73 @@ public class ProtectControl : MonoBehaviour
 {
     // Start is called before the first frame update
     public Vector2 inputVec;
-    private float speed = 6.0f;
 
     private Rigidbody2D myRigid;
     private SpriteRenderer mySprite;
+    private Animator myAnim;
+    private Animator objAnim;
+
+    public GameObject player;
+    private bool isValue;
+
+
+    public Image damageScreen;
+    public GameObject damageObject;
 
 
     void Awake()
     {
-        myRigid = GetComponent<Rigidbody2D>();
-        mySprite = GetComponent<SpriteRenderer>();
-
+        objAnim = GetComponent<Animator>();
+        myRigid = player.GetComponent<Rigidbody2D>();
+        mySprite = player.GetComponent<SpriteRenderer>();
+        myAnim = player.GetComponent<Animator>();
+        isValue = false;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
-        if (TowerManager.instance.playerHelath < 0 || GameManager.instance.isCheck || GameManager.instance.playerHelath <0)
+        if (GameManager.instance.isCheck || TowerManager.instance.playerHelath < 0)
         {
             GameManager.instance.isLive = false;
-            TowerManager.instance.isLive = false;
-            inputVec = Vector2.zero;
             return;
+        }
+
+        if (TowerManager.instance.playerHelath <= 0 && !isValue)
+        {
+            isValue = true;
+            for (int index = 0; index < player.transform.childCount; index++)
+            {
+                if (!player.transform.GetChild(index).gameObject.CompareTag("Area"))
+                    player.transform.GetChild(index).gameObject.SetActive(false);
+            }
+            myAnim.SetBool("Dead", true);
+            objAnim.SetTrigger("Dead");
+            GameManager.instance.GameOver();
+            AudioManager.instance.Playsfx(AudioManager.Sfx.dead);
         }
 
     }
 
-
-
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (TowerManager.instance.isLive)
+        if (GameManager.instance.isLive)
         {
-            if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("ObgEnemy"))
+            if (collision.gameObject.CompareTag("ObgEnemy"))
             {
-                TowerManager.instance.playerHelath -= Time.deltaTime * 10;
-                AudioManager.instance.Playsfx(AudioManager.Sfx.playerHit);
+                Debug.Log("ตส?");
+                StartCoroutine(DamageEffect());
             }
-
-            if (TowerManager.instance.playerHelath < 0)
-            {
-                for (int index = 0; index < transform.childCount; index++)
-                {
-                    if (!transform.GetChild(index).gameObject.CompareTag("Area"))
-                        transform.GetChild(index).gameObject.SetActive(false);
-                }
-
-                GameManager.instance.GameOver();
-                AudioManager.instance.Playsfx(AudioManager.Sfx.dead);
-            }
-
-
         }
+    }
+
+    IEnumerator DamageEffect()
+    {
+        damageObject.SetActive(true);
+        damageScreen.color = new Color(1, 0, 0, UnityEngine.Random.Range(0.2f, 0.3f));
+        yield return new WaitForSeconds(0.1f);
+        damageScreen.color = Color.clear;
+        damageObject.SetActive(false);
     }
 
 }

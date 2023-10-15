@@ -81,6 +81,13 @@ public class ObjAttackEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Protect"))
+        {
+            TowerManager.instance.playerHelath -= 5; 
+            gameObject.SetActive(false); 
+        }
+
+
         if (!collision.CompareTag("Attack"))
             return;
 
@@ -106,11 +113,12 @@ public class ObjAttackEnemy : MonoBehaviour
             mySprite.sortingOrder = 1;
             myAnim.SetBool("Dead", true);
             Dead();
-            GameManager.instance.kill++;
-            GameManager.instance.GetExp(enemyExp);
-
-            // 모두 죽는 처리 할 때 추가할것
-            // if (GameManager.instance.isLive)
+            if (GameManager.instance.isLive)
+            {
+                GameManager.instance.kill++;
+                GameManager.instance.GetExp(enemyExp);
+            }
+     
             AudioManager.instance.Playsfx(AudioManager.Sfx.kill);
 
         }
@@ -122,7 +130,7 @@ public class ObjAttackEnemy : MonoBehaviour
         yield return wait;
         Vector3 playerPos = GameManager.instance.player.transform.position;
         Vector3 dirVec = transform.position - playerPos;
-        myRigid.AddForce(dirVec.normalized * 10000000, ForceMode2D.Impulse);
+        myRigid.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);
     }
 
 

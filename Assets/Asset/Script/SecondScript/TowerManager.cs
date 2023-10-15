@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class TowerManager : MonoBehaviour
 {
-    public bool isLive;
 
     public static TowerManager instance;
     public ProtectControl tower;
@@ -23,10 +22,7 @@ public class TowerManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-
         playerHelath = maxHelath;
-
-        isLive = true;
     }
 
 }
