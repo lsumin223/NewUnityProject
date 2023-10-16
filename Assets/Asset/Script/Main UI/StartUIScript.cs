@@ -29,6 +29,7 @@ public class StartUIScript : MonoBehaviour
     void Start()
     {
         index = AudioManager.instance.stage;
+
         Debug.Log(AudioManager.instance.stage);
         stageImage = transform.Find("Stage Image").GetComponent<Image>();
         stageNameText = transform.Find("Stage Name Text").GetComponent<Text>();

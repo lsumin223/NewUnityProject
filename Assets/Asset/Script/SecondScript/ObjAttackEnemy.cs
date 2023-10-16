@@ -79,13 +79,24 @@ public class ObjAttackEnemy : MonoBehaviour
         health = data.health;
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Protect"))
+        {
+            TowerManager.instance.playerHelath -= 5;
+            gameObject.SetActive(false);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        /*
         if (collision.CompareTag("Protect"))
         {
             TowerManager.instance.playerHelath -= 5; 
             gameObject.SetActive(false); 
-        }
+        }*/
 
 
         if (!collision.CompareTag("Attack"))

@@ -55,6 +55,20 @@ public class ProtectControl : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (GameManager.instance.isLive)
+        {
+            if (collision.gameObject.CompareTag("ObgEnemy"))
+            {
+                Debug.Log("ตส?");
+                StartCoroutine(DamageEffect());
+            }
+        }
+
+    }
+
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (GameManager.instance.isLive)
@@ -66,6 +80,7 @@ public class ProtectControl : MonoBehaviour
             }
         }
     }
+    */
 
     IEnumerator DamageEffect()
     {
