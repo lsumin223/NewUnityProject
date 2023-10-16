@@ -25,6 +25,8 @@ public class AudioManager : MonoBehaviour
     public bool isDamText;
     public bool isEffOn;
 
+    public int stage;
+
     public enum Sfx
     {
         levelUp, dead, select1, select2, bullet, hit, kill, playerHit
@@ -34,6 +36,7 @@ public class AudioManager : MonoBehaviour
     {
         isDamText = true;
         isEffOn = true;
+        stage = 0;
 
         if (instance == null)
         {

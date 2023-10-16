@@ -113,6 +113,7 @@ public class Enemy : MonoBehaviour
             myCollider.enabled = false;
             myRigid.simulated = false;
             mySprite.sortingOrder = 1;
+            Dead();
             myAnim.SetBool("Dead", true);
             DropItem();
 

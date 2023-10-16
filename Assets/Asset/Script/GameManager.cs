@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    public int stage;
-
     public float gameTime;
     public float maxGameTime = 2 * 10.0f;
 
@@ -39,28 +37,13 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        stage = 0;
+        
         uiLevelUp.Select(1);
         playerHelath = maxHelath;
         Resume();
 
         Debug.Log(SceneManager.GetActiveScene().buildIndex);
         AudioManager.instance.PlayBgm(true, 2);
-
-        switch (SceneManager.GetActiveScene().buildIndex)
-        {
-            case 2:
-                stage = 0;
-                break;
-
-            case 8:
-                stage = 1;
-                break;
-
-            default:
-                stage = 2;
-                break;
-        }
 
     }
     void Awake()
@@ -112,6 +95,21 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case 2:
+                AudioManager.instance.stage = 0;
+                break;
+
+            case 8:
+                AudioManager.instance.stage = 1;
+                break;
+
+            default:
+                AudioManager.instance.stage = 2;
+                break;
+        }
+
         StartCoroutine(GameOverRoutine());
         AudioManager.instance.PlayBgm(true, 1);
     }
@@ -120,6 +118,7 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(GameClearRoutine());
         AudioManager.instance.PlayBgm(true, 1);
+        AudioManager.instance.stage = 0;
     }
 
     private void Update()

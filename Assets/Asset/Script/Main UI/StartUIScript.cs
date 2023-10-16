@@ -28,11 +28,8 @@ public class StartUIScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(GameManager.instance.stage != 0)
-        {
-            index = GameManager.instance.stage;
-        }
-        Debug.Log(GameManager.instance.stage);
+        index = AudioManager.instance.stage;
+        Debug.Log(AudioManager.instance.stage);
         stageImage = transform.Find("Stage Image").GetComponent<Image>();
         stageNameText = transform.Find("Stage Name Text").GetComponent<Text>();
         stageStoryText = transform.Find("Stage Story Text").GetComponent<Text>();

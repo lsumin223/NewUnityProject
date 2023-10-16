@@ -61365,6 +61365,7 @@ MonoBehaviour:
   channels: 16
   isDamText: 0
   isEffOn: 0
+  stage: 0
 --- !u!4 &949146558
 Transform:
   m_ObjectHideFlags: 0
@@ -61979,9 +61980,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4fa654e36987ee4f9966e958c36ce0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 0
   gameTime: 0
-  maxGameTime: 100
+  maxGameTime: 10
   isCheck: 0
   isLive: 1
   isLevelUp: 0
