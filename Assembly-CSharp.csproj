@@ -103,6 +103,7 @@
     <Compile Include="Assets\Asset\Script\Weapon.cs" />
     <Compile Include="Assets\Asset\Script\ItemData.cs" />
     <Compile Include="Assets\Asset\Script\ExpItem\ExpItemSpawner.cs" />
+    <Compile Include="Assets\Asset\Script\SecondScript\ObjSpawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

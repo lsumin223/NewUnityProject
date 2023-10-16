@@ -35,25 +35,22 @@ public class SecondSpawner : MonoBehaviour
     void Spawn(int level)
     {
         this.level = level;
-        
-        int randomMonsterIndex = Random.Range(0, spawnData.Length);
-        SpawnData monsterData = spawnData[randomMonsterIndex];
 
-        if(level != curLevel)
-        {
-            Debug.Log(curLevel);
-            curLevel = level;
-            for (int index = 0; index < spawnData.Length; index++)
-                spawnData[index].spawnTime -= 0.2f;
-        }
+        int randomMonsterIndex = Random.Range(0, level);
+
+        SpawnData monsterData = spawnData[randomMonsterIndex];
 
         GameObject enemy = GameManager.instance.pool.Get(randomMonsterIndex);
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
 
-        if (enemy.CompareTag("Enemy"))
-            enemy.GetComponent<Enemy>().Init(monsterData);
-        else if (enemy.CompareTag("ObgEnemy"))
-            enemy.GetComponent<ObjAttackEnemy>().Init(monsterData);
-        
+        enemy.GetComponent<Enemy>().Init(monsterData);
+
+        /*
+         *  this.level = level;
+        GameObject enemy = GameManager.instance.pool.Get(Random.Range(0, level+1));
+        enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
+        enemy.GetComponent<Enemy>().Init(spawnData[level]);
+        */
+
     }
 }
