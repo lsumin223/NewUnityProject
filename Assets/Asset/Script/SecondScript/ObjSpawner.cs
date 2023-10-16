@@ -12,6 +12,7 @@ public class ObjSpawner : MonoBehaviour
     private int level;
     private float levelTime;
     private float timer;
+    private int curLevel = 0;
 
     private void Start()
     {

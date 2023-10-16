@@ -208,6 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 138595129}
   - component: {fileID: 138595130}
+  - component: {fileID: 138595131}
   m_Layer: 5
   m_Name: Custom Button - HP MAX
   m_TagString: Untagged
@@ -295,6 +296,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &138595131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138595128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676326cc62f1cd345b53a06af6b752c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Playergold: 0
 --- !u!1 &373828604
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +398,7 @@ GameObject:
   - component: {fileID: 408431718}
   - component: {fileID: 408431717}
   - component: {fileID: 408431721}
+  - component: {fileID: 408431722}
   m_Layer: 5
   m_Name: Custom Canvas
   m_TagString: Untagged
@@ -496,9 +511,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5b07ee9dfba06428c4e0537ddd2018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BuyCoin: 0
   toggleGroup: {fileID: 1673168392}
   customInfoText: {fileID: 0}
   toggles: []
+--- !u!114 &408431722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408431716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676326cc62f1cd345b53a06af6b752c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Playergold: 0
 --- !u!1 &523397186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,7 +1209,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 813684020}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 408431721}
+        m_TargetAssemblyTypeName: CustomUIScript, Assembly-CSharp
+        m_MethodName: Buy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &813684020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1621,6 +1662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1192345193}
   - component: {fileID: 1192345194}
+  - component: {fileID: 1192345195}
   m_Layer: 5
   m_Name: Custom Button - Cooldown
   m_TagString: Untagged
@@ -1708,6 +1750,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &1192345195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192345192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676326cc62f1cd345b53a06af6b752c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Playergold: 0
 --- !u!1 &1218334482
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,6 +2218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1483671556}
   - component: {fileID: 1483671557}
+  - component: {fileID: 1483671558}
   m_Layer: 5
   m_Name: Custom Button - EXP
   m_TagString: Untagged
@@ -2250,6 +2306,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &1483671558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483671555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676326cc62f1cd345b53a06af6b752c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Playergold: 0
 --- !u!1 &1593466211
 GameObject:
   m_ObjectHideFlags: 0
@@ -2583,6 +2652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1809190786}
   - component: {fileID: 1809190787}
+  - component: {fileID: 1809190788}
   m_Layer: 5
   m_Name: Custom Button - Speed
   m_TagString: Untagged
@@ -2670,6 +2740,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &1809190788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809190785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676326cc62f1cd345b53a06af6b752c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Playergold: 0
 --- !u!1 &1871174851
 GameObject:
   m_ObjectHideFlags: 0

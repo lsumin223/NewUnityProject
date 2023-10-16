@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class CustomUIScript : MonoBehaviour
 {
+    public int BuyCoin;
     public ToggleGroup toggleGroup;
     public Text customInfoText;
     public Toggle[] toggles;
@@ -54,7 +56,6 @@ public class CustomUIScript : MonoBehaviour
 
     }
 
-
     private void UpdateSelectedToggle()
     {
         selectedToggleIndex = -1;
@@ -70,6 +71,18 @@ public class CustomUIScript : MonoBehaviour
                 Debug.Log($"Selected Toggle Index: {selectedToggleIndex}");
                 break; // 선택된 Toggle을 찾았으므로 루프 종료
             }
+        }
+    }
+
+    public void Buy()
+    {
+        if (selectedToggleIndex == 0)
+        {
+           BuyCoin = PlayerPrefs.GetInt("PlayerGold") - 100;
+            PlayerPrefs.SetInt("PlayerGold",BuyCoin );
+        }else if(selectedToggleIndex == 1)
+        {
+
         }
     }
 
