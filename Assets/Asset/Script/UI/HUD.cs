@@ -66,7 +66,7 @@ public class HUD : MonoBehaviour
                 break;
 
             case InfoType.ObjText:
-                myText.text = string.Format("{0:F0}/{1:F0}", TowerManager.instance.playerHelath, TowerManager.instance.maxHelath);
+                myText.text = string.Format("{0:F0}%", TowerManager.instance.playerHelath);
                 break;
 
         }
