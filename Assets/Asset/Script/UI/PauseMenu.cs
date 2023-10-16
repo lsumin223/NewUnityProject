@@ -25,6 +25,16 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 1;
             pauseMenu.SetActive(false);
             isPaused = false;
-        }
     }
+
+    public void onClickExit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+
+    }
+}
 

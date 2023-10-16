@@ -37,4 +37,5 @@ public class Pause : MonoBehaviour
             hp.SetActive(true);
         }
     }
+
 }

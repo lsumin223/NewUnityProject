@@ -41,4 +41,13 @@ public class MainMenuScript : MonoBehaviour
         AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
         SceneManager.LoadScene("Option Scene");
     }
+    public void onClickExit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+
+    }
 }
