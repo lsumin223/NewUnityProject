@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Magnet : MonoBehaviour
 {
-    public float speed = 30.0f;
-    public float magnetDist = 5.0f;
+    public float speed = 100.0f;
+    public float magnetDist = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
