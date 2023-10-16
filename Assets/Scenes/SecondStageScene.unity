@@ -84384,6 +84384,9 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
+  secondTargetLayer:
+    serializedVersion: 2
+    m_Bits: 256
   nearestTarget: {fileID: 0}
 --- !u!70 &1982716772
 CapsuleCollider2D:
