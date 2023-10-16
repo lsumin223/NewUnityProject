@@ -35,8 +35,12 @@ public class SecondSpawner : MonoBehaviour
     void Spawn(int level)
     {
         this.level = level;
+        if (level >= 2)
+            level = 1;
 
-        int randomMonsterIndex = Random.Range(0, level);
+        int randomMonsterIndex = Random.Range(0, level +1);
+        
+        Debug.Log(level);
 
         SpawnData monsterData = spawnData[randomMonsterIndex];
 

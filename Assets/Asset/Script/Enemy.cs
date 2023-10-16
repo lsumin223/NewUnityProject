@@ -76,7 +76,6 @@ public class Enemy : MonoBehaviour
         myCollider.enabled = true;
         myRigid.simulated = true;
         mySprite.sortingOrder = 2;
-        myAnim.SetBool("Dead", isDead);
         health = maxHealth;
     }
     public void Init(SpawnData data)
