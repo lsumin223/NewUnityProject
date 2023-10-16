@@ -54,7 +54,7 @@ public class HUD : MonoBehaviour
                 break;
 
             case InfoType.Totalgold:
-                int Tgold = PlayerPrefs.GetInt("PlayerGold") + GameManager.instance.gold;
+                int Tgold = PlayerPrefs.GetInt("PlayerGold");
                 myText.text = string.Format("{0:F0}G", Tgold);
                 break;
 

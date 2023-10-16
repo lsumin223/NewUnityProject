@@ -1400,10 +1400,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3432643151417746441, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3432643151417746441, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432643151417746441, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3432643151417746441, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
@@ -1411,7 +1415,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 476295473}
     - target: {fileID: 3432643151417746441, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 528313653}
+    - target: {fileID: 3432643151417746441, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432643151417746441, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3432643151417746441, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
@@ -1419,11 +1431,23 @@ PrefabInstance:
       value: ReturnToMain
       objectReference: {fileID: 0}
     - target: {fileID: 3432643151417746441, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ResultGold
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432643151417746441, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: ReturnStartScene, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3432643151417746441, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GoldData, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432643151417746441, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432643151417746441, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3432643151417746443, guid: 47f4eeef80492f8428944d9f07068499, type: 3}
@@ -1560,6 +1584,7 @@ GameObject:
   m_Component:
   - component: {fileID: 528313651}
   - component: {fileID: 528313652}
+  - component: {fileID: 528313653}
   m_Layer: 5
   m_Name: GameResult
   m_TagString: Untagged
@@ -1612,6 +1637,20 @@ MonoBehaviour:
   kill: {fileID: 1969528030}
   button: {fileID: 1320730291}
   title: {fileID: 1098378193}
+--- !u!114 &528313653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528313650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676326cc62f1cd345b53a06af6b752c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Playergold: 0
+  item: 0
 --- !u!1 &540531675
 GameObject:
   m_ObjectHideFlags: 0
@@ -21832,7 +21871,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4fa654e36987ee4f9966e958c36ce0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 0
   gameTime: 0
   maxGameTime: 100
   isCheck: 0
@@ -22257,6 +22295,7 @@ MonoBehaviour:
   channels: 16
   isDamText: 0
   isEffOn: 0
+  stage: 0
 --- !u!4 &1032438058
 Transform:
   m_ObjectHideFlags: 0
@@ -43208,6 +43247,9 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
+  secondTargetLayer:
+    serializedVersion: 2
+    m_Bits: 0
   nearestTarget: {fileID: 0}
 --- !u!1 &1391095464
 GameObject:

@@ -7,7 +7,7 @@ public class GoldSpawn : MonoBehaviour
     public GameObject money;
 
     private BoxCollider2D area;
-    private int count = 5;
+    private int count = 0;
 
     private List<GameObject> spawnList = new List<GameObject>();
     // Start is called before the first frame update
