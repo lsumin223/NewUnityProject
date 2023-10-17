@@ -15,20 +15,20 @@ public class RePosition : MonoBehaviour
 
         float diffX = playerPos.x - myPos.x;
         float diffY = playerPos.y - myPos.y;
-        float dirX = Mathf.Abs(diffX) / 56 > Mathf.Abs(diffY) / 34 ? Mathf.Sign(diffX) : 0;
+        float dirX = Mathf.Abs(diffX) / 60 > Mathf.Abs(diffY) / 40 ? Mathf.Sign(diffX) : 0;
 
-        float dirY = Mathf.Abs(diffY) / 34 > Mathf.Abs(diffX) / 56 ? Mathf.Sign(diffY) : 0;
+        float dirY = Mathf.Abs(diffY) / 40 > Mathf.Abs(diffX) / 60 ? Mathf.Sign(diffY) : 0;
 
         switch (transform.tag)
         {
             case "Ground":
                 if (dirX != 0)
                 {
-                    transform.Translate(Vector3.right * dirX * 112);
+                    transform.Translate(Vector3.right * dirX * 120);
                 }
                 else if (dirY != 0)
                 {
-                    transform.Translate(Vector3.up * dirY * 68);
+                    transform.Translate(Vector3.up * dirY * 80);
                 }
                 break;
             case "Enemy":

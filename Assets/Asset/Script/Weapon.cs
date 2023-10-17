@@ -129,6 +129,6 @@ public class Weapon : MonoBehaviour
         attack.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         attack.GetComponent<Attack>().Init(damage, count, dir);
 
-        AudioManager.instance.Playsfx(AudioManager.Sfx.bullet);
+        //AudioManager.instance.Playsfx(AudioManager.Sfx.bullet1);
     }
 }

@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
 
     public enum Sfx
     {
-        levelUp, dead, select1, select2, bullet, hit, kill, playerHit
+        levelUp, dead, select1, select2, bullet1, hit, kill, playerHit, bubble, knife
     }
 
     void Awake()
@@ -161,7 +161,7 @@ public class AudioManager : MonoBehaviour
             channelIndex = availableChannelIndex;
 
             // º¼·ý Á¶Àý
-            float adjustedVolume = (sfx == Sfx.bullet) ? sfxVolume * 0.25f : sfxVolume;
+            float adjustedVolume = (sfx == Sfx.bullet1) ? sfxVolume * 0.5f : sfxVolume;
             sfxPlayers[channelIndex].volume = adjustedVolume;
 
             sfxPlayers[channelIndex].clip = sfxClip[(int)sfx];
