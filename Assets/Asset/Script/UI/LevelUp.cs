@@ -58,11 +58,41 @@ private void Awake()
 
             if (ranItem.level == ranItem.data.damages.Length)
             {
-
+                Item newRanItem = FindRandomItem(ranItem);
+                if(newRanItem == null)
+                {
+                    ranItem.gameObject.SetActive(false);
+                }
+                else
+                    newRanItem.gameObject.SetActive(true);
             }
             else
                 ranItem.gameObject.SetActive(true);
         }
+    }
+
+    Item FindRandomItem(Item currentItem)
+    {
+        List<Item> unMaxLevel = new List<Item>();
+
+        foreach (Item item in items)
+        {
+            if(item != currentItem && item.level < item.data.damages.Length)
+            {
+                unMaxLevel.Add(item);
+            }
+        }
+
+        if(unMaxLevel.Count > 0)
+        {
+            int randomIndex = Random.Range(0, unMaxLevel.Count);
+            return unMaxLevel[randomIndex];
+        }
+        else
+        {
+            return null; 
+        }
+
     }
 
 }

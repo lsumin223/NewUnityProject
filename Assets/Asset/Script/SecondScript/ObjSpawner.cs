@@ -12,6 +12,7 @@ public class ObjSpawner : MonoBehaviour
     private int level;
     private float levelTime;
     private float timer;
+    private float start;
 
     private void Start()
     {
@@ -21,13 +22,16 @@ public class ObjSpawner : MonoBehaviour
 
     void Update()
     {
+        start += Time.deltaTime;
         timer += Time.deltaTime;
-        level = Mathf.Min(Mathf.FloorToInt(GameManager.instance.gameTime / levelTime), spawnData.Length - 1);
-
-        if (timer > spawnData[level].spawnTime)
+        level = Mathf.Min(Mathf.FloorToInt((GameManager.instance.gameTime - 60) / levelTime), spawnData.Length - 1);
+        if (start > 60)
         {
-            timer = 0;
-            Spawn(level);
+            if (timer > spawnData[level].spawnTime)
+            {
+                timer = 0;
+                Spawn(level);
+            }
         }
     }
 

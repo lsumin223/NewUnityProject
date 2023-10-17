@@ -11,8 +11,9 @@ public class Weapon : MonoBehaviour
     public int count;
     public float speed;
 
+
+    private bool isGas;
     private float timer;
-    private float coolDown;
     private PlayerController player;
 
 
@@ -20,6 +21,7 @@ public class Weapon : MonoBehaviour
     void Awake()
     {
         player = GameManager.instance.player;
+        isGas = false;
 
     }
     // Update is called once per frame
@@ -42,10 +44,15 @@ public class Weapon : MonoBehaviour
                 break;
 
             case 2:
-                timer += Time.deltaTime;
-                if (timer >= 10)
+                if (!isGas)
                 {
-                    Smoke();
+                    StartCoroutine(SpawnAttacks(count));
+                    isGas = true;
+                }
+                timer += Time.deltaTime;
+                if (timer >= 15)
+                {
+                    StartCoroutine(SpawnAttacks(count));
                     timer = 0;
                 }
                 break;
@@ -151,33 +158,37 @@ public class Weapon : MonoBehaviour
         attack.GetComponent<Attack>().Init(damage, count, dir);
 
     }
-   
-   private void Smoke()
-   {
-       for (int index = 0; index < count; index++)
-       {
-           Transform attack = GameManager.instance.pool.Get(prefabId).transform;
-           attack.parent = transform;
 
-           attack.localPosition = Vector3.zero;
-           attack.localRotation = Quaternion.identity;
+    IEnumerator SpawnAttacks(int count)
+    {
 
-           if (transform.right.x > 0) // 오른쪽
-           {
-               attack.position += new Vector3(3, 0, 0);
-           }
-           else if (transform.right.x < 0) //왼쪽
-           {
-               attack.position += new Vector3(-3, 0, 0);
-           }
+        for (int index = 0; index < count; index++)
+        {
+            Debug.Log(count);
+            Transform attack = GameManager.instance.pool.Get(prefabId).transform;
+            attack.parent = transform;
+
+            attack.localPosition = Vector3.zero;
+            attack.localRotation = Quaternion.identity;
+
+            if (!player.GetComponent<SpriteRenderer>().flipX) // 오른쪽
+            {
+                attack.position += new Vector3(4, 0, 0);
+                attack.GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else if (player.GetComponent<SpriteRenderer>().flipX) //왼쪽
+            {
+                attack.position += new Vector3(-4, 0, 0);
+                attack.GetComponent<SpriteRenderer>().flipX = true;
+            }
 
 
-           attack.GetComponent<Attack>().Init(damage, -100, Vector3.zero);
+            attack.GetComponent<Attack>().Init(damage, -100, Vector3.zero);
 
 
-           StartCoroutine(DoSomething(attack));
+            yield return StartCoroutine(WaitTime(attack));
 
-       }
+        }
 
     } /*
 
@@ -210,17 +221,11 @@ public class Weapon : MonoBehaviour
  }
 
      */
-    IEnumerator DoSomething(Transform attack)
+    IEnumerator WaitTime(Transform attack)
     {
-        Debug.Log("Start");
 
-        // 대기하려는 시간을 초 단위로 지정
-        yield return new WaitForSeconds(0.1f);
-
-        Debug.Log("2 seconds have passed");
-
+        yield return new WaitForSeconds(0.5f);
         attack.gameObject.SetActive(false);
-        // 여기에서 다음 동작을 수행할 수 있습니다.
     }
     
 }

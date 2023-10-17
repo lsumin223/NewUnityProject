@@ -21,7 +21,6 @@ public class ProductSelectUIScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         characterInfoText = transform.Find("Character Information Text").GetComponent<Text>();
 
     }
