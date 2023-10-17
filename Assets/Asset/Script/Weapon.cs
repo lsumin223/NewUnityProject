@@ -192,7 +192,7 @@ public class Weapon : MonoBehaviour
 
     } /*
 
- private void Mess()
+ private void Mes()
  {
      for (int index = 0; index < count; index++)
      {
