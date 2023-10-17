@@ -13,7 +13,6 @@ public class ProductSelectUIScript : MonoBehaviour
 
     private string[] characterInfos = { " 기본 제품 입니다.",
         " 파워형 제품 입니다. (구현 예정)",
-        " 스피드형 제품 입니다. (구현 예정)",
         " 쿨감형 제품 입니다. (구현 예정)" };
 
     [SerializeField]
@@ -62,18 +61,11 @@ public class ProductSelectUIScript : MonoBehaviour
         number = 1;
     }
 
-    public void onClickSpeedCharacter()
-    {
-        AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
-        beforeNumber = number;
-        number = 2;
-    }
-
     public void onClickCoolDownCharacter()
     {
         AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
         beforeNumber = number;
-        number = 3;
+        number = 2;
     }
 
     public void onClickBack()
