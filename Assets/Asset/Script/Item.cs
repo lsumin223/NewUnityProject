@@ -33,16 +33,16 @@ public class Item : MonoBehaviour
         switch (data.itemType)
         {
             case ItemData.ItemType.Melee:
+            case ItemData.ItemType.Skill:
             case ItemData.ItemType.Range:
                 if (level >= 0 && level < data.damages.Length - 1)
                 {
                     textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100, data.counts[level]);
                 }
                 break;
-        } 
+        }
 
     }
-
 
     public void Onclick()
     {
@@ -51,6 +51,7 @@ public class Item : MonoBehaviour
         switch (data.itemType)
         {
             case ItemData.ItemType.Melee:
+            case ItemData.ItemType.Skill:
             case ItemData.ItemType.Range:
                 if (level == 0)
                 {
@@ -70,11 +71,13 @@ public class Item : MonoBehaviour
                 }
                 break;
         }
-                level++;
-        
-        if(level == data.damages.Length)
+        level++;
+
+        if (level == data.damages.Length)
         {
             GetComponent<Button>().interactable = false;
         }
     }
+
+
 }

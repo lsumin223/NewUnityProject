@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     public Image damageScreen;
     public GameObject damageObject;
 
+    private int isInvincible = 0;
+    private float timer = 0f;
+
 
     void Awake()
     {
@@ -38,6 +41,16 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        if (isInvincible != 0)
+        {
+            timer += Time.deltaTime;
+            if (timer >= 0.1)
+            {
+                isInvincible = 0;
+                timer = 0;
+                myAnim.SetTrigger("Hit");
+            }
+        }
 
         inputVec.x = Input.GetAxisRaw("Horizontal");
         inputVec.y = Input.GetAxisRaw("Vertical");
@@ -58,35 +71,34 @@ public class PlayerController : MonoBehaviour
             mySprite.flipX = inputVec.x < 0;
         }
     }
-    
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.CompareTag("Enemy") && Time.timeScale != 0)
-        {
-            StartCoroutine(DamageEffect());
-        }
-    }
-    
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (GameManager.instance.isLive)
         {
             if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("ObgEnemy"))
             {
-                GameManager.instance.playerHelath -= Time.deltaTime * 10;
-                AudioManager.instance.Playsfx(AudioManager.Sfx.playerHit);
+                if (isInvincible == 0)
+                {
+                    GameManager.instance.playerHelath -= Time.deltaTime * 10;
+                    AudioManager.instance.Playsfx(AudioManager.Sfx.playerHit);
+
+                    StartCoroutine(DamageEffect());
+                    isInvincible++;
+                }
             }
-            
+
 
             if (GameManager.instance.playerHelath < 0)
             {
                 for (int index = 0; index < transform.childCount; index++)
                 {
                     if (!transform.GetChild(index).gameObject.CompareTag("Area"))
-                       transform.GetChild(index).gameObject.SetActive(false);
+                        transform.GetChild(index).gameObject.SetActive(false);
                 }
 
                 myAnim.SetBool("Dead", true);
+
                 GameManager.instance.GameOver();
                 AudioManager.instance.Playsfx(AudioManager.Sfx.dead);
             }

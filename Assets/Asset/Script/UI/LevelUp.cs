@@ -8,14 +8,14 @@ public class LevelUp : MonoBehaviour
     Item[] items;
     public GameObject healthbar;
 
-
-    private void Awake()
+private void Awake()
     {
         rect = GetComponent<RectTransform>();
         items = GetComponentsInChildren<Item>(true);
     }
     public void Show()
     {
+        Next();
         healthbar.SetActive(false);
         rect.localScale = new Vector3(4, 4, 4);
         GameManager.instance.Stop();
@@ -33,4 +33,36 @@ public class LevelUp : MonoBehaviour
     {
         items[index].Onclick();
     }
+
+    void Next()
+    {
+        foreach (Item item in items)
+        {
+            Debug.Log(item);
+            item.gameObject.SetActive(false);
+        }
+
+        int[] ran = new int[2];
+        while (true)
+        {
+            ran[0] = Random.Range(0, items.Length);
+            ran[1] = Random.Range(0, items.Length);
+
+            if (ran[0] != ran[1])
+                break;
+        }
+
+        for (int index = 0; index < ran.Length; index++)
+        {
+            Item ranItem = items[ran[index]];
+
+            if (ranItem.level == ranItem.data.damages.Length)
+            {
+
+            }
+            else
+                ranItem.gameObject.SetActive(true);
+        }
+    }
+
 }
