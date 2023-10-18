@@ -156,6 +156,7 @@ public class Weapon : MonoBehaviour
         attack.position = transform.position;
         attack.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         attack.GetComponent<Attack>().Init(damage, count, dir);
+        AudioManager.instance.Playsfx(AudioManager.Sfx.bullet1);
 
     }
 
@@ -181,9 +182,11 @@ public class Weapon : MonoBehaviour
                 attack.position += new Vector3(-4, 0, 0);
                 attack.GetComponent<SpriteRenderer>().flipX = true;
             }
+            
 
 
             attack.GetComponent<Attack>().Init(damage, -100, Vector3.zero);
+            AudioManager.instance.Playsfx(AudioManager.Sfx.bubble);
 
 
             yield return StartCoroutine(WaitTime(attack));

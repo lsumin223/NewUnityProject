@@ -22,6 +22,7 @@ public class HealthItem : MonoBehaviour
         {
             GameManager.instance.playerHelath += 3;
             gameObject.SetActive(false);
+            AudioManager.instance.Playsfx(AudioManager.Sfx.heal);
         }
     }
 }
