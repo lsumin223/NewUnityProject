@@ -61,7 +61,6 @@ private void Awake()
                 Item newRanItem = FindRandomItem(ranItem);
                 if(newRanItem == null)
                 {
-                    ranItem.gameObject.SetActive(false);
                 }
                 else
                     newRanItem.gameObject.SetActive(true);

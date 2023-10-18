@@ -113,7 +113,8 @@ public class ObjAttackEnemy : MonoBehaviour
 
         if (health > 0)
         {
-            myAnim.SetTrigger("Hit");
+            if (AudioManager.instance.isEffOn)
+                myAnim.SetTrigger("Hit");
             StartCoroutine(KnockBack());
         }
         else

@@ -88,11 +88,15 @@ public class ProtectControl : MonoBehaviour
 
     IEnumerator DamageEffect()
     {
-        damageObject.SetActive(true);
-        damageScreen.color = new Color(1, 0, 0, UnityEngine.Random.Range(0.2f, 0.3f));
-        yield return new WaitForSeconds(0.1f);
-        damageScreen.color = Color.clear;
-        damageObject.SetActive(false);
+        if (AudioManager.instance.isEffOn)
+        {
+            damageObject.SetActive(true);
+            damageScreen.color = new Color(1, 0, 0, UnityEngine.Random.Range(0.2f, 0.3f));
+            yield return new WaitForSeconds(0.1f);
+            damageScreen.color = Color.clear;
+            damageObject.SetActive(false);
+        }
+            
     }
 
 }

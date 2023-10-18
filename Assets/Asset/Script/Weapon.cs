@@ -15,6 +15,7 @@ public class Weapon : MonoBehaviour
     private bool isGas;
     private bool isMes;
     private float timer;
+    private float mesTimer;
     private PlayerController player;
 
 
@@ -23,6 +24,7 @@ public class Weapon : MonoBehaviour
     {
         player = GameManager.instance.player;
         isGas = false;
+        isMes = false;
 
     }
     // Update is called once per frame
@@ -51,7 +53,7 @@ public class Weapon : MonoBehaviour
                     isGas = true;
                 }
                 timer += Time.deltaTime;
-                if (timer >= 3)
+                if (timer >= speed)
                 {
                     StartCoroutine(SpawnAttacks(count));
                     timer = 0;
@@ -63,11 +65,12 @@ public class Weapon : MonoBehaviour
                     Mes();
                     isMes = true;
                 }
-                timer += Time.deltaTime;
-                if (timer >= 15)
+                mesTimer += Time.deltaTime;
+                if (mesTimer >= speed)
                 {
+                    Debug.Log("½ÇÇà");
                     Mes();
-                    timer = 0;
+                    mesTimer = 0;
                 }
                 break;
             default:
@@ -85,6 +88,7 @@ public class Weapon : MonoBehaviour
         {
             Batch();
         }
+        player.BroadcastMessage("ApplyPassive", SendMessageOptions.DontRequireReceiver);
     }
 
 
@@ -117,15 +121,17 @@ public class Weapon : MonoBehaviour
                 speed = 0.3f;
                 break;
             case 2:
-                speed = 0.5f;
+                speed = 15f;
                 break;
             case 3:
-                speed = 0.3f;
+                speed = 20f;
                 break;
             default:
                 break;
 
         }
+
+        player.BroadcastMessage("ApplyPassive", SendMessageOptions.DontRequireReceiver);
     }
 
     private void Batch()
@@ -187,9 +193,9 @@ public class Weapon : MonoBehaviour
             Debug.Log(player.inputVec.x);
             Debug.Log(player.inputVec.y);
 
-            if (player.inputVec.x == 0.0f && player.inputVec.y == 0.0f)  
+            if (player.inputVec.x == 0.0f && player.inputVec.y == 0.0f)
             {
-                
+
                 if (!player.GetComponent<SpriteRenderer>().flipX)
                 {
                     attack.position += new Vector3(3, 0, 0);
@@ -216,7 +222,7 @@ public class Weapon : MonoBehaviour
             attack.GetComponent<SpriteRenderer>().flipY = false;
         }
 
-    } 
+    }
     private Vector3 AdjustAttackXPosition(Transform attack, Vector3 direction)
     {
         Vector3 attackPos = new Vector3(0, 0, 0);
@@ -255,32 +261,28 @@ public class Weapon : MonoBehaviour
 
 
     private void Mes()
-     {
-         for (int index = 0; index < 5; index++)
-         {
-             Transform attack;
+    {
+        for (int index = 0; index < 5; index++)
+        {
+            Transform attack = GameManager.instance.pool.Get(prefabId).transform;
+            
 
-             if (index < transform.childCount)
-             {
-                 attack = transform.GetChild(index);
-             }
-             else
-             {
-                 attack = GameManager.instance.pool.Get(prefabId).transform;
-             }
+            attack.parent = transform;
 
-             attack.parent = transform;
+            attack.transform.position = transform.position;
+            attack.transform.rotation = Quaternion.identity;
 
-             attack.localPosition = Vector3.zero;
-             attack.localRotation = Quaternion.identity;
+            Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI * 2 * index / 5), Mathf.Sin(Mathf.PI * 2 * index / 5));
 
-             Vector3 rotVec = Vector3.forward * 360 * index / 5;
-             attack.Rotate(rotVec);
-             attack.Translate(attack.up * 2.5f, Space.World);
-             attack.GetComponent<Attack>().Init(damage, count, Vector3.zero);
+            Vector3 rotVec = Vector3.forward * 360 * index / 5;
+            attack.Rotate(rotVec);
+            attack.Translate(attack.up * 2.5f, Space.World);
 
-         }
-     }
+            attack.GetComponent<Rigidbody2D>().angularVelocity = 720f;
+            attack.GetComponent<Attack>().Init(damage, count, dirVec);
+
+        }
+    }
 
     IEnumerator WaitTime(Transform attack)
     {
@@ -288,5 +290,5 @@ public class Weapon : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         attack.gameObject.SetActive(false);
     }
-    
+
 }

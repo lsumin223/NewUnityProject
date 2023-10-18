@@ -7,6 +7,7 @@ public class Item : MonoBehaviour
     public ItemData data;
     public int level;
     public Weapon weapon;
+    public Passive passive;
 
     Image icon;
     Text textLevel;
@@ -40,6 +41,11 @@ public class Item : MonoBehaviour
                     textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100, data.counts[level]);
                 }
                 break;
+            case ItemData.ItemType.Cool:
+            case ItemData.ItemType.Attack:
+            case ItemData.ItemType.Speed:
+                textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100);
+                break;
         }
 
     }
@@ -70,6 +76,22 @@ public class Item : MonoBehaviour
                     weapon.LevelUp(nextDamage, nextCount);
                 }
                 break;
+            case ItemData.ItemType.Cool:
+            case ItemData.ItemType.Attack:
+            case ItemData.ItemType.Speed:
+                if (level == 0)
+                {
+                    GameObject newPassive = new GameObject();
+                    passive = newPassive.AddComponent<Passive>();
+                    passive.Init(data);
+                }
+                else
+                {
+                    float nextRate = data.damages[level];
+                    passive.LevelUp(nextRate);
+                }
+                break;
+
         }
         level++;
 

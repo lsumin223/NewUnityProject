@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ItemData : ScriptableObject
 {
-    public enum ItemType { Melee, Range, Skill }
+    public enum ItemType { Melee, Range, Skill, Cool, Attack, Speed }
 
     public ItemType itemType;
     public int id;
@@ -20,8 +20,6 @@ public class ItemData : ScriptableObject
     public int baseCount;
     public float[] damages;
     public int[] counts;
-
-    public float coolTime;
 
     public GameObject projectile;
 }

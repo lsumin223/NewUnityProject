@@ -9,10 +9,12 @@ public class AudioSliderControl : MonoBehaviour
     public Slider volumeBGM;
     public Slider volumeSFX;
     public Toggle dmgToggle;
+    public Toggle effectToggle;
 
     private void Awake()
     {
         dmgToggle.isOn = !AudioManager.instance.isDamText;
+        effectToggle.isOn = !AudioManager.instance.isEffOn;
     }
     private void Start()
     {
@@ -35,8 +37,12 @@ public class AudioSliderControl : MonoBehaviour
     {
         AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
         AudioManager.instance.isDamText = !value;
+    }
 
-        Debug.Log(AudioManager.instance.isDamText);
+    public void ToggleEffect(bool value)
+    {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
+        AudioManager.instance.isEffOn = !value;
     }
 
 }
