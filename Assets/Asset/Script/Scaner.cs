@@ -8,8 +8,11 @@ public class Scaner : MonoBehaviour
     public LayerMask targetLayer;
     public LayerMask secondTargetLayer;
 
+    public LayerMask thirdTargetLayer;
+
     public RaycastHit2D[] targets1;
     public RaycastHit2D[] targets2;
+    public RaycastHit2D[] targets3;
     public RaycastHit2D[] targets;
 
     public Transform nearestTarget;
@@ -18,10 +21,12 @@ public class Scaner : MonoBehaviour
     {
         targets1 = Physics2D.CircleCastAll(transform.position, scanRange, Vector2.zero, 0, targetLayer);
         targets2 = Physics2D.CircleCastAll(transform.position, scanRange, Vector2.zero, 0, secondTargetLayer);
+        targets3 = Physics2D.CircleCastAll(transform.position, scanRange, Vector2.zero, 0, thirdTargetLayer);
 
-        targets = new RaycastHit2D[targets1.Length + targets2.Length];
+        targets = new RaycastHit2D[targets1.Length + targets2.Length + targets3.Length];
         targets1.CopyTo(targets, 0);
         targets2.CopyTo(targets, targets1.Length);
+        targets3.CopyTo(targets, targets1.Length + targets2.Length);
 
         nearestTarget = GetNearest();
     }

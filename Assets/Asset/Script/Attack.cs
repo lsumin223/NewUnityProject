@@ -28,7 +28,7 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("ObgEnemy") || collision.CompareTag("Enemy"))
+        if (collision.CompareTag("ObgEnemy") || collision.CompareTag("Enemy") || collision.CompareTag("RBC"))
         {
             if (per == -100)
                 return;

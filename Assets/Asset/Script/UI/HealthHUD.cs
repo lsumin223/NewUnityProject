@@ -8,7 +8,7 @@ public class HealthHUD : MonoBehaviour
     public Slider curHealth;
     Image thisImg;
     public Sprite changeImg;
-
+    public Sprite originImg;
 
     private void Awake()
     {
@@ -21,10 +21,19 @@ public class HealthHUD : MonoBehaviour
         {
             ChangeImage();
         }
+        else if (curHealth.value > 0.5)
+        {
+            ReturnImage();
+        }
     }
 
     private void ChangeImage()
     {
         thisImg.sprite = changeImg;
+    }
+
+    private void ReturnImage()
+    {
+        thisImg.sprite = originImg;
     }
 }
