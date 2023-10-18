@@ -399,6 +399,7 @@ GameObject:
   - component: {fileID: 408431717}
   - component: {fileID: 408431721}
   - component: {fileID: 408431722}
+  - component: {fileID: 408431723}
   m_Layer: 5
   m_Name: Custom Canvas
   m_TagString: Untagged
@@ -515,6 +516,11 @@ MonoBehaviour:
   toggleGroup: {fileID: 1673168392}
   customInfoText: {fileID: 0}
   toggles: []
+  BuyA: 0
+  BuyB: 0
+  BuyC: 0
+  BuyD: 0
+  BuyE: 0
 --- !u!114 &408431722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +534,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Playergold: 0
+--- !u!114 &408431723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408431716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b5b07ee9dfba06428c4e0537ddd2018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BuyCoin: 0
+  toggleGroup: {fileID: 0}
+  customInfoText: {fileID: 0}
+  toggles: []
+  BuyA: 0
+  BuyB: 0
+  BuyC: 0
+  BuyD: 0
+  BuyE: 0
 --- !u!1 &523397186
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,7 +712,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 564138942}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 408431721}
+        m_TargetAssemblyTypeName: CustomUIScript, Assembly-CSharp
+        m_MethodName: ReSetItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &564138942
 MonoBehaviour:
   m_ObjectHideFlags: 0
