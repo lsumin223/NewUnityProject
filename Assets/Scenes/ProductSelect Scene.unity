@@ -738,17 +738,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637886296}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 749833758}
-  m_RootOrder: 9
+  m_Father: {fileID: 1526635654}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -413.1}
-  m_SizeDelta: {x: 0, y: -826.2}
+  m_AnchoredPosition: {x: -427, y: 43.899994}
+  m_SizeDelta: {x: 1820, y: 183.79999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &637886298
 MonoBehaviour:
@@ -889,7 +889,7 @@ RectTransform:
   - {fileID: 1096346938}
   - {fileID: 1652005706}
   - {fileID: 1007506826}
-  - {fileID: 637886297}
+  - {fileID: 1526635654}
   - {fileID: 1424185277}
   - {fileID: 2078217449}
   - {fileID: 1316443752}
@@ -1022,8 +1022,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1526635654}
+  m_Children: []
   m_Father: {fileID: 749833758}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1823,12 +1822,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1183596259}
-  m_Father: {fileID: 1007506826}
-  m_RootOrder: 0
+  - {fileID: 637886297}
+  m_Father: {fileID: 749833758}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 427, y: -34.5}
+  m_AnchoredPosition: {x: 427, y: -457}
   m_SizeDelta: {x: 100, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1526635655
@@ -1874,7 +1874,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1526635656}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 749833759}
+        m_TargetAssemblyTypeName: ProductSelectUIScript, Assembly-CSharp
+        m_MethodName: onClickUseButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1526635656
 MonoBehaviour:
   m_ObjectHideFlags: 0

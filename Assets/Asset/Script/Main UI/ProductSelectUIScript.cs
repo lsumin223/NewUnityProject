@@ -46,6 +46,12 @@ public class ProductSelectUIScript : MonoBehaviour
 
     }
 
+    public void onClickUseButton()
+    {
+        AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
+        GameManager.instance.player.myAnim.SetInteger("PlayerType", 1);
+    }
+
     public void onClickBasicCharacter()
     {
         AudioManager.instance.Playsfx(AudioManager.Sfx.select2);

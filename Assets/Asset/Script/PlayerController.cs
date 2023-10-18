@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D myRigid;
     private SpriteRenderer mySprite;
-    private Animator myAnim;
+    public Animator myAnim;
 
     public Image damageScreen;
     public GameObject damageObject;
