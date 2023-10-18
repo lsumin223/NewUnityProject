@@ -36,6 +36,10 @@ public class ProtectControl : MonoBehaviour
         if (GameManager.instance.isCheck || TowerManager.instance.playerHelath < 0)
         {
             GameManager.instance.isLive = false;
+            myAnim.SetBool("Dead", true);
+            objAnim.SetTrigger("Dead");
+            GameManager.instance.GameOver();
+            AudioManager.instance.Playsfx(AudioManager.Sfx.dead);
             return;
         }
 

@@ -18,11 +18,28 @@ public class HealthItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            GameManager.instance.playerHelath += 3;
-            gameObject.SetActive(false);
-            AudioManager.instance.Playsfx(AudioManager.Sfx.heal);
+            if (GameManager.instance.playerHelath + 3 >= 10)
+            {
+                GameManager.instance.playerHelath = 10;
+                gameObject.SetActive(false);
+                AudioManager.instance.Playsfx(AudioManager.Sfx.heal);
+            }
+            else if (GameManager.instance.playerHelath + 3 < 10)
+            {
+                GameManager.instance.playerHelath += 3.0f;
+                gameObject.SetActive(false);
+                AudioManager.instance.Playsfx(AudioManager.Sfx.heal);
+            }
+            else if (GameManager.instance.playerHelath == 10)
+            {
+                gameObject.SetActive(false);
+                AudioManager.instance.Playsfx(AudioManager.Sfx.heal);
+            }
+
         }
+
+
     }
 }
