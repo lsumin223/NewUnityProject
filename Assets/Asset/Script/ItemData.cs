@@ -21,5 +21,7 @@ public class ItemData : ScriptableObject
     public float[] damages;
     public int[] counts;
 
+    public float coolTime;
+
     public GameObject projectile;
 }

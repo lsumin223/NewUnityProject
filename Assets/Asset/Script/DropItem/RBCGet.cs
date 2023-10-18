@@ -63,12 +63,10 @@ public class RBCGet : MonoBehaviour
 
         if (randValue <= 1)
         {
-            Debug.Log("Ã¼·Â");
             GameObject clone = Instantiate(healthItem, deadPos, Quaternion.identity);
         }
         else
         {
-            Debug.Log("µ·");
             GameObject clone = Instantiate(goldItem, deadPos, Quaternion.identity);
             
         }

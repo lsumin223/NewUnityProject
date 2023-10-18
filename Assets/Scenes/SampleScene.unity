@@ -27680,7 +27680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curHealth: {fileID: 1052422759}
   changeImg: {fileID: -6283384594421286981, guid: bf55cefe6718b9e4dbcf158f2ba2495d, type: 3}
-  originImg: {fileID: 0}
+  originImg: {fileID: 8959637221540752666, guid: bf55cefe6718b9e4dbcf158f2ba2495d, type: 3}
 --- !u!1 &1052422756
 GameObject:
   m_ObjectHideFlags: 0

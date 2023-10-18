@@ -13,6 +13,7 @@ public class Weapon : MonoBehaviour
 
 
     private bool isGas;
+    private bool isMes;
     private float timer;
     private PlayerController player;
 
@@ -50,13 +51,24 @@ public class Weapon : MonoBehaviour
                     isGas = true;
                 }
                 timer += Time.deltaTime;
-                if (timer >= 15)
+                if (timer >= 3)
                 {
                     StartCoroutine(SpawnAttacks(count));
                     timer = 0;
                 }
                 break;
             case 3:
+                if (!isMes)
+                {
+                    Mes();
+                    isMes = true;
+                }
+                timer += Time.deltaTime;
+                if (timer >= 15)
+                {
+                    Mes();
+                    timer = 0;
+                }
                 break;
             default:
 
@@ -108,6 +120,7 @@ public class Weapon : MonoBehaviour
                 speed = 0.5f;
                 break;
             case 3:
+                speed = 0.3f;
                 break;
             default:
                 break;
@@ -165,65 +178,110 @@ public class Weapon : MonoBehaviour
 
         for (int index = 0; index < count; index++)
         {
-            Debug.Log(count);
             Transform attack = GameManager.instance.pool.Get(prefabId).transform;
             attack.parent = transform;
 
             attack.localPosition = Vector3.zero;
             attack.localRotation = Quaternion.identity;
 
-            if (!player.GetComponent<SpriteRenderer>().flipX) // ¿À¸¥ÂÊ
-            {
-                attack.position += new Vector3(4, 0, 0);
-                attack.GetComponent<SpriteRenderer>().flipX = false;
-            }
-            else if (player.GetComponent<SpriteRenderer>().flipX) //¿ÞÂÊ
-            {
-                attack.position += new Vector3(-4, 0, 0);
-                attack.GetComponent<SpriteRenderer>().flipX = true;
-            }
-            
+            Debug.Log(player.inputVec.x);
+            Debug.Log(player.inputVec.y);
 
+            if (player.inputVec.x == 0.0f && player.inputVec.y == 0.0f)  
+            {
+                
+                if (!player.GetComponent<SpriteRenderer>().flipX)
+                {
+                    attack.position += new Vector3(3, 0, 0);
+                    attack.GetComponent<SpriteRenderer>().flipX = false;
+                }
+                else if (player.GetComponent<SpriteRenderer>().flipX)
+                {
+                    attack.position += new Vector3(-3, 0, 0);
+                    attack.GetComponent<SpriteRenderer>().flipX = true;
+                }
+            }
+            else
+            {
+                attack.position += AdjustAttackXPosition(attack, player.inputVec);
+                attack.position += AdjustAttackYPosition(attack, player.inputVec);
+            }
 
             attack.GetComponent<Attack>().Init(damage, -100, Vector3.zero);
             AudioManager.instance.Playsfx(AudioManager.Sfx.bubble);
 
 
             yield return StartCoroutine(WaitTime(attack));
-
+            attack.GetComponent<SpriteRenderer>().flipX = false;
+            attack.GetComponent<SpriteRenderer>().flipY = false;
         }
 
-    } /*
+    } 
+    private Vector3 AdjustAttackXPosition(Transform attack, Vector3 direction)
+    {
+        Vector3 attackPos = new Vector3(0, 0, 0);
 
- private void Mes()
- {
-     for (int index = 0; index < count; index++)
+        if (direction.x > 0f)
+        {
+            attackPos += new Vector3(3, 0, 0);
+            attack.GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (direction.x < 0f)
+        {
+            attackPos += new Vector3(-3, 0, 0);
+            attack.GetComponent<SpriteRenderer>().flipX = true;
+        }
+
+        return attackPos;
+    }
+
+    private Vector3 AdjustAttackYPosition(Transform attack, Vector3 direction)
+    {
+        Vector3 attackPos = new Vector3(0, 0, 0);
+
+        if (direction.y > 0f)
+        {
+            attackPos += new Vector3(0, 3, 0);
+            attack.GetComponent<SpriteRenderer>().flipY = false;
+        }
+        else if (direction.y < 0f)
+        {
+            attackPos += new Vector3(0, -3, 0);
+            attack.GetComponent<SpriteRenderer>().flipY = true;
+        }
+
+        return attackPos;
+    }
+
+
+    private void Mes()
      {
-         Transform attack;
-
-         if (index < transform.childCount)
+         for (int index = 0; index < 5; index++)
          {
-             attack = transform.GetChild(index);
+             Transform attack;
+
+             if (index < transform.childCount)
+             {
+                 attack = transform.GetChild(index);
+             }
+             else
+             {
+                 attack = GameManager.instance.pool.Get(prefabId).transform;
+             }
+
+             attack.parent = transform;
+
+             attack.localPosition = Vector3.zero;
+             attack.localRotation = Quaternion.identity;
+
+             Vector3 rotVec = Vector3.forward * 360 * index / 5;
+             attack.Rotate(rotVec);
+             attack.Translate(attack.up * 2.5f, Space.World);
+             attack.GetComponent<Attack>().Init(damage, count, Vector3.zero);
+
          }
-         else
-         {
-             attack = GameManager.instance.pool.Get(prefabId).transform;
-         }
-
-         attack.parent = transform;
-
-         attack.localPosition = Vector3.zero;
-         attack.localRotation = Quaternion.identity;
-
-         Vector3 rotVec = Vector3.forward * 180 * index / count;
-         attack.Rotate(rotVec);
-         attack.Translate(attack.up * 2.5f, Space.World);
-         attack.GetComponent<Attack>().Init(damage, -100, Vector3.zero);
-
      }
- }
 
-     */
     IEnumerator WaitTime(Transform attack)
     {
 
