@@ -124,7 +124,7 @@ public class Weapon : MonoBehaviour
                 speed = 15f;
                 break;
             case 3:
-                speed = 20f;
+                speed = 7f;
                 break;
             default:
                 break;

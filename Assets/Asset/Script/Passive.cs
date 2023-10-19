@@ -26,6 +26,7 @@ public class Passive : MonoBehaviour
     {
         this.rate = rate;
         ApplyPassive();
+        SpeedPassive();
     }
 
     private void ApplyPassive()
@@ -35,9 +36,7 @@ public class Passive : MonoBehaviour
             case ItemData.ItemType.Attack:
                 AttackUp();
                 break;
-            case ItemData.ItemType.Speed:
-                SpeedUp();
-                break;
+
             case ItemData.ItemType.Cool:
                 RateUp();
                 break;
@@ -45,13 +44,23 @@ public class Passive : MonoBehaviour
         }
     }
 
+    private void SpeedPassive()
+    {
+        switch (type)
+        {
+            case ItemData.ItemType.Speed:
+                Debug.Log("스피드업");
+                SpeedUp();
+                break;
+        }
+    }
     private void RateUp()
     {
         Weapon[] weapons = transform.parent.GetComponentsInChildren<Weapon>();
 
-        foreach(Weapon weapon in weapons)
+        foreach (Weapon weapon in weapons)
         {
-            switch(weapon.id)
+            switch (weapon.id)
             {
                 case 0:
                     weapon.speed = 150 + (150 * rate);
@@ -73,8 +82,8 @@ public class Passive : MonoBehaviour
 
     private void SpeedUp()
     {
-        float speed = GameManager.instance.player.speed;
-        GameManager.instance.player.speed = speed + (speed * rate);
+        GameManager.instance.player.speed =
+            GameManager.instance.player.speed + (GameManager.instance.player.speed * rate);
     }
 
     private void AttackUp()
@@ -86,17 +95,17 @@ public class Passive : MonoBehaviour
             switch (weapon.id)
             {
                 case 0:
-                    weapon.damage = 10 + (10 * rate);
+                    weapon.damage = weapon.damage + (weapon.damage * rate);
                     break;
 
                 case 1:
-                    weapon.damage = 5 + (5 * rate);
+                    weapon.damage = weapon.damage + (weapon.damage * rate);
                     break;
                 case 2:
-                    weapon.damage = 10 + (10 * rate); 
+                    weapon.damage = weapon.damage + (weapon.damage * rate);
                     break;
                 case 3:
-                    weapon.damage = 20 + (20 * rate);
+                    weapon.damage = weapon.damage + (weapon.damage * rate);
                     break;
             }
         }

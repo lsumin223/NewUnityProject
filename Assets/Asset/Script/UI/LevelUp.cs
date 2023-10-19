@@ -8,7 +8,7 @@ public class LevelUp : MonoBehaviour
     Item[] items;
     public GameObject healthbar;
 
-private void Awake()
+    private void Awake()
     {
         rect = GetComponent<RectTransform>();
         items = GetComponentsInChildren<Item>(true);
@@ -38,61 +38,42 @@ private void Awake()
     {
         foreach (Item item in items)
         {
-            Debug.Log(item);
             item.gameObject.SetActive(false);
         }
 
-        int[] ran = new int[3];
-        while (true)
-        {
-            ran[0] = Random.Range(0, items.Length);
-            ran[1] = Random.Range(0, items.Length);
-            ran[2] = Random.Range(0, items.Length);
 
-            if (ran[0] != ran[1]&& ran[1] != ran[2] && ran[2] != ran[0])
-                break;
-        }
-
-        for (int index = 0; index < ran.Length; index++)
-        {
-            Item ranItem = items[ran[index]];
-
-            if (ranItem.level == ranItem.data.damages.Length)
-            {
-                Item newRanItem = FindRandomItem(ranItem);
-                if(newRanItem == null)
-                {
-                }
-                else
-                    newRanItem.gameObject.SetActive(true);
-            }
-            else
-                ranItem.gameObject.SetActive(true);
-        }
-    }
-
-    Item FindRandomItem(Item currentItem)
-    {
-        List<Item> unMaxLevel = new List<Item>();
-
+        List<Item> unMaxLevelItems = new List<Item>();
         foreach (Item item in items)
         {
-            if(item != currentItem && item.level < item.data.damages.Length)
+            if (item.level != item.data.damages.Length)
             {
-                unMaxLevel.Add(item);
+                unMaxLevelItems.Add(item);
             }
         }
 
-        if(unMaxLevel.Count > 0)
+        List<Item> selectedItems = new List<Item>();
+        while (selectedItems.Count < 3 && unMaxLevelItems.Count > 0)
         {
-            int randomIndex = Random.Range(0, unMaxLevel.Count);
-            return unMaxLevel[randomIndex];
-        }
-        else
-        {
-            return null; 
+            int randomIndex = Random.Range(0, unMaxLevelItems.Count);
+            Item randomItem = unMaxLevelItems[randomIndex];
+
+            if (randomItem.level == randomItem.data.damages.Length)
+            {
+                unMaxLevelItems.RemoveAt(randomIndex);
+            }
+            else if (!selectedItems.Contains(randomItem))
+            {
+                selectedItems.Add(randomItem);
+                randomItem.gameObject.SetActive(true);
+            }
+
+            unMaxLevelItems.RemoveAt(randomIndex);
         }
 
+        foreach (Item item in unMaxLevelItems)
+        {
+            item.gameObject.SetActive(false);
+        }
     }
 
 }
