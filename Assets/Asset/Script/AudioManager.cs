@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
 
     public enum Sfx
     {
-        levelUp, dead, select1, select2, bullet1, hit, kill, playerHit, bubble, knife, heal
+        levelUp, dead, select1, select2, bullet1, hit, kill, playerHit, bubble, knife, heal, coin
     }
 
     void Awake()
@@ -165,7 +165,12 @@ public class AudioManager : MonoBehaviour
             
             if (sfx == Sfx.heal)
             {
-                adjustedVolume *= 2.5f; // 예시로 볼륨을 1.5배로 높임
+                adjustedVolume *= 2.5f; // 볼륨을 2.5배로 높임
+            }
+            
+            if (sfx == Sfx.coin)
+            {
+                adjustedVolume *= 0.25f; // 볼륨을 0.25배로 높임
             }
 
             sfxPlayers[channelIndex].volume = adjustedVolume;

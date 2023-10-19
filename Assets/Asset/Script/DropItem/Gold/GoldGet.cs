@@ -34,6 +34,7 @@ public class GoldGet : MonoBehaviour
             {
                 GameManager.instance.GetGold(money);
                 gameObject.SetActive(false);
+                AudioManager.instance.Playsfx(AudioManager.Sfx.coin);
             }
         }
        

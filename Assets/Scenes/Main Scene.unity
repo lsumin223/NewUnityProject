@@ -459,6 +459,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2310ad5fae9838a46b85d416fbcd9577, type: 3}
   - {fileID: 8300000, guid: 66f70b96cb3046f4c875e427ee8aeeb6, type: 3}
   - {fileID: 8300000, guid: 0da5255e2ec35d04ebe3e95594b0a947, type: 3}
+  - {fileID: 8300000, guid: dac4b7c88a85f8e48b7565568628be56, type: 3}
   sfxVolume: 0.5
   channels: 16
   isDamText: 0
