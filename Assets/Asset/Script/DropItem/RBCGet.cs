@@ -34,11 +34,8 @@ public class RBCGet : MonoBehaviour
             return;
 
         int damage = Mathf.RoundToInt(collision.GetComponent<Attack>().damage);
-        if (PlayerPrefs.GetInt("PlayerCharacter") == 1)
-        {
-            damage += Mathf.FloorToInt(damage * 0.3f);
-        }
-        health -= damage;
+
+        health -= collision.GetComponent<Attack>().damage;
         AudioManager.instance.Playsfx(AudioManager.Sfx.hit);
 
         Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);

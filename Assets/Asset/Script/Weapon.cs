@@ -88,6 +88,7 @@ public class Weapon : MonoBehaviour
         {
             Batch();
         }
+        // player.BroadcastMessage("ApplyPassive", SendMessageOptions.DontRequireReceiver);
     }
 
 
@@ -98,10 +99,19 @@ public class Weapon : MonoBehaviour
         transform.parent = player.transform;
         transform.localPosition = Vector3.zero;
 
-        id = data.id;
-        damage = data.baseDamage;
-        count = data.baseCount;
 
+        if (PlayerPrefs.GetInt("CheckA") == 1)
+        {
+            id = data.id;
+            damage = data.baseDamage + (data.baseDamage * 0.1f);
+            count = data.baseCount;
+        }
+        else
+        {
+            id = data.id;
+            damage = data.baseDamage;
+            count = data.baseCount;
+        }
         for (int index = 0; index < GameManager.instance.pool.prefabs.Length; index++)
         {
             if (data.projectile == GameManager.instance.pool.prefabs[index])
@@ -113,24 +123,52 @@ public class Weapon : MonoBehaviour
         switch (id)
         {
             case 0:
-                speed = 150;
+                if (PlayerPrefs.GetInt("CheckC") == 1)
+                {
+                    speed = 165;
+                }
+                else
+                {
+                    speed = 150;
+                }
                 Batch();
                 break;
             case 1:
-                speed = 0.3f;
+                if (PlayerPrefs.GetInt("CheckC") == 1)
+                {
+                    speed = 0.27f;
+                }
+                else
+                {
+                    speed = 0.3f;
+                }
                 break;
             case 2:
-                speed = 15f;
+                if (PlayerPrefs.GetInt("CheckC") == 1)
+                {
+                    speed = 13.5f;
+                }
+                else
+                {
+                    speed = 15f;
+                }
                 break;
             case 3:
-                speed = 7f;
+                if (PlayerPrefs.GetInt("CheckC") == 1)
+                {
+                    speed = 18f;
+                }
+                else
+                {
+                    speed = 20f;
+                }
                 break;
             default:
                 break;
 
         }
 
-       // player.BroadcastMessage("ApplyPassive", SendMessageOptions.DontRequireReceiver);
+        // player.BroadcastMessage("ApplyPassive", SendMessageOptions.DontRequireReceiver);
     }
 
     private void Batch()
@@ -264,7 +302,7 @@ public class Weapon : MonoBehaviour
         for (int index = 0; index < 5; index++)
         {
             Transform attack = GameManager.instance.pool.Get(prefabId).transform;
-            
+
 
             attack.parent = transform;
 

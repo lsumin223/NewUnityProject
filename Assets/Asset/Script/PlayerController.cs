@@ -9,8 +9,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 inputVec;
     public Scaner scan;
 
-    public float speed;
-
+    public float speed = 6.0f;
     private Rigidbody2D myRigid;
     private SpriteRenderer mySprite;
     public Animator myAnim;
@@ -24,12 +23,14 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        if (PlayerPrefs.GetInt("CheckB") == 1)
+        {
+            speed = 6.6f;
+        }
         myRigid = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
         mySprite = GetComponent<SpriteRenderer>();
         scan = GetComponent<Scaner>();
-
-        myAnim.SetInteger("PlayerType", PlayerPrefs.GetInt("PlayerCharacter"));
 
     }
 
@@ -55,19 +56,20 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+
         inputVec.x = Input.GetAxisRaw("Horizontal");
         inputVec.y = Input.GetAxisRaw("Vertical");
     }
 
     void FixedUpdate()
     {
-      
-            Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
-            myRigid.MovePosition(myRigid.position + nextVec);
-        
+
+        Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
+        myRigid.MovePosition(myRigid.position + nextVec);
+
     }
 
-        void LateUpdate()
+    void LateUpdate()
     {
         myAnim.SetFloat("Speed", inputVec.magnitude);
 
@@ -113,7 +115,7 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator DamageEffect()
     {
-        if(AudioManager.instance.isEffOn)
+        if (AudioManager.instance.isEffOn)
         {
             damageObject.SetActive(true);
             damageScreen.color = new Color(1, 0, 0, UnityEngine.Random.Range(0.2f, 0.3f));
@@ -121,7 +123,7 @@ public class PlayerController : MonoBehaviour
             damageScreen.color = Color.clear;
             damageObject.SetActive(false);
         }
-        
+
     }
 
 }

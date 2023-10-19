@@ -64,8 +64,6 @@ public class ProductSelectUIScript : MonoBehaviour
         AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
         beforeNumber = number;
         number = 0;
-
-        AudioManager.instance.select = number;
     }
 
     public void onClickPowerCharacter()
@@ -73,7 +71,6 @@ public class ProductSelectUIScript : MonoBehaviour
         AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
         beforeNumber = number;
         number = 1;
-        AudioManager.instance.select = number;
     }
 
     public void onClickCoolDownCharacter()
@@ -81,8 +78,6 @@ public class ProductSelectUIScript : MonoBehaviour
         AudioManager.instance.Playsfx(AudioManager.Sfx.select2);
         beforeNumber = number;
         number = 2;
-
-        AudioManager.instance.select = number;
     }
 
     public void onClickBack()

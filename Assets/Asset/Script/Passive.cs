@@ -8,7 +8,7 @@ public class Passive : MonoBehaviour
 
     public ItemData.ItemType type;
     public float rate;
-
+    public int level;
 
     public void Init(ItemData data)
     {
@@ -26,10 +26,10 @@ public class Passive : MonoBehaviour
     {
         this.rate = rate;
         ApplyPassive();
-        SpeedPassive();
+
     }
 
-    private void ApplyPassive()
+    public void ApplyPassive()
     {
         switch (type)
         {
@@ -40,21 +40,14 @@ public class Passive : MonoBehaviour
             case ItemData.ItemType.Cool:
                 RateUp();
                 break;
-
-        }
-    }
-
-    private void SpeedPassive()
-    {
-        switch (type)
-        {
             case ItemData.ItemType.Speed:
-                Debug.Log("스피드업");
                 SpeedUp();
                 break;
         }
     }
-    private void RateUp()
+
+
+    public void RateUp()
     {
         Weapon[] weapons = transform.parent.GetComponentsInChildren<Weapon>();
 
@@ -63,30 +56,66 @@ public class Passive : MonoBehaviour
             switch (weapon.id)
             {
                 case 0:
-                    weapon.speed = 150 + (150 * rate);
+                    if (PlayerPrefs.GetInt("CheckC") == 1)
+                    {
+                        weapon.speed = 150 + (150 * rate) + 15;
+                    }
+                    else
+                    {
+                        weapon.speed = 150 + (150 * rate);
+                    }
                     break;
 
                 case 1:
-                    weapon.speed = 0.5f * (1f - rate);
+                    if (PlayerPrefs.GetInt("CheckC") == 1)
+                    {
+                        weapon.speed = 0.3f * (1f - rate) - 0.03f;
+                    }
+                    else
+                    {
+                        weapon.speed = 0.3f * (1f - rate);
+                    }
                     break;
                 case 2:
-                    weapon.speed = 15 * (1f - rate);
+                    if (PlayerPrefs.GetInt("CheckC") == 1)
+                    {
+                        weapon.speed = 15 * (1f - rate) - 1.5f;
+                    }
+                    else
+                    {
+                        weapon.speed = 15 * (1f - rate);
+                    }
                     break;
                 case 3:
-                    weapon.speed = 20 * (1f - rate);
+                    if (PlayerPrefs.GetInt("CheckC") == 1)
+                    {
+                        weapon.speed = 20 * (1f - rate) - 2;
+                    }
+                    else
+                    {
+                        weapon.speed = 20 * (1f - rate);
+                    }
                     break;
             }
         }
 
     }
 
-    private void SpeedUp()
+    public void SpeedUp()
     {
-        GameManager.instance.player.speed =
-            GameManager.instance.player.speed + (GameManager.instance.player.speed * rate);
+        if (PlayerPrefs.GetInt("CheckB") == 1)
+        {
+            float speed = GameManager.instance.player.speed;
+            GameManager.instance.player.speed = speed + (speed * rate) + (speed * 0.1f);
+        }
+        else
+        {
+            float speed = GameManager.instance.player.speed;
+            GameManager.instance.player.speed = speed + (speed * rate);
+        }
     }
 
-    private void AttackUp()
+    public void AttackUp()
     {
         Weapon[] weapons = transform.parent.GetComponentsInChildren<Weapon>();
 
@@ -95,17 +124,47 @@ public class Passive : MonoBehaviour
             switch (weapon.id)
             {
                 case 0:
-                    weapon.damage = weapon.damage + (weapon.damage * rate);
+
+                    if (PlayerPrefs.GetInt("CheckA") == 1)
+                    {
+                        weapon.damage = (weapon.damage + (weapon.damage * 0.1f)) + ((weapon.damage + (weapon.damage * 0.1f)) * rate);
+                    }
+                    else
+                    {
+                        weapon.damage = weapon.damage + (weapon.damage * rate);
+                    }
                     break;
 
                 case 1:
-                    weapon.damage = weapon.damage + (weapon.damage * rate);
+
+                    if (PlayerPrefs.GetInt("CheckA") == 1)
+                    {
+                        weapon.damage = (weapon.damage + (weapon.damage * 0.1f)) + ((weapon.damage + (weapon.damage * 0.1f)) * rate);
+                    }
+                    else
+                    {
+                        weapon.damage = weapon.damage + (weapon.damage * rate);
+                    }
                     break;
                 case 2:
-                    weapon.damage = weapon.damage + (weapon.damage * rate);
+                    if (PlayerPrefs.GetInt("CheckA") == 1)
+                    {
+                        weapon.damage = (weapon.damage + (weapon.damage * 0.1f)) + ((weapon.damage + (weapon.damage * 0.1f)) * rate);
+                    }
+                    else
+                    {
+                        weapon.damage = weapon.damage + (weapon.damage * rate);
+                    }
                     break;
                 case 3:
-                    weapon.damage = weapon.damage + (weapon.damage * rate);
+                    if (PlayerPrefs.GetInt("CheckA") == 1)
+                    {
+                        weapon.damage = (weapon.damage + (weapon.damage * 0.1f)) + ((weapon.damage + (weapon.damage * 0.1f)) * rate);
+                    }
+                    else
+                    {
+                        weapon.damage = weapon.damage + (weapon.damage * rate);
+                    }
                     break;
             }
         }

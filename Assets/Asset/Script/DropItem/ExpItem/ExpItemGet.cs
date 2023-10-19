@@ -11,16 +11,24 @@ public class ExpItemGet : MonoBehaviour
 
     private void Awake()
     {
-        itemExp = 3;
-        timer = 0;
+        if (PlayerPrefs.GetInt("CheckE") == 1)
+        {
+            itemExp = 4;
+            timer = 0;
+        }
+        else
+        {
+            itemExp = 3;
+            timer = 0;
+        }
     }
 
     private void Update()
     {
         timer += Time.deltaTime;
-        hello = Random.Range(50, 60);
+        hello = Random.Range(10, 20);
 
-        if(timer >= hello)
+        if (timer >= hello)
         {
             gameObject.SetActive(false);
         }
@@ -29,7 +37,7 @@ public class ExpItemGet : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(GameManager.instance.isLive)
+        if (GameManager.instance.isLive)
         {
             if (collision.gameObject.CompareTag("Player"))
             {
@@ -37,6 +45,6 @@ public class ExpItemGet : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-        
+
     }
 }

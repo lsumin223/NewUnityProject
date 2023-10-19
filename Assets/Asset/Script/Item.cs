@@ -44,7 +44,8 @@ public class Item : MonoBehaviour
             case ItemData.ItemType.Cool:
             case ItemData.ItemType.Attack:
             case ItemData.ItemType.Speed:
-                textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100);
+                if (level >= 0 && level < data.damages.Length - 1)
+                    textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100);
                 break;
         }
 

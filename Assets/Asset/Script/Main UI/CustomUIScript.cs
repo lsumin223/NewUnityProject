@@ -15,11 +15,11 @@ public class CustomUIScript : MonoBehaviour
 
     private int selectedToggleIndex = -1;
 
-    private string[] info = {" 데미지가 10% 상승합니다. ",
-        " 속도가 10% 상승합니다.",
-    " 쿨타임이 2.5% 감소합니다.(구현 예정)",
-    " 최대체력이 20 상승합니다.(구현 예정)",
-    " 경험치 획득률이 10% 상승합니다.(구현 예정)"};
+    private string[] info = {" 데미지가 10% 상승합니다. 3000G ",
+        " 속도가 10% 상승합니다. 3000G",
+    " 쿨타임이 10% 감소합니다. 3000G" ,
+    " 최대체력이 20 상승합니다. 3000G",
+    " 경험치 획득률이 10% 상승합니다. 3000G"};
 
 
     // Start is called before the first frame update
@@ -29,12 +29,12 @@ public class CustomUIScript : MonoBehaviour
         UpdateSelectedToggle();
         customInfoText = transform.Find("Custom Info Text").GetComponent<Text>();
         toggles = toggleGroup.GetComponentsInChildren<Toggle>();
-        
-       /*PlayerPrefs.SetInt("CheckA", 0);
-        PlayerPrefs.SetInt("CheckB", 0);
-        PlayerPrefs.SetInt("CheckC", 0);
-        PlayerPrefs.SetInt("CheckD", 0);
-        PlayerPrefs.SetInt("CheckE", 0);  *///상점구매 초기화
+
+        /*PlayerPrefs.SetInt("CheckA", 0);
+         PlayerPrefs.SetInt("CheckB", 0);
+         PlayerPrefs.SetInt("CheckC", 0);
+         PlayerPrefs.SetInt("CheckD", 0);
+         PlayerPrefs.SetInt("CheckE", 0);  *///상점구매 초기화
     }
 
     // Update is called once per frame
@@ -95,7 +95,7 @@ public class CustomUIScript : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("PlayerGold") > PlayerPrefs.GetInt("ItemA") && toggles[0].isOn)
             {
-                PlayerPrefs.SetInt("ItemA", 1000);
+                PlayerPrefs.SetInt("ItemA", 3000);
                 BuyCoin = PlayerPrefs.GetInt("PlayerGold") - PlayerPrefs.GetInt("ItemA");
                 PlayerPrefs.SetInt("PlayerGold", BuyCoin);
                 BuyA = 1;
@@ -108,7 +108,7 @@ public class CustomUIScript : MonoBehaviour
 
             if (PlayerPrefs.GetInt("PlayerGold") > PlayerPrefs.GetInt("ItemB") && toggles[1].isOn)
             {
-                PlayerPrefs.SetInt("ItemB", 1000);
+                PlayerPrefs.SetInt("ItemB", 3000);
                 BuyCoin = PlayerPrefs.GetInt("PlayerGold") - PlayerPrefs.GetInt("ItemB");
                 PlayerPrefs.SetInt("PlayerGold", BuyCoin);
                 BuyB = 1;
@@ -121,7 +121,7 @@ public class CustomUIScript : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("PlayerGold") > PlayerPrefs.GetInt("ItemC") && toggles[2].isOn)
             {
-                PlayerPrefs.SetInt("ItemC", 1000);
+                PlayerPrefs.SetInt("ItemC", 3000);
                 BuyCoin = PlayerPrefs.GetInt("PlayerGold") - PlayerPrefs.GetInt("ItemC");
                 PlayerPrefs.SetInt("PlayerGold", BuyCoin);
                 BuyC = 1;
@@ -132,7 +132,7 @@ public class CustomUIScript : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("PlayerGold") > PlayerPrefs.GetInt("ItemD") && toggles[3].isOn)
             {
-                PlayerPrefs.SetInt("ItemD", 1000);
+                PlayerPrefs.SetInt("ItemD", 3000);
                 BuyCoin = PlayerPrefs.GetInt("PlayerGold") - PlayerPrefs.GetInt("ItemD");
                 PlayerPrefs.SetInt("PlayerGold", BuyCoin);
                 BuyD = 1;
@@ -143,7 +143,7 @@ public class CustomUIScript : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("PlayerGold") > PlayerPrefs.GetInt("ItemE") && toggles[4].isOn)
             {
-                PlayerPrefs.SetInt("ItemE", 1000);
+                PlayerPrefs.SetInt("ItemE", 3000);
                 BuyCoin = PlayerPrefs.GetInt("PlayerGold") - PlayerPrefs.GetInt("ItemE");
                 PlayerPrefs.SetInt("PlayerGold", BuyCoin);
                 BuyE = 1;
