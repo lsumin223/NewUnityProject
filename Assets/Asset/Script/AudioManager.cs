@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
     public bool isEffOn;
 
     public int stage;
+    public int select;
 
     public enum Sfx
     {

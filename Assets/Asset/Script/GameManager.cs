@@ -36,8 +36,7 @@ public class GameManager : MonoBehaviour
     public GameObject HUD;
 
     void Start()
-    {
-        
+    {        
         uiLevelUp.Select(1);
         playerHelath = maxHelath;
         Resume();
@@ -140,6 +139,13 @@ public class GameManager : MonoBehaviour
         if (isLive)
         {
             exp += newExp;
+
+            if (PlayerPrefs.GetInt("PlayerCharacter") == 0)
+            {
+                exp += Mathf.FloorToInt(newExp * 0.3f);
+            }
+
+            Debug.Log("exp" + exp);
             if (exp >= nextExp[Mathf.Min(level, nextExp.Length - 1)])
             {
                 level++;

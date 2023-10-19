@@ -88,7 +88,6 @@ public class Weapon : MonoBehaviour
         {
             Batch();
         }
-        player.BroadcastMessage("ApplyPassive", SendMessageOptions.DontRequireReceiver);
     }
 
 
@@ -131,7 +130,7 @@ public class Weapon : MonoBehaviour
 
         }
 
-        player.BroadcastMessage("ApplyPassive", SendMessageOptions.DontRequireReceiver);
+       // player.BroadcastMessage("ApplyPassive", SendMessageOptions.DontRequireReceiver);
     }
 
     private void Batch()
