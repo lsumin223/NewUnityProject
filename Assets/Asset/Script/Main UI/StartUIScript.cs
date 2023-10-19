@@ -10,12 +10,13 @@ public class StartUIScript : MonoBehaviour
     public Text stageNameText;
     public Text stageStoryText;
     public Button startButton;
+    private int clearedStage;
 
     [SerializeField]
     private Sprite[] stageSprites;
 
 
-    private string[] stageName = { "연구소", "병원" ,"의료기기 학회"};
+    private string[] stageName = { "연구소", "병원", "의료기기 학회" };
 
     private string[] stageStory = { "임상시험 시작! 내 로봇은 꼭 세상을 구할 수 있을 것이다.",
         " 소문을 듣고 아는 친구의 아는 동생의 아는 형님의 아는 시한부에게 치료 요청이 왔다.",
@@ -24,6 +25,16 @@ public class StartUIScript : MonoBehaviour
 
 
     private int index = 0;
+
+    private void Awake()
+    {
+        if (PlayerPrefs.GetInt("PlayerStage") < 0 || PlayerPrefs.GetInt("PlayerStage") > 2)
+        {
+            clearedStage = 0;
+            PlayerPrefs.SetInt("PlayerStage", 0);
+        }
+        else clearedStage = PlayerPrefs.GetInt("PlayerStage");
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +58,7 @@ public class StartUIScript : MonoBehaviour
             stageStoryText.text = stageStory[index];
         }
 
-        if(index == 2)
+        if (index > clearedStage)
         {
             startButton.interactable = false;
         }
@@ -104,7 +115,7 @@ public class StartUIScript : MonoBehaviour
             case 2:
                 break;
         }
-        
+
 
 
     }

@@ -6,6 +6,7 @@ using System.IO;
 [System.Serializable]
 public class SaveData
 {
+    public int stage;
     public int characterType; // 추가
     public int gold;
 }
@@ -29,6 +30,7 @@ public class DataManager : MonoBehaviour
         {
             PlayerGold.instance.playerGold = 100;
             PlayerCharacter.instance.playerCharacter = 0; // 추가
+            PlayerStage.instance.playerStage = 0;
 
             JsonSave();
         }
@@ -41,6 +43,7 @@ public class DataManager : MonoBehaviour
             {
                 PlayerGold.instance.playerGold = saveData.gold;
                 PlayerCharacter.instance.playerCharacter = saveData.characterType; // 추가
+                PlayerStage.instance.playerStage = saveData.stage;
 
             }
         }
@@ -51,6 +54,8 @@ public class DataManager : MonoBehaviour
         SaveData saveData = new SaveData();
 
         saveData.characterType = PlayerCharacter.instance.playerCharacter;     // 추가
+
+        saveData.stage = PlayerStage.instance.playerStage;
 
 
         saveData.gold = PlayerGold.instance.playerGold;
