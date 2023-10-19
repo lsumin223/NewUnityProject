@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         myAnim = GetComponent<Animator>();
         mySprite = GetComponent<SpriteRenderer>();
         scan = GetComponent<Scaner>();
+        myAnim.SetInteger("PlayerType", PlayerPrefs.GetInt("PlayerCharacter"));
 
     }
 
