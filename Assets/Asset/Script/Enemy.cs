@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
-           
+
 
         if (!isDead)
         {
@@ -93,8 +93,13 @@ public class Enemy : MonoBehaviour
             return;
 
         int damage = Mathf.RoundToInt(collision.GetComponent<Attack>().damage);
-        
-        health -= collision.GetComponent<Attack>().damage;
+        if (PlayerPrefs.GetInt("PlayerCharacter") == 1)
+        {
+            damage += Mathf.FloorToInt(damage * 0.3f);
+        }
+
+        health -= damage;
+        Debug.Log(damage);
         AudioManager.instance.Playsfx(AudioManager.Sfx.hit);
 
         Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
@@ -122,7 +127,7 @@ public class Enemy : MonoBehaviour
                 GameManager.instance.kill++;
                 GameManager.instance.GetExp(enemyExp);
             }
-                
+
             AudioManager.instance.Playsfx(AudioManager.Sfx.kill);
 
         }
@@ -169,7 +174,7 @@ public class Enemy : MonoBehaviour
     private void DropItem()
     {
         Vector2 deadPos = transform.position;
-        
+
 
         randValue = Random.Range(0, 10);
 
@@ -179,7 +184,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            if(randValue <= 1)
+            if (randValue <= 1)
             {
                 GameObject clone = Instantiate(dropGold, deadPos, Quaternion.identity);
             }

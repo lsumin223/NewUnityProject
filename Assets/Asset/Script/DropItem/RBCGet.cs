@@ -25,7 +25,7 @@ public class RBCGet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,19 +34,22 @@ public class RBCGet : MonoBehaviour
             return;
 
         int damage = Mathf.RoundToInt(collision.GetComponent<Attack>().damage);
-
-        health -= collision.GetComponent<Attack>().damage;
+        if (PlayerPrefs.GetInt("PlayerCharacter") == 1)
+        {
+            damage += Mathf.FloorToInt(damage * 0.3f);
+        }
+        health -= damage;
         AudioManager.instance.Playsfx(AudioManager.Sfx.hit);
 
         Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
         DmgTxtControl.instance.CreatDamageTxt(pos, damage);
 
-        if (health<=10)
+        if (health <= 10)
         {
             mySprite.sprite = changeSprite;
         }
 
-        if(health <=0)
+        if (health <= 0)
         {
             gameObject.SetActive(false);
             DropItem();
@@ -68,7 +71,7 @@ public class RBCGet : MonoBehaviour
         else
         {
             GameObject clone = Instantiate(goldItem, deadPos, Quaternion.identity);
-            
+
         }
 
     }

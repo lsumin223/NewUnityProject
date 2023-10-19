@@ -37,11 +37,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        if (PlayerPrefs.GetInt("CheckD") == 1)
-        {
-            playerHelath = maxHelath + 20;
-        }
-
         uiLevelUp.Select(1);
         playerHelath = maxHelath;
         Resume();
@@ -55,6 +50,7 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         playerHelath = maxHelath;
+
         isLive = true;
         isCheck = false;
         isLevelUp = false;
@@ -143,6 +139,13 @@ public class GameManager : MonoBehaviour
         if (isLive)
         {
             exp += newExp;
+
+            if (PlayerPrefs.GetInt("PlayerCharacter") == 0)
+            {
+                exp += Mathf.FloorToInt(newExp * 0.5f);
+            }
+
+            Debug.Log("exp" + exp);
             if (exp >= nextExp[Mathf.Min(level, nextExp.Length - 1)])
             {
                 level++;
