@@ -37,7 +37,6 @@ public class ReturnStartScene : MonoBehaviour
             AudioManager.instance.PlayBgm(true, 1);
             Time.timeScale = 1;
             SceneManager.LoadScene(1);
-            PlayerPrefs.SetInt("PlayerStage", stageNumber);
         }
 
     }

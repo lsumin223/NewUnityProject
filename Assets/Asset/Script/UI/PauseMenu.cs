@@ -36,5 +36,12 @@ public class PauseMenu : MonoBehaviour
 #endif
 
     }
+
+    public void onClickLobby()
+    {
+        SceneManager.LoadScene("Main Scene");
+        Time.timeScale = 1;
+    }
+
 }
 
