@@ -6,9 +6,7 @@ using System.IO;
 [System.Serializable]
 public class SaveData
 {
-    public List<string> testDataA = new List<string>();
-    public List<int> testDataB = new List<int>();
-    
+    public int characterType; // 추가
     public int gold;
 }
 
@@ -30,6 +28,7 @@ public class DataManager : MonoBehaviour
         if (!File.Exists(path))
         {
             PlayerGold.instance.playerGold = 100;
+            PlayerCharacter.instance.playerCharacter = 0; // 추가
 
             JsonSave();
         }
@@ -40,15 +39,8 @@ public class DataManager : MonoBehaviour
 
             if (saveData != null)
             {
-                for (int i = 0; i < saveData.testDataA.Count; i++)
-                {
-                    PlayerGold.instance.testDataA.Add(saveData.testDataA[i]);
-                }
-                for (int i = 0; i < saveData.testDataB.Count; i++)
-                {
-                    PlayerGold.instance.testDataB.Add(saveData.testDataB[i]);
-                }
                 PlayerGold.instance.playerGold = saveData.gold;
+                PlayerCharacter.instance.playerCharacter = saveData.characterType; // 추가
 
             }
         }
@@ -57,9 +49,9 @@ public class DataManager : MonoBehaviour
     public void JsonSave()
     {
         SaveData saveData = new SaveData();
-        
-    
-       
+
+        saveData.characterType = PlayerCharacter.instance.playerCharacter;     // 추가
+
 
         saveData.gold = PlayerGold.instance.playerGold;
 

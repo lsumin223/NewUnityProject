@@ -8,12 +8,12 @@ public class ProductSelectUIScript : MonoBehaviour
 {
     public Text characterInfoText;
 
-    private int number = 0;
+    private int number;
     private int beforeNumber = 0;
 
     private string[] characterInfos = { " 기본 제품 입니다.",
-        " 파워형 제품 입니다. (구현 예정)",
-        " 쿨감형 제품 입니다. (구현 예정)" };
+        " 파워형 제품 입니다. ",
+        " 쿨감형 제품 입니다. " };
 
     [SerializeField]
     private Button[] buttons;
@@ -22,6 +22,13 @@ public class ProductSelectUIScript : MonoBehaviour
     void Start()
     {
         characterInfoText = transform.Find("Character Information Text").GetComponent<Text>();
+
+        if (PlayerPrefs.GetInt("PlayerCharacter") < 0 || PlayerPrefs.GetInt("PlayerCharacter") > 2)
+        {
+            number = 0;
+            PlayerPrefs.SetInt("PlayerCharacter", 0);
+        }
+        else number = PlayerPrefs.GetInt("PlayerCharacter");
 
     }
 
@@ -49,7 +56,7 @@ public class ProductSelectUIScript : MonoBehaviour
     public void onClickUseButton()
     {
         AudioManager.instance.Playsfx(AudioManager.Sfx.select1);
-        GameManager.instance.player.myAnim.SetInteger("PlayerType", 1);
+        PlayerPrefs.SetInt("PlayerCharacter", number);
     }
 
     public void onClickBasicCharacter()

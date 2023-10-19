@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
         mySprite = GetComponent<SpriteRenderer>();
         scan = GetComponent<Scaner>();
 
+        myAnim.SetInteger("PlayerType", PlayerPrefs.GetInt("PlayerCharacter"));
+
     }
 
     // Update is called once per frame
