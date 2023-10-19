@@ -15,8 +15,8 @@ public class CustomUIScript : MonoBehaviour
 
     private int selectedToggleIndex = -1;
 
-    private string[] info = {" 데미지가 10% 상승합니다. (구현 예정)",
-        " 속도가 5% 상승합니다.(구현 예정)",
+    private string[] info = {" 데미지가 10% 상승합니다. ",
+        " 속도가 10% 상승합니다.",
     " 쿨타임이 2.5% 감소합니다.(구현 예정)",
     " 최대체력이 20 상승합니다.(구현 예정)",
     " 경험치 획득률이 10% 상승합니다.(구현 예정)"};
@@ -87,7 +87,7 @@ public class CustomUIScript : MonoBehaviour
     public int BuyE;
 
 
-    public void Buy()
+    public void Buy() //커스텀 능력치 구매 기록 저장
     {
 
 
@@ -152,7 +152,7 @@ public class CustomUIScript : MonoBehaviour
         }
     }
 
-    public void ReSetItem()
+    public void ReSetItem() // 재조립버튼 누르면 구매한거 리셋(재화 돌려받음)
     {
         if (PlayerPrefs.GetInt("CheckA") == 1)
         {

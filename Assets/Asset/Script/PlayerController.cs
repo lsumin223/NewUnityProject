@@ -59,11 +59,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
-        myRigid.MovePosition(myRigid.position + nextVec);
+      
+            Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
+            myRigid.MovePosition(myRigid.position + nextVec);
+        
     }
 
-    void LateUpdate()
+        void LateUpdate()
     {
         myAnim.SetFloat("Speed", inputVec.magnitude);
 

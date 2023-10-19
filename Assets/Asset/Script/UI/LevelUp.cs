@@ -42,13 +42,14 @@ private void Awake()
             item.gameObject.SetActive(false);
         }
 
-        int[] ran = new int[2];
+        int[] ran = new int[3];
         while (true)
         {
             ran[0] = Random.Range(0, items.Length);
             ran[1] = Random.Range(0, items.Length);
+            ran[2] = Random.Range(0, items.Length);
 
-            if (ran[0] != ran[1])
+            if (ran[0] != ran[1]&& ran[1] != ran[2] && ran[2] != ran[0])
                 break;
         }
 
