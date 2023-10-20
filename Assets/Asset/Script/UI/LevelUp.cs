@@ -52,7 +52,7 @@ public class LevelUp : MonoBehaviour
         }
 
         List<Item> selectedItems = new List<Item>();
-        while (selectedItems.Count < 3 && unMaxLevelItems.Count > 0)
+        while (selectedItems.Count < 2 && unMaxLevelItems.Count > 0)
         {
             int randomIndex = Random.Range(0, unMaxLevelItems.Count);
             Item randomItem = unMaxLevelItems[randomIndex];

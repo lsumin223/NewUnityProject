@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   id: 0
-  itemName: "\uAD6C"
+  itemName: "\uD30C\uD2B8\uB108 \uBD07"
   itemDesc: "\uB370\uBBF8\uC9C0{0}% \uC99D\uAC00\n\uD68C\uC804\uCCB4{1}\uAC1C \uCD94\uAC00"
   itemIcon: {fileID: -6032650285816646611, guid: b39f75d0035a44e4892105ed52cc5e8f, type: 3}
   baseDamage: 10

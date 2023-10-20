@@ -27,6 +27,10 @@ public class PlayerController : MonoBehaviour
         {
             speed = 6.6f;
         }
+        else if (PlayerPrefs.GetInt("CheckB") == 2)
+        {
+            speed = 7.2f;
+        }
         myRigid = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
         mySprite = GetComponent<SpriteRenderer>();

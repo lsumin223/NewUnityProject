@@ -37,6 +37,15 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        if (PlayerPrefs.GetInt("CheckD") == 1)
+        {
+            maxHelath = 120;
+        }
+        else if (PlayerPrefs.GetInt("CheckD") ==2)
+        {
+            maxHelath = 140;
+        }
+
         uiLevelUp.Select(1);
         playerHelath = maxHelath;
         Resume();

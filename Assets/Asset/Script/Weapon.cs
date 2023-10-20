@@ -99,37 +99,73 @@ public class Weapon : MonoBehaviour
         transform.parent = player.transform;
         transform.localPosition = Vector3.zero;
 
-
-        if (PlayerPrefs.GetInt("CheckA") == 1)
-        {
-            id = data.id;
-            damage = data.baseDamage + (data.baseDamage * 0.1f);
-            count = data.baseCount;
-        }
-        else
-        {
-            id = data.id;
-            damage = data.baseDamage;
-            count = data.baseCount;
-        }
-        for (int index = 0; index < GameManager.instance.pool.prefabs.Length; index++)
-        {
-            if (data.projectile == GameManager.instance.pool.prefabs[index])
+      
+            if (PlayerPrefs.GetInt("CheckA") == 1)
             {
-                prefabId = index;
-                break;
+                id = data.id;
+                damage = data.baseDamage + (data.baseDamage * 0.1f);
+                count = data.baseCount;
+            }
+          else
+        {
+            if (PlayerPrefs.GetInt("CheckA") == 2)
+            {
+                id = data.id;
+                damage = data.baseDamage + (data.baseDamage * 0.2f);
+                count = data.baseCount;
+            }
+            else
+            {
+                id = data.id;
+                damage = data.baseDamage;
+                count = data.baseCount;
             }
         }
+                for (int index = 0; index < GameManager.instance.pool.prefabs.Length; index++)
+                {
+                    if (data.projectile == GameManager.instance.pool.prefabs[index])
+                    {
+                        prefabId = index;
+                        break;
+                    }
+                }
+
         switch (id)
         {
             case 0:
                 if (PlayerPrefs.GetInt("CheckC") == 1)
                 {
                     speed = 165;
+
+                    if (PlayerPrefs.GetInt("PlayerCharacter") == 2)
+                    {
+                        speed += (speed * 0.2f);
+                    }
                 }
                 else
                 {
                     speed = 150;
+                    if (PlayerPrefs.GetInt("PlayerCharacter") == 2)
+                    {
+                        speed += (speed * 0.2f);
+                    }
+                }
+                if (PlayerPrefs.GetInt("CheckC") == 2)
+                {
+                    speed = 180;
+
+                    if (PlayerPrefs.GetInt("PlayerCharacter") == 2)
+                    {
+                        speed += (speed * 0.2f);
+                    }
+                }
+                else
+                {
+                    speed = 150;
+                    if (PlayerPrefs.GetInt("PlayerCharacter") == 2)
+                    {
+                        speed += (speed * 0.2f);
+                    }
                 }
                 Batch();
                 break;
@@ -137,30 +173,102 @@ public class Weapon : MonoBehaviour
                 if (PlayerPrefs.GetInt("CheckC") == 1)
                 {
                     speed = 0.27f;
+                    if (PlayerPrefs.GetInt("PlayerCharacter") == 2)
+                    {
+                        speed -= (speed * 0.2f);
+                    }
                 }
                 else
                 {
                     speed = 0.3f;
+                    if (PlayerPrefs.GetInt("PlayerCharacter") == 2)
+                    {
+                        speed -= (speed * 0.2f);
+                    }
+                }
+                if (PlayerPrefs.GetInt("CheckC") == 2)
+                {
+                    speed = 0.24f;
+                    if (PlayerPrefs.GetInt("PlayerCharacter") == 2)
+                    {
+                        speed -= (speed * 0.2f);
+                    }
+                }
+                else
+                {
+                    speed = 0.3f;
+                    if (PlayerPrefs.GetInt("PlayerCharacter") == 2)
+                    {
+                        speed -= (speed * 0.2f);
+                    }
                 }
                 break;
             case 2:
                 if (PlayerPrefs.GetInt("CheckC") == 1)
                 {
-                    speed = 13.5f;
+                    speed = 7f;
+                    if (PlayerPrefs.GetInt("PlayerCharacter") == 2)
+                    {
+                        speed -= (speed * 0.2f);
+                    }
                 }
                 else
                 {
-                    speed = 15f;
+                    speed = 8f;
+                    if (PlayerPrefs.GetInt("PlayerCharacter") == 2)
+                    {
+                        speed -= (speed * 0.2f);
+                    }
+                }
+                if (PlayerPrefs.GetInt("CheckC") == 2)
+                {
+                    speed = 6.5f;
+                    if (PlayerPrefs.GetInt("PlayerCharacter") == 2)
+                    {
+                        speed -= (speed * 0.2f);
+                    }
+                }
+                else
+                {
+                    speed = 8f;
+                    if (PlayerPrefs.GetInt("PlayerCharacter") == 2)
+                    {
+                        speed -= (speed * 0.2f);
+                    }
                 }
                 break;
             case 3:
                 if (PlayerPrefs.GetInt("CheckC") == 1)
                 {
-                    speed = 18f;
+                    speed = 4f;
+                    if (PlayerPrefs.GetInt("PlayerCharacter") == 2)
+                    {
+                        speed -= (speed * 0.2f);
+                    }
                 }
                 else
                 {
-                    speed = 20f;
+                    speed = 5f;
+                    if (PlayerPrefs.GetInt("PlayerCharacter") == 2)
+                    {
+                        speed -= (speed * 0.2f);
+                    }
+                }
+                if (PlayerPrefs.GetInt("CheckC") == 2)
+                {
+                    speed = 3.5f;
+                    if (PlayerPrefs.GetInt("PlayerCharacter") == 2)
+                    {
+                        speed -= (speed * 0.2f);
+                    }
+                }
+                else
+                {
+                    speed = 5f;
+                    if (PlayerPrefs.GetInt("PlayerCharacter") == 2)
+                    {
+                        speed -= (speed * 0.2f);
+                    }
                 }
                 break;
             default:
@@ -170,162 +278,162 @@ public class Weapon : MonoBehaviour
 
         // player.BroadcastMessage("ApplyPassive", SendMessageOptions.DontRequireReceiver);
     }
-
     private void Batch()
-    {
-        for (int index = 0; index < count; index++)
         {
-            Transform attack;
-
-            if (index < transform.childCount)
+            for (int index = 0; index < count; index++)
             {
-                attack = transform.GetChild(index);
-            }
-            else
-            {
-                attack = GameManager.instance.pool.Get(prefabId).transform;
-            }
+                Transform attack;
 
-            attack.parent = transform;
-
-            attack.localPosition = Vector3.zero;
-            attack.localRotation = Quaternion.identity;
-
-            Vector3 rotVec = Vector3.forward * 360 * index / count;
-            attack.Rotate(rotVec);
-            attack.Translate(attack.up * 2.5f, Space.World);
-            attack.GetComponent<Attack>().Init(damage, -100, Vector3.zero);
-
-        }
-    }
-
-    private void Fire()
-    {
-        if (!player.scan.nearestTarget)
-            return;
-
-        Vector3 targetPos = player.scan.nearestTarget.position;
-        Vector3 dir = targetPos - transform.position;
-        dir = dir.normalized;
-
-        Transform attack = GameManager.instance.pool.Get(prefabId).transform;
-        attack.position = transform.position;
-        attack.rotation = Quaternion.FromToRotation(Vector3.up, dir);
-        attack.GetComponent<Attack>().Init(damage, count, dir);
-        AudioManager.instance.Playsfx(AudioManager.Sfx.bullet1);
-
-    }
-
-    IEnumerator SpawnAttacks(int count)
-    {
-
-        for (int index = 0; index < count; index++)
-        {
-            Transform attack = GameManager.instance.pool.Get(prefabId).transform;
-            attack.parent = transform;
-
-            attack.localPosition = Vector3.zero;
-            attack.localRotation = Quaternion.identity;
-
-            Debug.Log(player.inputVec.x);
-            Debug.Log(player.inputVec.y);
-
-            if (player.inputVec.x == 0.0f && player.inputVec.y == 0.0f)
-            {
-
-                if (!player.GetComponent<SpriteRenderer>().flipX)
+                if (index < transform.childCount)
                 {
-                    attack.position += new Vector3(3, 0, 0);
-                    attack.GetComponent<SpriteRenderer>().flipX = false;
+                    attack = transform.GetChild(index);
                 }
-                else if (player.GetComponent<SpriteRenderer>().flipX)
+                else
                 {
-                    attack.position += new Vector3(-3, 0, 0);
-                    attack.GetComponent<SpriteRenderer>().flipX = true;
+                    attack = GameManager.instance.pool.Get(prefabId).transform;
                 }
+
+                attack.parent = transform;
+
+                attack.localPosition = Vector3.zero;
+                attack.localRotation = Quaternion.identity;
+
+                Vector3 rotVec = Vector3.forward * 360 * index / count;
+                attack.Rotate(rotVec);
+                attack.Translate(attack.up * 2.5f, Space.World);
+                attack.GetComponent<Attack>().Init(damage, -100, Vector3.zero);
+
             }
-            else
-            {
-                attack.position += AdjustAttackXPosition(attack, player.inputVec);
-                attack.position += AdjustAttackYPosition(attack, player.inputVec);
-            }
-
-            attack.GetComponent<Attack>().Init(damage, -100, Vector3.zero);
-            AudioManager.instance.Playsfx(AudioManager.Sfx.bubble);
-
-
-            yield return StartCoroutine(WaitTime(attack));
-            attack.GetComponent<SpriteRenderer>().flipX = false;
-            attack.GetComponent<SpriteRenderer>().flipY = false;
         }
 
-    }
-    private Vector3 AdjustAttackXPosition(Transform attack, Vector3 direction)
-    {
-        Vector3 attackPos = new Vector3(0, 0, 0);
-
-        if (direction.x > 0f)
+        private void Fire()
         {
-            attackPos += new Vector3(3, 0, 0);
-            attack.GetComponent<SpriteRenderer>().flipX = false;
-        }
-        else if (direction.x < 0f)
-        {
-            attackPos += new Vector3(-3, 0, 0);
-            attack.GetComponent<SpriteRenderer>().flipX = true;
-        }
+            if (!player.scan.nearestTarget)
+                return;
 
-        return attackPos;
-    }
+            Vector3 targetPos = player.scan.nearestTarget.position;
+            Vector3 dir = targetPos - transform.position;
+            dir = dir.normalized;
 
-    private Vector3 AdjustAttackYPosition(Transform attack, Vector3 direction)
-    {
-        Vector3 attackPos = new Vector3(0, 0, 0);
-
-        if (direction.y > 0f)
-        {
-            attackPos += new Vector3(0, 3, 0);
-            attack.GetComponent<SpriteRenderer>().flipY = false;
-        }
-        else if (direction.y < 0f)
-        {
-            attackPos += new Vector3(0, -3, 0);
-            attack.GetComponent<SpriteRenderer>().flipY = true;
-        }
-
-        return attackPos;
-    }
-
-
-    private void Mes()
-    {
-        for (int index = 0; index < 5; index++)
-        {
             Transform attack = GameManager.instance.pool.Get(prefabId).transform;
-
-
-            attack.parent = transform;
-
-            attack.transform.position = transform.position;
-            attack.transform.rotation = Quaternion.identity;
-
-            Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI * 2 * index / 5), Mathf.Sin(Mathf.PI * 2 * index / 5));
-
-            Vector3 rotVec = Vector3.forward * 360 * index / 5;
-            attack.Rotate(rotVec);
-            attack.Translate(attack.up * 2.5f, Space.World);
-
-            attack.GetComponent<Rigidbody2D>().angularVelocity = 720f;
-            attack.GetComponent<Attack>().Init(damage, count, dirVec);
+            attack.position = transform.position;
+            attack.rotation = Quaternion.FromToRotation(Vector3.up, dir);
+            attack.GetComponent<Attack>().Init(damage, count, dir);
+            AudioManager.instance.Playsfx(AudioManager.Sfx.bullet1);
 
         }
+
+        IEnumerator SpawnAttacks(int count)
+        {
+
+            for (int index = 0; index < count; index++)
+            {
+                Transform attack = GameManager.instance.pool.Get(prefabId).transform;
+                attack.parent = transform;
+
+                attack.localPosition = Vector3.zero;
+                attack.localRotation = Quaternion.identity;
+
+                Debug.Log(player.inputVec.x);
+                Debug.Log(player.inputVec.y);
+
+                if (player.inputVec.x == 0.0f && player.inputVec.y == 0.0f)
+                {
+
+                    if (!player.GetComponent<SpriteRenderer>().flipX)
+                    {
+                        attack.position += new Vector3(3, 0, 0);
+                        attack.GetComponent<SpriteRenderer>().flipX = false;
+                    }
+                    else if (player.GetComponent<SpriteRenderer>().flipX)
+                    {
+                        attack.position += new Vector3(-3, 0, 0);
+                        attack.GetComponent<SpriteRenderer>().flipX = true;
+                    }
+                }
+                else
+                {
+                    attack.position += AdjustAttackXPosition(attack, player.inputVec);
+                    attack.position += AdjustAttackYPosition(attack, player.inputVec);
+                }
+
+                attack.GetComponent<Attack>().Init(damage, -100, Vector3.zero);
+                AudioManager.instance.Playsfx(AudioManager.Sfx.bubble);
+
+
+                yield return StartCoroutine(WaitTime(attack));
+                attack.GetComponent<SpriteRenderer>().flipX = false;
+                attack.GetComponent<SpriteRenderer>().flipY = false;
+            }
+
+        }
+        private Vector3 AdjustAttackXPosition(Transform attack, Vector3 direction)
+        {
+            Vector3 attackPos = new Vector3(0, 0, 0);
+
+            if (direction.x > 0f)
+            {
+                attackPos += new Vector3(3, 0, 0);
+                attack.GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else if (direction.x < 0f)
+            {
+                attackPos += new Vector3(-3, 0, 0);
+                attack.GetComponent<SpriteRenderer>().flipX = true;
+            }
+
+            return attackPos;
+        }
+
+        private Vector3 AdjustAttackYPosition(Transform attack, Vector3 direction)
+        {
+            Vector3 attackPos = new Vector3(0, 0, 0);
+
+            if (direction.y > 0f)
+            {
+                attackPos += new Vector3(0, 3, 0);
+                attack.GetComponent<SpriteRenderer>().flipY = false;
+            }
+            else if (direction.y < 0f)
+            {
+                attackPos += new Vector3(0, -3, 0);
+                attack.GetComponent<SpriteRenderer>().flipY = true;
+            }
+
+            return attackPos;
+        }
+
+
+        private void Mes()
+        {
+            for (int index = 0; index < 5; index++)
+            {
+                Transform attack = GameManager.instance.pool.Get(prefabId).transform;
+
+
+                attack.parent = transform;
+
+                attack.transform.position = transform.position;
+                attack.transform.rotation = Quaternion.identity;
+
+                Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI * 2 * index / 5), Mathf.Sin(Mathf.PI * 2 * index / 5));
+
+                Vector3 rotVec = Vector3.forward * 360 * index / 5;
+                attack.Rotate(rotVec);
+                attack.Translate(attack.up * 2.5f, Space.World);
+
+                attack.GetComponent<Rigidbody2D>().angularVelocity = 720f;
+                attack.GetComponent<Attack>().Init(damage, count, dirVec);
+                AudioManager.instance.Playsfx(AudioManager.Sfx.knife);
+
+            }
+        }
+
+        IEnumerator WaitTime(Transform attack)
+        {
+
+            yield return new WaitForSeconds(0.5f);
+            attack.gameObject.SetActive(false);
+        }
+
     }
-
-    IEnumerator WaitTime(Transform attack)
-    {
-
-        yield return new WaitForSeconds(0.5f);
-        attack.gameObject.SetActive(false);
-    }
-
-}

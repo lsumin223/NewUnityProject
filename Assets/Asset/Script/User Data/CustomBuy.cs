@@ -17,19 +17,24 @@ public class CustomBuy : MonoBehaviour
         switch (type)
         {
             case InfoType.A:
-                CustomSlider.value = PlayerPrefs.GetInt("CheckA") / 1f;
+                CustomSlider.value = PlayerPrefs.GetInt("CheckA") / 2f;
                 break;
 
             case InfoType.B:
+                CustomSlider.value = PlayerPrefs.GetInt("CheckB") / 2f;
                 break;
 
+
             case InfoType.C:
+                CustomSlider.value = PlayerPrefs.GetInt("CheckC") / 2f;
                 break;
 
             case InfoType.D:
+                CustomSlider.value = PlayerPrefs.GetInt("CheckD") / 2f;
                 break;
 
             case InfoType.E:
+                CustomSlider.value = PlayerPrefs.GetInt("CheckE") / 2f;
                 break;
 
         }

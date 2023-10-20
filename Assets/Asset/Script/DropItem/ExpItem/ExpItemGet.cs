@@ -16,6 +16,11 @@ public class ExpItemGet : MonoBehaviour
             itemExp = 4;
             timer = 0;
         }
+        if (PlayerPrefs.GetInt("CheckE") == 2)
+        {
+            itemExp = 4;
+            timer = 0;
+        }
         else
         {
             itemExp = 3;
