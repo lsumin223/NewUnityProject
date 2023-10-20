@@ -20,19 +20,19 @@ public class HealthItem : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (GameManager.instance.playerHelath + 3 >= 10)
+            if (GameManager.instance.playerHelath + 3 >= GameManager.instance.maxHelath)
             {
-                GameManager.instance.playerHelath = 10;
+                GameManager.instance.playerHelath = GameManager.instance.maxHelath;
                 gameObject.SetActive(false);
                 AudioManager.instance.Playsfx(AudioManager.Sfx.heal);
             }
-            else if (GameManager.instance.playerHelath + 3 < 10)
+            else if (GameManager.instance.playerHelath + 3 < GameManager.instance.maxHelath)
             {
                 GameManager.instance.playerHelath += 3.0f;
                 gameObject.SetActive(false);
                 AudioManager.instance.Playsfx(AudioManager.Sfx.heal);
             }
-            else if (GameManager.instance.playerHelath == 10)
+            else if (GameManager.instance.playerHelath == GameManager.instance.maxHelath)
             {
                 gameObject.SetActive(false);
                 AudioManager.instance.Playsfx(AudioManager.Sfx.heal);

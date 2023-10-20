@@ -39,11 +39,11 @@ public class GameManager : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("CheckD") == 1)
         {
-            maxHelath = 120;
+            maxHelath = 15;
         }
         else if (PlayerPrefs.GetInt("CheckD") ==2)
         {
-            maxHelath = 140;
+            maxHelath = 20;
         }
 
         uiLevelUp.Select(1);
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         isCheck = true;
         cleaner.SetActive(true);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.1f);
 
         resultUI.SetActive(true);
         HUD.SetActive(false);

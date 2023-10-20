@@ -33,7 +33,7 @@ public class ProtectControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.isCheck || TowerManager.instance.playerHelath < 0)
+        if ( TowerManager.instance.playerHelath < 0)
         {
             GameManager.instance.isLive = false;
             myAnim.SetBool("Dead", true);

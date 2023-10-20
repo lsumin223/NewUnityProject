@@ -767,7 +767,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 853212370}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: onClickExit
         m_Mode: 1
@@ -2073,23 +2073,23 @@ MonoBehaviour:
   spawnPoint: []
   spawnData:
   - spriteType: 0
-    spawnTime: 0.6
+    spawnTime: 0.8
     health: 15
     speed: 2
   - spriteType: 0
-    spawnTime: 0.5
+    spawnTime: 0.6
     health: 25
     speed: 2.5
   - spriteType: 0
-    spawnTime: 0.4
+    spawnTime: 0.5
     health: 35
     speed: 3
   - spriteType: 0
-    spawnTime: 0.2
+    spawnTime: 0.4
     health: 50
     speed: 3
   - spriteType: 0
-    spawnTime: 0.1
+    spawnTime: 0.3
     health: 65
     speed: 3
   prefabs:
@@ -3777,7 +3777,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 853212370}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: onClickLobby
         m_Mode: 1
@@ -53962,7 +53962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTime: 0
-  maxGameTime: 300
+  maxGameTime: 210
   isCheck: 0
   isLive: 1
   isLevelUp: 0
@@ -79331,19 +79331,19 @@ MonoBehaviour:
     health: 10
     speed: 1
   - spriteType: 0
-    spawnTime: 0.9
+    spawnTime: 2.7
     health: 16
     speed: 1
   - spriteType: 0
-    spawnTime: 0.8
+    spawnTime: 2.4
     health: 20
     speed: 1
   - spriteType: 0
-    spawnTime: 0.65
+    spawnTime: 2
     health: 20
     speed: 1
   - spriteType: 0
-    spawnTime: 0.5
+    spawnTime: 1.5
     health: 20
     speed: 1
   prefabs:
@@ -106350,7 +106350,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 85}
+  m_AnchoredPosition: {x: 0, y: -140}
   m_SizeDelta: {x: 0, y: 25}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2061519592

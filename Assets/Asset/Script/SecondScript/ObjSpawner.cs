@@ -24,8 +24,8 @@ public class ObjSpawner : MonoBehaviour
     {
         start += Time.deltaTime;
         timer += Time.deltaTime;
-        level = Mathf.Min(Mathf.FloorToInt((GameManager.instance.gameTime - 60) / levelTime), spawnData.Length - 1);
-        if (start > 60)
+        level = Mathf.Min(Mathf.FloorToInt((GameManager.instance.gameTime) / levelTime), spawnData.Length - 1);
+        if (start > 30)
         {
             if (timer > spawnData[level].spawnTime)
             {

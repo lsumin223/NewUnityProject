@@ -21,10 +21,14 @@ public class Pause : MonoBehaviour
 
     public void PauseGame()
     {
-        Time.timeScale = 0;
-        pauseMenu.SetActive(true);
-        isPaused = true; // 일시정지 시 isPaused를 true로 설정
-        hp.SetActive(false);
+        if (GameManager.instance.isLive)
+        {
+            Time.timeScale = 0;
+            pauseMenu.SetActive(true);
+            isPaused = true; // 일시정지 시 isPaused를 true로 설정
+            hp.SetActive(false);
+            Time.timeScale = 0;
+        }
     }
 
     public void ResumeGame()
@@ -35,6 +39,12 @@ public class Pause : MonoBehaviour
         {
             Time.timeScale = 1;
             hp.SetActive(true);
+
+        }
+        else if (GameManager.instance.isLevelUp)
+        {
+            Time.timeScale = 0;
+            hp.SetActive(false);
         }
     }
 

@@ -27235,7 +27235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTime: 0
-  maxGameTime: 180
+  maxGameTime: 10
   isCheck: 0
   isLive: 1
   isLevelUp: 0
