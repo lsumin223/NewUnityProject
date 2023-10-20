@@ -47,7 +47,7 @@ public class ProductSelectUIScript : MonoBehaviour
 
             if (buttonColor != null)
             {
-                buttonColor.color = new Color(186 / 255.0f, 208 / 250.0f, 1f, 1f);
+                buttonColor.color = new Color(255 / 255.0f, 255 / 250.0f, 0f, 1f);
             }
 
 
