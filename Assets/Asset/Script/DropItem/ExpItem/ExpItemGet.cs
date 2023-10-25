@@ -31,7 +31,7 @@ public class ExpItemGet : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        hello = Random.Range(10, 20);
+        hello = Random.Range(15, 20);
 
         if (timer >= hello)
         {
